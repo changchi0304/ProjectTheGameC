@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>無權訪問該網頁</title>
+    <link rel="stylesheet" href="/style/style.css" />
+    <style>
+      section {
+        margin-top: 150px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 70%;
+        text-align: center;
+      }
+      .s1 .p1 {
+        font-size: 3rem;
+        color: #1c3d5c;
+      }
+      .s1 .p2 {
+        font-size: 1.75rem;
+        color: #1c3d5c;
+        margin: 70px 0;
+      }
+      .s1 a {
+        font-size: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('share/header')%>
+
+    <section class="s1">
+      <img src="/img/login/login_logo.png" alt="" /><br /><br />
+      <p class="p1">帳號權限不足</p>
+      <p class="p2">很抱歉，您的帳號沒有權限訪問該資料</p>
+      <br />
+      <a href="/">點我回到首頁</a><br /><br />
+      <a
+        href="<%= LoginUserID ? `/wallet/PI/${LoginUserID}`: `/login?alert=needLogin`  %>"
+        >點我回到個人資料</a
+      >
+    </section>
+  </body>
+</html>

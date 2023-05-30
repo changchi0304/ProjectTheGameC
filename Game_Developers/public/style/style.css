@@ -1,0 +1,301 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 1920px; /* 設置最小寬度為 1920 像素 */
+  margin: 0 auto; /* 讓網頁置中顯示 */
+  background-image: url("../img/bg.jpg");
+  font-family: "Microsoft YaHei", sans-serif;
+  letter-spacing: 1px;
+}
+body p {
+  text-shadow: 0 5px 15px black;
+  color: rgb(255, 218, 170);
+}
+body img {
+  box-shadow: 0 0 15px black;
+}
+body hr {
+  margin: 12.5px 0;
+}
+
+section {
+  width: 85%;
+  margin: 50px auto;
+}
+section h1 {
+  color: antiquewhite;
+  font-size: 2rem;
+  text-align: center;
+  letter-spacing: 5px;
+}
+section p {
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.section1 {
+  margin-top: 30px;
+  position: relative;
+}
+.section1 .myCoinContent {
+  position: absolute;
+  top: 80px;
+  left: 35px;
+  color: aliceblue;
+  cursor: pointer;
+  font-size: 1.2rem;
+  letter-spacing: 2.5px;
+}
+.section1 .myCoinContent:hover {
+  filter: brightness(150%);
+}
+
+.section2 {
+  display: flex;
+  justify-content: space-around;
+}
+.section2 .SkinAndCost {
+  transition: 0.25s;
+}
+.section2 .SkinAndCost div.SkinDiv {
+  filter: brightness(100%);
+  background-color: rgb(41, 41, 41);
+  width: -moz-fit-content;
+  width: fit-content;
+  text-align: center;
+  border-radius: 10px;
+  border: 3px solid rgba(66, 66, 66, 0.3);
+  box-shadow: 0 0 15px rgb(46, 0, 0);
+  position: relative;
+}
+.section2 .SkinAndCost div.SkinDiv .SkinImg {
+  border-radius: 10px;
+  width: 270px;
+}
+.section2 .SkinAndCost div.SkinDiv .SkinImg img {
+  border-radius: 10px;
+  width: 100%;
+}
+.section2 .SkinAndCost div.SkinDiv .fontDiv {
+  padding: 15px;
+}
+.section2 .SkinAndCost div.SkinDiv .fontDiv .skinName {
+  font-size: 1.5rem;
+}
+.section2 .SkinAndCost div.SkinDiv .fontDiv .cut {
+  font-size: 2rem;
+  color: rgb(0, 206, 0);
+}
+.section2 .costDiv {
+  background-color: rgb(41, 41, 41);
+  padding: 8px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.section2 .costDiv img {
+  width: 30px;
+  height: 32px;
+  box-shadow: none;
+}
+.section2 .costDiv .cost {
+  text-align: center;
+  font-size: 2rem;
+  text-shadow: 0 0 10px rgb(0, 0, 0);
+  color: white;
+}
+.section2 .SkinAndCost:hover {
+  filter: brightness(120%);
+  cursor: pointer;
+}
+.section2 .SkinAndCost:hover div.SkinDiv {
+  transform: scale(1.08);
+}
+.section2 .SkinAndCost:hover .costDiv .cost {
+  filter: brightness(150%);
+}
+
+.section3 {
+  text-align: center;
+}
+.section3 p {
+  font-size: 1.15rem;
+}
+
+.dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  width: 38%;
+  height: 500px;
+  background-color: rgb(49, 49, 49);
+  overflow: hidden;
+  border: 2px solid rgb(29, 29, 29);
+  border-radius: 5px;
+  padding: 15px;
+}
+.dialog form {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+.dialog form .formImg {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.dialog form .formImg img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px black;
+  border: 3px solid rgba(158, 158, 158, 0.5);
+}
+.dialog form .formInfo {
+  width: 50%;
+  background-color: rgb(49, 49, 49);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+}
+.dialog form .formInfo div p {
+  font-size: 1.55rem;
+  color: white;
+  margin: 15px;
+}
+.dialog form .formInfo div span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.55rem;
+  color: white;
+  margin: 15px;
+}
+.dialog form .formInfo div span img {
+  width: 30px;
+  height: 32px;
+  box-shadow: none;
+}
+.dialog form .formInfo button {
+  padding: 10px 25px;
+  color: white;
+  background-color: black;
+  border-radius: 10px;
+  border: 2px solid white;
+  font-size: 1.15rem;
+  cursor: pointer;
+}
+.dialog form .formInfo button:hover {
+  color: rgb(128, 128, 128);
+  border: 2px solid rgb(128, 128, 128);
+}
+
+.dialog2 {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  width: 22.5%;
+  height: 500px;
+  background-color: rgb(49, 49, 49);
+  overflow: hidden;
+  border: 2px solid rgb(29, 29, 29);
+  border-radius: 5px;
+  padding: 35px 25px;
+}
+.dialog2 div {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.dialog2 div h2 {
+  color: aliceblue;
+}
+.dialog2 div div {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.dialog2 div div p {
+  font-size: 1.25rem;
+}
+.dialog2 div button {
+  padding: 10px 25px;
+  color: white;
+  background-color: black;
+  border-radius: 10px;
+  border: 2px solid white;
+  font-size: 1.15rem;
+  cursor: pointer;
+}
+.dialog2 div button:hover {
+  color: rgb(128, 128, 128);
+  border: 2px solid rgb(128, 128, 128);
+}
+
+.dialogLogin {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  width: 22.5%;
+  height: 500px;
+  background-color: rgb(49, 49, 49);
+  overflow: hidden;
+  border: 2px solid rgb(29, 29, 29);
+  border-radius: 5px;
+  padding: 35px 25px;
+}
+.dialogLogin form {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 35px;
+}
+.dialogLogin form div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.dialogLogin form div label {
+  font-size: 1.35rem;
+  color: white;
+}
+.dialogLogin form div input {
+  font-size: 1.35rem;
+  padding: 5px;
+}
+.dialogLogin form button {
+  padding: 10px 25px;
+  color: white;
+  background-color: black;
+  border-radius: 10px;
+  border: 2px solid white;
+  font-size: 1.15rem;
+  cursor: pointer;
+}
+.dialogLogin form button:hover {
+  color: rgb(128, 128, 128);
+  border: 2px solid rgb(128, 128, 128);
+}/*# sourceMappingURL=style.css.map */

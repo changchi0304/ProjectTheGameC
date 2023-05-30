@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>store</title>
+  <link rel="stylesheet" href="./style/store.css">
+  <link rel="stylesheet" href="./style/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body>
+  <!-- header -->
+  <%- include('share/header')%>
+    <!-- 遊戲主頁 -->
+    <div class="game-container">
+      <div class="game-section section-1">
+        <div class="content">
+          <div class="contentleft">
+            <div>
+              <h1>動作</h1>
+              <p>以電腦模擬現實或虛構世界當中的環境與事件，提供玩家近似於真實情境的遊戲</p>
+            </div>
+            <div class="contentleftitem">
+              <% const filteredGames = games.filter(game => game.product_type === '動作'); %>
+              <% const lastThreeGames = filteredGames.slice(-3).reverse(); %>
+              <% lastThreeGames.forEach(game => { %>
+                <div class="contentitem">
+                  <div class="contentitemimg"><img src="/img/Products/<%= game.image %>" alt="遊戲圖片"></div>
+                  <div class="contenttext">
+                    <h4><%= game.product_name %></h4>
+                    <h5>NT$<%= game.price %></h5>
+                  </div>
+                  <div class="contentcart"><i class="fa-solid fa-cart-shopping"></i></div>
+                </div>
+              <% }) %>
+                                     
+            </div>
+          </div>
+          <div class="contentright">
+          </div>
+        </div>
+      </div>
+      <div class="game-section section-2">
+        <div class="content">
+          <div class="contentleft">
+            <div>
+              <h1>策略</h1>
+              <p>體育類遊戲或稱運動類遊戲，讓玩家模擬參與專業的體育運動項目的遊戲</p>
+            </div>
+            <div class="contentleftitem">
+              <% const filteredGames2 = games.filter(game => game.product_type === '策略'); %>
+              <% const lastThreeGames2 = filteredGames2.slice(-3).reverse(); %>
+              <% lastThreeGames2.forEach(game => { %>
+                <div class="contentitem">
+                  <div class="contentitemimg"><img src="/img/Products/<%= game.image %>" alt="遊戲圖片"></div>
+                  <div class="contenttext">
+                    <h4><%= game.product_name %></h4>
+                    <h5>NT$<%= game.price %></h5>
+                  </div>
+                  <div class="contentcart"><i class="fa-solid fa-cart-shopping"></i></div>
+                </div>
+              <% }) %>
+            </div>
+          </div>
+          <div class="contentright">
+          </div>
+        </div>
+      </div>      
+      <div class="game-section section-3">
+        <div class="content">
+          <div class="contentleft">
+            <div>
+              <h1>冒險</h1>
+              <p>探索未知、解決謎題等情節化和探索性的互動，冒險遊
+                戲還強調故事線索的發掘</p>
+            </div>
+            <div class="contentleftitem">
+              <% const filteredGames3 = games.filter(game => game.product_type === '冒險'); %>
+              <% const lastThreeGames3 = filteredGames3.slice(-3).reverse(); %>
+              <% lastThreeGames3.forEach(game => { %>
+                <div class="contentitem">
+                  <div class="contentitemimg"><img src="/img/Products/<%= game.image %>" alt="遊戲圖片"></div>
+                  <div class="contenttext">
+                    <h4><%= game.product_name %></h4>
+                    <h5>NT$<%= game.price %></h5>
+                  </div>
+                  <div class="contentcart"><i class="fa-solid fa-cart-shopping"></i></div>
+                </div>
+              <% }) %>
+            </div>
+          </div>
+          <div class="contentright">
+          </div>
+        </div>
+      </div>
+      <div class="game-section section-4">
+        <div class="content">
+          <div class="contentleft">
+            <div>
+              <h1>模擬</h1>
+              <p>以電腦模擬現實或虛構世界當中的環境與事件，提供玩
+                家近似於真實情境的遊戲</p>
+            </div>
+            <div class="contentleftitem">
+              <% const filteredGames4 = games.filter(game => game.product_type === '模擬'); %>
+              <% const lastThreeGames4 = filteredGames4.slice(-3).reverse(); %>
+              <% lastThreeGames4.forEach(game => { %>
+                <div class="contentitem">
+                  <div class="contentitemimg"><img src="/img/Products/<%= game.image %>" alt="遊戲圖片"></div>
+                  <div class="contenttext">
+                    <h4><%= game.product_name %></h4>
+                    <h5>NT$<%= game.price %></h5>
+                  </div>
+                  <div class="contentcart"><i class="fa-solid fa-cart-shopping"></i></div>
+                </div>
+              <% }) %>
+            </div>
+          </div>
+          <div class="contentright">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 浮動三個購物車按鈕 -->
+    <div class="button-container">
+      <div class="side-button" onclick="toggleCart()"><i class="fa-solid fa-cart-shopping"></i></div>
+      <a href="/mail" class="side-button"><i class="fa-regular fa-envelope"></i></a>
+    </div>
+    <!-- 遊戲類型選擇 -->
+    <div class="storelist">
+      <ul>
+        <li>
+          <button class="category-button active" data-index="1">動作遊戲</button>
+        </li>
+        <li>
+          <button class="category-button" data-index="2">冒險遊戲</button>
+        </li>
+        <li>
+          <button class="category-button" data-index="3">模擬遊戲</button>
+        </li>
+        <li>
+          <button class="category-button" data-index="4">策略遊戲</button>
+        </li>
+        <li>
+          <button class="category-button" data-index="5">運動與競技</button>
+        </li>
+      </ul>
+    </div>
+    <!-- 商品區 -->
+    <div class="content-container">
+      <div class="wrapper content-wrapper wrapper1">
+        <% games.forEach(game=> { %>
+          <% if (game.product_type==='動作' ) { %>
+            <li class="item productitem" <% if (isUserLoggedIn) { %> draggable="true" <% } %> data-product-id="<%= game.product_id
+                  %>" data-price="<%= game.price %>" data-userid="<%= userId %>">
+                      <div class="storeboximg"><img src="/img/Products/<%= game.image %>" alt="遊戲圖片"></div>
+                      <div class="storeboxcon">
+                        <span>
+                          <%= game.product_type %>
+                        </span>
+                        <h2>
+                          <%= game.product_name %>
+                        </h2>
+                        <h3>NT$<%= game.price %>
+                        </h3>
+                        <a href="/products/product_id/<%- game.product_id %>" class="productlink">前往頁面</a>
+                        <div class="storedel remove-item"><i class="fa-solid fa-trash"></i></div>
+                      </div>
+            </li>
+            <% } %>
+              <% }) %>
+      </div>
+      <div class="wrapper content-wrapper wrapper2">
+        <% games.forEach(game=> { %>
+          <% if (game.product_type==='冒險' ) { %>
+            <li class="item productitem" <% if (isUserLoggedIn) { %> draggable="true" <% } %> data-product-id="<%= game.product_id
+                  %>" data-price="<%= game.price %>" data-userid="<%= userId %>">
+                  <div class="storeboximg"><img src="/img/Products/<%= game.image %>" alt="遊戲圖片"></div>
+                      <div class="storeboxcon">
+                        <span>
+                          <%= game.product_type %>
+                        </span>
+                        <h2>
+                          <%= game.product_name %>
+                        </h2>
+                        <h3>NT$<%= game.price %>
+                        </h3>
+                        <a href="/products/product_id/<%- game.product_id %>" class="productlink">前往頁面</a>
+                        <div class="storedel remove-item"><i class="fa-solid fa-trash"></i></div>
+                      </div>
+            </li>
+            <% } %>
+              <% }) %>
+      </div>
+      <div class="wrapper content-wrapper wrapper3">
+        <% games.forEach(game=> { %>
+          <% if (game.product_type==='模擬' ) { %>
+            <li class="item productitem" <% if (isUserLoggedIn) { %> draggable="true" <% } %> data-product-id="<%= game.product_id
+                  %>" data-price="<%= game.price %>" data-userid="<%= userId %>">
+                  <div class="storeboximg"><img src="/img/Products/<%= game.image %>" alt="遊戲圖片"></div>
+                      <div class="storeboxcon">
+                        <span>
+                          <%= game.product_type %>
+                        </span>
+                        <h2>
+                          <%= game.product_name %>
+                        </h2>
+                        <h3>NT$<%= game.price %>
+                        </h3>
+                        <a href="/products/product_id/<%- game.product_id %>" class="productlink">前往頁面</a>
+                        <div class="storedel remove-item"><i class="fa-solid fa-trash"></i></div>
+                      </div>
+            </li>
+            <% } %>
+              <% }) %>
+      </div>
+      <div class="wrapper content-wrapper wrapper4">
+        <% games.forEach(game=> { %>
+          <% if (game.product_type==='策略' ) { %>
+            <li class="item productitem" <% if (isUserLoggedIn) { %> draggable="true" <% } %> data-product-id="<%= game.product_id
+                  %>" data-price="<%= game.price %>" data-userid="<%= userId %>">
+                  <div class="storeboximg"><img src="/img/Products/<%= game.image %>" alt="遊戲圖片"></div>
+                      <div class="storeboxcon">
+                        <span>
+                          <%= game.product_type %>
+                        </span>
+                        <h2>
+                          <%= game.product_name %>
+                        </h2>
+                        <h3>NT$<%= game.price %>
+                        </h3>
+                        <a href="/products/product_id/<%- game.product_id %>" class="productlink">前往頁面</a>
+                        <div class="storedel remove-item"><i class="fa-solid fa-trash"></i></div>
+                      </div>
+            </li>
+            <% } %>
+              <% }) %>
+      </div>
+      <div class="wrapper content-wrapper wrapper5">
+        <% games.forEach(game=> { %>
+          <% if (game.product_type==='運動與競技' ) { %>
+            <li class="item productitem" <% if (isUserLoggedIn) { %> draggable="true" <% } %> data-product-id="<%= game.product_id
+                  %>" data-price="<%= game.price %>" data-userid="<%= userId %>">
+                  <div class="storeboximg"><img src="/img/Products/<%= game.image %>" alt="遊戲圖片"></div>
+                      <div class="storeboxcon">
+                        <span>
+                          <%= game.product_type %>
+                        </span>
+                        <h2>
+                          <%= game.product_name %>
+                        </h2>
+                        <h3>NT$<%= game.price %>
+                        </h3>
+                        <a href="/products/product_id/<%- game.product_id %>" class="productlink">前往頁面</a>
+                        <div class="storedel remove-item"><i class="fa-solid fa-trash"></i></div>
+                      </div>
+            </li>
+            <% } %>
+              <% }) %>
+      </div>
+      <!-- 購物車 -->
+      <div class="cart-container">
+        <div class="cart">
+          <div class="top-buttons">
+            <button id="cart-button" class="top-button"><i class="fa-solid fa-cart-shopping"></i></button>
+          </div>
+          <h3>購物清單:</h3>
+          <ul class="cart-items" id="cartitems"></ul>
+          <div class="bottom-buttons">
+            <div class="bottom-button">小記：<span class="totel"></span></div>
+            <a href="/products/shopping_cart" class="bottom-button" onclick="buy()">直接購買</a>
+          </div>
+        </div>
+      </div>
+      <!-- 新上市輪播圖 -->
+      <div class="storeboxslider">
+        <div class="slidermain">
+          <div class="sliderimg">
+            <% games.forEach((game, index)=> { %>
+              <img src="/img/Products/<%= game.image %>" alt="Image <%= index + 1 %>">
+              <% }) %>
+          </div>
+          <div class="sliderlist">
+            <% games.forEach((game, index)=> { %>
+              <div class="gameinf">
+                <h2>
+                  <%= game.product_name %>
+                </h2>
+                <div>
+                  <a class="gamestyle" href="#">
+                    <%= game.product_type %>
+                  </a>
+                </div>
+                <div>
+                  <p>遊戲平台 : PC</p>
+                  <p>售價 : NT$ <%= game.price %>
+                  </p>
+                  <p>發行商 : <%= game.publisher %>
+                  </p>
+                </div>
+              </div>
+              <% }) %>
+          </div>
+        </div>
+        <div class="sliderbtn">
+          <button onclick="changeimage(1)"></button>
+          <button onclick="changeimage(2)"></button>
+          <button onclick="changeimage(3)"></button>
+          <button onclick="changeimage(4)"></button>
+          <button onclick="changeimage(5)"></button>
+          <button onclick="changeimage(6)"></button>
+        </div>
+      </div>
+      <!-- 特價優惠 -->
+      <div class="salefont">
+        <h3>特價優惠</h3>
+      </div>
+      <div id="onsaleWrapper">
+        <div class="onsale" id="onsale1">
+          <h3>限時特惠價 - 最高70%優惠只到5 / 31</h3>
+          <div>
+            <%
+            let actionGames = games.filter(game => game.product_type === '動作');
+            actionGames.sort((a, b) => a.price - b.price);
+            let topThree = actionGames.slice(0, 3);
+          %>
+          
+          <div class="onsaleleft">
+              <div class="onsaleleftimg"><img src="/img/Products/<%= topThree[0]?.image %>" alt="遊戲圖片"></div>
+              <div class="onsalerprice">
+                  <span><%= topThree[0]?.discount %>-60%</span><span>NT$<%= topThree[0]?.price %></span>
+              </div>
+          </div>
+          <div class="onsaleright">
+              <div class="onsalert">
+                  <div class="onsaleimg"><img src="/img/Products/<%= topThree[1]?.image %>" alt="遊戲圖片">
+                  </div>
+                  <div class="onsaleprice">
+                      <span><%= topThree[1]?.discount %>-20%</span><span>NT$<%= topThree[1]?.price %></span>
+                  </div>
+              </div>
+              <div class="onsalerd">
+                  <div class="onsaleimg2"><img src="/img/Products/<%= topThree[2]?.image %>" alt="遊戲圖片">
+                  </div>
+                  <div class="onsaleprice">
+                      <span><%= topThree[2]?.discount %>-15%</span><span>NT$<%= topThree[2]?.price %></span>
+                  </div>
+              </div>
+          </div>
+          
+            <div class="onsalebox">
+              <button class="onsale-btn" onclick="changebox(1)"></button>
+              <button class="onsale-btn" onclick="changebox(2)"></button>
+              <button class="onsale-btn" onclick="changebox(3)"></button>
+              <button class="onsale-btn" onclick="changebox(4)"></button>
+            </div>
+          </div>
+        </div>
+        <div class="onsale" id="onsale1" style="display: none;">
+          <h3>限時特惠價 - 60%優惠只到5 / 31</h3>
+          <div>
+            <%
+            let adventuregames = games.filter(game => game.product_type === '冒險');
+            adventuregames.sort((a, b) => a.price - b.price);
+            let topThree2 = adventuregames.slice(0, 3);
+          %>
+          <div class="onsaleleft">
+              <div class="onsaleleftimg"><img src="/img/Products/<%= topThree2[0]?.image %>" alt="遊戲圖片"></div>
+              <div class="onsalerprice">
+                  <span><%= topThree2[0]?.discount %>-10%</span><span>NT$<%= topThree2[0]?.price %></span>
+              </div>
+          </div>
+          <div class="onsaleright">
+              <div class="onsalert">
+                  <div class="onsaleimg"><img src="/img/Products/<%= topThree2[1]?.image %>" alt="遊戲圖片">
+                  </div>
+                  <div class="onsaleprice">
+                      <span><%= topThree2[1]?.discount %>-30%</span><span>NT$<%= topThree2[1]?.price %></span>
+                  </div>
+              </div>
+              <div class="onsalerd">
+                  <div class="onsaleimg2"><img src="/img/Products/<%= topThree2[2]?.image %>" alt="遊戲圖片">
+                  </div>
+                  <div class="onsaleprice">
+                      <span><%= topThree2[2]?.discount %>-15%</span><span>NT$<%= topThree2[2]?.price %></span>
+                  </div>
+              </div>
+          </div>
+            <div class="onsalebox">
+              <button class="onsale-btn" onclick="changebox(1)"></button>
+              <button class="onsale-btn" onclick="changebox(2)"></button>
+              <button class="onsale-btn" onclick="changebox(3)"></button>
+              <button class="onsale-btn" onclick="changebox(4)"></button>
+            </div>
+          </div>
+        </div>
+        <div class="onsale" id="onsale1" style="display: none;">
+          <h3>限時特惠價 - 50%優惠只到5 / 31</h3>
+          <div>
+            <%
+            let simulationgames = games.filter(game => game.product_type === '模擬');
+            simulationgames.sort((a, b) => a.price - b.price);
+            let topThree3 = simulationgames.slice(0, 3);
+          %>
+          <div class="onsaleleft">
+              <div class="onsaleleftimg"><img src="/img/Products/<%= topThree3[0]?.image %>" alt="遊戲圖片"></div>
+              <div class="onsalerprice">
+                  <span><%= topThree3[0]?.discount %>-15%</span><span>NT$<%= topThree3[0]?.price %></span>
+              </div>
+          </div>
+          <div class="onsaleright">
+              <div class="onsalert">
+                  <div class="onsaleimg"><img src="/img/Products/<%= topThree3[1]?.image %>" alt="遊戲圖片">
+                  </div>
+                  <div class="onsaleprice">
+                      <span><%= topThree3[1]?.discount %>-50%</span><span>NT$<%= topThree3[1]?.price %></span>
+                  </div>
+              </div>
+              <div class="onsalerd">
+                  <div class="onsaleimg2"><img src="/img/Products/<%= topThree3[2]?.image %>" alt="遊戲圖片">
+                  </div>
+                  <div class="onsaleprice">
+                      <span><%= topThree3[2]?.discount %>-25%</span><span>NT$<%= topThree3[2]?.price %></span>
+                  </div>
+              </div>
+          </div>
+            <div class="onsalebox">
+              <button class="onsale-btn" onclick="changebox(1)"></button>
+              <button class="onsale-btn" onclick="changebox(2)"></button>
+              <button class="onsale-btn" onclick="changebox(3)"></button>
+              <button class="onsale-btn" onclick="changebox(4)"></button>
+            </div>
+          </div>
+        </div>
+        <div class="onsale" id="onsale1" style="display: none;">
+          <h3>限時特惠價 - 40%優惠只到5 / 31</h3>
+          <div>
+            <%
+            let strategygames = games.filter(game => game.product_type === '策略');
+            strategygames.sort((a, b) => a.price - b.price);
+            let topThree4 = strategygames.slice(0, 3);
+          %>
+          <div class="onsaleleft">
+              <div class="onsaleleftimg"><img src="/img/Products/<%= topThree4[0]?.image %>" alt="遊戲圖片"></div>
+              <div class="onsalerprice">
+                  <span><%= topThree4[0]?.discount %>-15%</span><span>NT$<%= topThree4[0]?.price %></span>
+              </div>
+          </div>
+          <div class="onsaleright">
+              <div class="onsalert">
+                  <div class="onsaleimg"><img src="/img/Products/<%= topThree4[1]?.image %>" alt="遊戲圖片">
+                  </div>
+                  <div class="onsaleprice">
+                      <span><%= topThree4[1]?.discount %>-50%</span><span>NT$<%= topThree4[1]?.price %></span>
+                  </div>
+              </div>
+              <div class="onsalerd">
+                  <div class="onsaleimg2"><img src="/img/Products/<%= topThree4[2]?.image %>" alt="遊戲圖片">
+                  </div>
+                  <div class="onsaleprice">
+                      <span><%= topThree4[2]?.discount %>-25%</span><span>NT$<%= topThree4[2]?.price %></span>
+                  </div>
+              </div>
+          </div>
+            <div class="onsalebox">
+              <button class="onsale-btn" onclick="changebox(1)"></button>
+              <button class="onsale-btn" onclick="changebox(2)"></button>
+              <button class="onsale-btn" onclick="changebox(3)"></button>
+              <button class="onsale-btn" onclick="changebox(4)"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- footer -->
+      <%- include('share/footer')%>
+
+        <% if (!isUserLoggedIn) { %>
+          <script>
+            setTimeout(function () {
+              alert("請先登入才可以將商品放入購物車和進行購買");
+            }, 500); // 延遲1秒後顯示警告
+          </script>
+          <% } %>
+            <script src="/app/main-container.js"></script>
+            <script src="/app/store-onsale.js"></script>
+            <script src="/app/carts.js"></script>
+            <script src="/app/gamesale.js"></script>
+            <script src="/app/newsale.js"></script>
+            <script>
+              // 登入判斷,取消拖移
+var isUserLoggedIn = <% if (isUserLoggedIn) { %> true <% } else { %> false <% } %>;
+var userId = "<%= userId %>";
+var items = document.querySelectorAll(".item");
+
+items.forEach((item) => {
+  item.addEventListener("click", () => {
+    if (!isUserLoggedIn) {
+      var shouldLogIn = confirm("您還未登入，是否登入購買遊戲？");
+      if (shouldLogIn) {
+        // 如果使用者選擇登入，則到向到登入頁面
+        window.location.href = "/login";
+      }
+    }
+  });
+});
+
+window.onload = function () {
+  if (!isUserLoggedIn) {
+    return;
+  }
+
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "/store/getCartItems?userId=" + userId, true);
+
+  xhr.onload = function () {
+    if (xhr.status === 200) {
+      var cartItems = JSON.parse(xhr.responseText);
+      console.log("Cart items from server:", cartItems);
+
+      var cartItemsContainer = document.querySelector(".cart-items");
+      cartItemsContainer.innerHTML = '';
+
+      cartItems.forEach(function (item) {
+        console.log("Creating cart item:", item);
+
+        var liElement = document.createElement("li");
+        liElement.classList.add("item");
+        if (isUserLoggedIn) {
+          liElement.setAttribute("draggable", "true");
+        }
+        liElement.setAttribute("data-product-id", item.productId);
+        liElement.setAttribute("data-price", item.price);
+        liElement.setAttribute("data-userid", userId);
+        liElement.setAttribute("data-product-name", item.productName);
+
+        var liContent = `
+        <div class="storeboximg">
+            <img src="/img/Products/${item.image}" alt="遊戲圖片">
+        </div>
+        <div class="storeboxcon">
+            <span>${item.product_type}</span>
+            <h2>${item.productName}</h2>
+            <h3>NT$${item.price}</h3>
+            <div class="storedel remove-item"><i class="fa-solid fa-trash"></i></div>
+        </div>
+        `;
+        liElement.innerHTML = liContent;
+
+        cartItemsContainer.appendChild(liElement);
+
+        addRemoveFunctionality(liElement);
+      });
+
+      const totalAmount = calculateTotal();
+      document.querySelector('.bottom-buttons .totel').textContent = "NT$" + totalAmount;
+
+
+const productElements1 = document.querySelectorAll('.wrapper1 .item');
+const productElements2 = document.querySelectorAll('.wrapper2 .item');
+const productElements3 = document.querySelectorAll('.wrapper3 .item');
+const productElements4 = document.querySelectorAll('.wrapper4 .item');
+const productElements5 = document.querySelectorAll('.wrapper5 .item');
+const productElements = [...productElements1, ...productElements2, ...productElements3, ...productElements4, ...productElements5];
+productElements.forEach(productElement => {
+    const productId = productElement.getAttribute('data-product-id');
+    let isInCart = false; // 初始false
+    cartItems.forEach(cartItem => {
+      // console.log(`車id ${cartItem.productId} id ${productId}`);
+      if (cartItem.productId == productId) { 
+        isInCart = true; // 相同變t
+      }
+    });
+    // console.log("isInCart:", isInCart); 
+    if (isInCart) {
+      console.log("good");
+      productElement.style.opacity="0.3";
+      productElement.style.pointerEvents = "none";
+      const purchasedLabel = document.createElement("div");
+      purchasedLabel.classList.add("purchased-label");
+      purchasedLabel.textContent = "已在購物車";
+      productElement.appendChild(purchasedLabel);
+    }
+  });
+    } else {
+      console.log("Error: " + xhr.status);
+    }
+  };
+  xhr.onerror = function () {
+    console.log("failed");
+  };
+
+  xhr.send();
+
+  // 這裡判斷是否已經購買
+  var xhrOwnedProducts = new XMLHttpRequest();
+  xhrOwnedProducts.open("GET", "/store/getOwnedProducts?userId=" + userId, true);
+
+  xhrOwnedProducts.onload = function () {
+    if (xhrOwnedProducts.status === 200) {
+      var ownedProducts = JSON.parse(xhrOwnedProducts.responseText);
+      console.log("Owned products from server:", ownedProducts);
+
+      const productElements = [...document.querySelectorAll('.item')];
+
+      productElements.forEach(productElement => {
+        const productId = productElement.getAttribute('data-product-id');
+        let isOwned = false;
+        ownedProducts.forEach(ownedProductId => {
+          if (ownedProductId == productId) { 
+            isOwned = true; 
+          }
+        });
+        console.log("isOwned:", isOwned); 
+        if (isOwned) {
+          console.log("good2");
+          productElement.style.opacity="0.3";
+          productElement.style.pointerEvents = "none";
+          const purchasedLabel = document.createElement("div");
+          purchasedLabel.classList.add("purchased-label");
+          purchasedLabel.textContent = "已購買";
+          productElement.appendChild(purchasedLabel);
+          }
+      });
+
+    } else {
+      console.log("Error: " + xhrOwnedProducts.status);
+    }
+  };
+
+  xhrOwnedProducts.onerror = function () {
+    console.log("Request failed");
+  };
+
+  xhrOwnedProducts.send();
+};
+
+   </script>
+</body>
+
+</html>

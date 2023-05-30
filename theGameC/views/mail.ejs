@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TheGameC-客服信箱</title>
+  <link rel="stylesheet" href="/style/mail.css" />
+  <link rel="stylesheet" href="/style/style.css" />
+</head>
+
+<body>
+  <!-- 外面大容器 -->
+  <!-- <div class="content"> -->
+
+  <!-- header -->
+  <%- include('share/header')%>
+
+    <!-- 常見問題列 -->
+    <div class="topbox">
+      <p><span>《XX遊戲》客服 ></span> 客服信箱</p>
+      <a href="qa.html">
+        <p class="textbox">
+          <span>常見問題
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-question-circle" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path
+                d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
+            </svg></span>
+        </p>
+      </a>
+    </div>
+    <!--常見問題列結束標籤-->
+
+    <!-- 主標 提交請求 -->
+    <div class="topic">
+      <h1>提交請求</h1>
+      <br />
+      <hr style="color: #9b9b9b" />
+    </div>
+    <!-- 主標 提交請求  結束標籤-->
+
+    <input style="display: none;" id="user_id" type="text" value="<%= userId%>">
+    <!-- 填寫資料區塊的大容器 -->
+    <div class="someinfo">
+      <form method="post" id="reply_form">
+        <!-- 第一個選擇類別框 -->
+        <div class="choose">
+          <h3>選擇請求類別</h3>
+          <select id="selectInput">
+            <option>請選擇類別</option>
+            <option>詢問轉點</option>
+            <option>聯絡客服</option>
+            <option>登入問題</option>
+            <option>其他問題</option>
+          </select>
+        </div>
+        <!-- 第一個選擇類別框 結束標籤 -->
+
+        <!-- 第二個主旨框 -->
+        <div class="subject">
+          <h3>主旨</h3>
+          <input id="Subject" type="text" placeholder="請輸入主要目的" />
+        </div>
+        <!-- 第二個主旨框 結束標籤 -->
+
+        <!-- 第三個說明框 -->
+        <div class="directions">
+          <h3>說明</h3>
+          <input id="illustrate" type="text" placeholder="簡短說明你目前的狀況" />
+        </div>
+        <!-- 第三個說明框  結束標籤-->
+
+        <!-- 第四格附件 -->
+        <div class="addfile">
+          <h3>附件(請上傳相關影片或圖片，方便我們理解你的需求)</h3>
+          <div class="thefilebox">
+            <input type="file" id="fileinput" onchange="selectimg()" accept="image/*" />
+            <div id="theimg">
+            </div>
+          </div>
+        </div>
+        <!-- 第四格附件  結束標籤-->
+
+        <!-- 最下方提交按鈕 -->
+        <div class="btn">
+          <input type="submit" value="提交" id="submitBut" />
+          <!-- <button  id="submitButt" >提交</button> -->
+        </div>
+        <!-- 最下方提交按鈕  結束標籤 -->
+      </form>
+    </div>
+    <!-- 填寫資料區塊的大容器的結束標籤 -->
+
+    <!-- </div>      最外從大容器.content的結束標籤 -->
+
+    <!-- footer -->
+    <%- include('share/footer')%>
+
+      <script src="/app/app.js"></script>
+      <script src="/app/mail.js"></script>
+      <script src="https://code.jquery.com/jquery-3.6.4.js"
+        integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+      <script>
+        //圖片預覽，有圖片以後將input隱藏，並新增一個刪除button
+        function selectimg() {
+          var fileInput = document.getElementById('fileinput');
+          var previewDiv = document.getElementById('theimg');
+
+          if (fileInput.files && fileInput.files[0]) {
+            var file = fileInput.files[0];
+            var fileName = file.name;
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+              var img = document.createElement('img');
+              img.src = e.target.result;
+              previewDiv.appendChild(img);
+
+              // 创建删除按钮
+              var deleteButton = document.createElement('button');
+              deleteButton.textContent = '删除';
+              deleteButton.addEventListener('click', function () {
+                previewDiv.removeChild(img);
+                previewDiv.removeChild(deleteButton);
+                fileInput.value = ''; // 清除文件选择框的值
+                fileInput.style.display = 'block'; // 显示文件选择框
+              });
+              previewDiv.appendChild(deleteButton);
+
+              // 隐藏文件输入框
+              fileInput.style.display = 'none';
+            };
+
+            reader.readAsDataURL(file);
+          }
+        }
+      </script>
+      <script>
+        //上傳表單內的圖片以及其內容，使用到兩個post，先做上傳圖片到自訂義資料夾，在做接收表單內容
+        $(document).ready(function () {
+          var formData = new FormData(); // 创建一个新的 FormData 对象
+
+          $("#reply_form").on("submit", function (event) {
+            event.preventDefault();
+
+            formData.append("fileinput", $("#fileinput")[0].files[0]);
+
+            $.ajax({
+              url: "/mail/upload", // 更新为文件上传的路由
+              type: "POST",
+              data: formData,
+              processData: false,
+              contentType: false,
+            }).done(function (data1) {
+              $.ajax({
+                url: "/mail/get_reply",
+                type: "POST",
+                data: {
+                  user_id: $("#user_id").val(),
+                  category: $("#selectInput").val(),
+                  Subject: $("#Subject").val(),
+                  illustrate: $("#illustrate").val(),
+                  reply_pic: data1,
+                },
+              }).done(function (data) {
+                console.log(data);
+                if (data = 'success') {
+                  alert("感謝你寶貴的意見!!")
+                  location.reload();
+                } else {
+                  alert("輸入檔案格式錯誤!")
+                }
+              })
+            });
+          });
+        });
+      </script>
+</body>
+
+</html>

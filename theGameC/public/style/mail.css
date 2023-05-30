@@ -1,0 +1,360 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* 以上為css resect */
+
+/* 字體 */
+body {
+  font-family: "Microsoft YaHei", sans-serif;
+  letter-spacing: 2px;
+  padding-top: 90px;
+  overflow-x: hidden;
+  width: 100%;
+}
+h3{
+  font-size: 20px;
+  letter-spacing: .2rem;
+}
+input::-webkit-input-placeholder{
+font-size: 16px;
+letter-spacing: .1rem;
+}
+
+
+/* 最上排常見問題那列 */
+.topbox {
+  /* border: 1px solid orange; */
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.topbox span {
+  color: #1c3d5c;
+}
+
+.topbox a {
+  text-decoration: none;
+}
+
+/* //最上排客服信箱 */
+.textbox {
+  /* border: 1px solid black; */
+  position: relative;
+}
+
+.textbox svg {
+  /* border: 1px solid rebeccapurple; */
+  margin-left: 3px;
+  height: 20px;
+  position: absolute;
+  bottom: 0;
+}
+
+/* 大標題區塊 */
+.topic {
+  /* border: 1px solid green; */
+  width: 60%;
+  margin: auto;
+}
+
+.topic h1 {
+  text-align: center;
+  color: #1c3d5c;
+}
+
+/* 填寫資料區塊的大容器 */
+.someinfo {
+  /* border: 1px solid royalblue; */
+  margin: auto;
+  width: 60%;
+}
+
+/* 第一個選擇請求類別框 */
+.choose {
+  /* border: 1px solid red;  */
+  margin-top: 40px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.choose h3 {
+  color: #1c3d5c;
+  margin-bottom: 10px;
+}
+#selectInput{
+  font-size: 16px;
+  letter-spacing: .1rem;
+  color: #535353;
+}
+ option{
+  font-size: 16px;
+  letter-spacing: .1rem;
+}
+
+.choose select {
+  border: 1px solid #1c3d5c;
+  width: 100%;
+  height: 40px;
+  color: #9b9b9b;
+  text-align: center;
+}
+
+/* 第二個主旨框 */
+.subject {
+  width: 80%;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.subject h3 {
+  color: #1c3d5c;
+  margin-bottom: 10px;
+}
+
+.subject input {
+  border: 1px solid #1c3d5c;
+  width: 100%;
+  height: 40px;
+  color: #9b9b9b;
+  text-align: center;
+}
+
+/* 第三個說明框 */
+.directions {
+  margin-top: 40px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.directions h3 {
+  color: #1c3d5c;
+  margin-bottom: 10px;
+}
+
+.directions input {
+  border: 1px solid #1c3d5c;
+  width: 100%;
+  height: 150px;
+  color: #9b9b9b;
+  text-align: center;
+}
+
+/* 第四格附件 */
+.addfile {
+  /* border: 1px solid red; */
+  width: 80%;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.addfile img {
+  width: 100%;
+}
+
+.addfile h3 {
+  margin-bottom: 10px;
+  color: #1c3d5c;
+}
+
+.thefilebox {
+  width: 100%;
+  height: auto;
+  border: 0.5px dashed #9b9b9b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.thefilebox input {
+  /* border: 1px solid red; */
+  margin: 10%;
+}
+.addfile button{
+  padding: 5px 10px;
+  background-color: #0071db;
+  color: white;
+  border: none;
+  letter-spacing: .2rem;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+
+/* 加上這行可以隱藏為選擇檔案的文字 */
+/* input[type="file"]{ */
+/* color: transparent; */
+/* } */
+
+/* 最下方提交按鈕 */
+.btn {
+  /* border: 1px solid gray; */
+  width: 80%;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+}
+
+.btn input {
+  width: 18%;
+  height: 45px;
+  background-color: #0071db;
+  color: aliceblue;
+  border-radius: 5px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  font-size: 1.15rem;
+  cursor: pointer;
+}
+
+/* 平板 768px 以下畫面  */
+@media screen and (max-width: 768px) {
+  .topic {
+    width: 80%;
+    margin-top: 70px;
+  }
+}

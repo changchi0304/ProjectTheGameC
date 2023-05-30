@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>遊戲 - 遊戲單頁</title>
+    <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="/style/gamePage.css" />
+    <link rel="stylesheet" href="/style/comment.css" />
+    <script type="text/javascript" src="/app/jquery.js"></script>
+    <style>
+    </style>
+  </head>
+  <body>
+    <!-- header -->
+    <%- include('share/header')%>
+
+    <!-- 切換遊戲 -->
+    <div class="gameChangeDiv">
+      <select name="gameChange" id="gameChange">
+        <option value="#">-- <%- gameData.game_name %></option>
+      <% allGames.map(function(v){ %> 
+        <option value="/games/game_ID/<%- v.game_id %><%- v.game_type === "射擊遊戲" ? "?type=shooting" : (v.game_type === "冒險遊戲" ? "?type=avg" : (v.game_type === "競技遊戲" ? "?type=com" : "")); %>"><%- v.game_name %></option>
+        <% }) %> 
+      </select>
+      <button id="changeGameBtn">其他遊戲</button>
+    </div>
+
+  <!-- 轉場圖 -->
+  <!-- <div id="show" class="noshow">
+    <img class="showForShooting" src="/img/Games/skull.svg" alt="">
+    <img class="showForAVG" src="/img/Games/dragon.svg" alt="">
+  </div> -->
+    
+
+    <div id="pageBg" class="<%= typeCss %>">
+      <div class="ProductPage">
+        <p class="productNav">
+          TheGameC > 線上遊戲 > <span><%- gameData.game_name %></span>
+        </p>
+        <!-- s1 商品介紹 -->
+        <section class="section1">
+          <img id="typeIcon" src="<%-typeIcon %>" alt="" />
+          <div class="s1left">
+            <div class="bigPicDiv">
+              <img id="bigPic" src="/img/Games/<%- gameData.image %>" alt="" />
+              <input name="gameCoverImg" type="hidden" value="<%- gameData.image %>">
+            </div>
+            <div class="PicBar">
+              <% gameData.image_paths.map(function(v,i){%>
+              <div class="smallPicDiv" onclick="selectPic('<%- v %>')">
+                <img src="/img/Games/<%- v %>" alt="" />
+              </div>
+              <% }) %>
+            </div>
+          </div>
+          <div class="s1right">
+            <h2 id="gameName"><%- gameData.game_name %></h2>
+            <div class="type"><span><%- gameData.game_type %></span></div>
+            <div>
+              <p><%- gameData.description %></p>
+            </div>
+            <div>
+              <p>開發商：<span><%- gameData.developer %></span></p>
+              <p>營運商：<span><%- gameData.publisher %></span></p>
+              <p>年齡限制：<span><%- ageRating%></span></p>
+            </div>
+            <div>
+              <p>評分：<span><%- gameRating %></span></p>
+              <p>玩家人數：<span><%- gameData.downloads %></span></p>
+            </div>
+            <div class="s1btnDiv">
+              <% if(login_user_id){ if(uGame){%>
+              <div>此遊戲已經登錄在您的遊戲庫內</div>
+              <% } else {%>
+              <button id="joinGame" type="button">加入遊戲</button>
+              <% } } else {%>
+              <button id="notLogin" type="button">登入後才可以加入遊戲</button>
+              <% } %>
+            </div>
+          </div>
+        </section>
+
+        
+         <!-- s2 評論 -->
+         <section class="section2">
+          <div class="commentAreaBtnDiv"><h2>發表評論</h2><span id="commentAreaBtn">查看評論區</span></div>
+          <% if (login_user_id){%>
+          <!-- 已登入 -->
+          <form id="formReview" class="commitLogin <%- u_g_review?"alreadyComment":"" %>">
+            <input
+              id="productID"
+              type="hidden"
+              value="<%- gameData.game_id%>"
+            />
+            <input id="userID" type="hidden" value="<%- login_user_id %>" />
+            <div class="s2left">
+              <div>
+                <span>評分：</span
+                ><span class="star-rating">
+                  <input id="star5" type="radio" name="rating" value="5" />
+                  <label for="star5" class="star" title="5 stars"></label>
+                  <input id="star4" type="radio" name="rating" value="4" />
+                  <label for="star4" class="star" title="4 stars"></label>
+                  <input id="star3" type="radio" name="rating" value="3" />
+                  <label for="star3" class="star" title="3 stars"></label>
+                  <input id="star2" type="radio" name="rating" value="2" />
+                  <label for="star2" class="star" title="2 stars"></label>
+                  <input id="star1" type="radio" name="rating" value="1" />
+                  <label for="star1" class="star" title="1 star"></label>
+                </span>
+              </div>
+              <div>
+                <span>您的評分：</span> <br />
+                <div>
+                  <span id="yourRating"
+                    ><%- u_g_review?u_g_review.rating:"N" %></span
+                  >
+                  <span>/5</span>
+                </div>
+              </div>
+              <div>
+                <span>當前評分：</span><br />
+                <div>
+                  <span id="averageRating"><%- gameRating %></span>
+                  <span>/5</span>
+                </div>
+              </div>
+            </div>
+            <div class="s2right">
+              <p>撰寫評論</p>
+              <textarea name="comment" id="" cols="30" rows="10"><%- u_g_review?u_g_review.comment:"" %></textarea>
+              <div><button>張貼</button></div>
+            </div>
+          </form>
+          <!-- 評論修改、刪除 -->
+          <div class="Comment_edit_deleteButton">
+            <%- u_g_review ? '<button id="commentEdit" type="button">修改</button> <button id="commentDelete" type="button">刪除</button>' : null %>
+          </div> 
+          <% } else {%>
+          <!-- 未登入 -->
+          <div class="commitNotLogin">
+            <div>
+              <span>登入您的帳號 向大家發表您的想法吧 ！</span>
+              <a href="/login">登入</a>
+            </div>
+          </div>
+          <%}%>
+        </section>
+
+        <!-- s3 推薦商品 -->
+        <section class="section3">
+          <h2>或許您也會喜歡</h2>
+          <div class="recommendedProducts">
+            <!-- 單個商品 -->
+            <% userLike.map(function(v,i){%>
+            <div class="recomProduct">
+              <div class="recPImgDiv">
+                <img src="<%-`/img/games/${v.image}` %>" alt="" />
+              </div>
+              <div class="recPInfo">
+                <div class="recPtitle">
+                  <h3><%- v.game_name %></h3>
+                  <div><span id="recPtype"><%- v.game_type %></span></div>
+                </div>
+                <div class="recPTextLimit">
+                  <p>
+                    <%- v.description %>
+                  </p>
+                </div>
+              </div>
+              <div class="recPgoPage"><a href="/games/game_ID/<%- v.game_id %>">前往頁面</a></div>
+            </div>
+            <% }) %>
+          </div>
+        </section>
+      </div>
+    </div>
+
+     <!-- 評論修改表單 -->
+     <dialog class="commentEditDialog">
+      <form id="commentEditForm">
+        <div class="editDialogLeft">
+          <p>修改評分：</p>
+          <input name="yourRating" type="hidden" value="<%- u_g_review.rating%>">
+          <select id="editRating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <p class="editRatingBig">5</p>
+        </div>
+        <div class="editDialogRight">  
+          <p>修改評論：</p>
+          <textarea name="editComment" id="" cols="30" rows="10"><%- u_g_review.comment%></textarea>
+          <div><button id="closeEditDialog" type="button">取消修改</button><button>確認修改</button></div>
+        </div>
+      </form>
+    </dialog>
+
+
+    <!-- 評論區 -->
+    <dialog id="commentDialog">
+      <div class="closeCommentAreaDiv"><img id="closeCommentArea" src="/img/Products/tools/X.png" alt=""></div>
+      <h2>評論區</h2>
+      <div class="commentArea">
+          <!-- <select name="commentOrderBy">
+            <option value="byCreated">日期排序</option>
+            <option value="byRating">評分排序</option>
+          </select> -->
+        <!-- 一則評論 -->
+        <% if(gComment[0] == undefined){%>
+          <div class="comment"><span class="noComment">當前還沒有人評論，歡迎您成為第一位評論者 ！</span></div>
+          <%} else {%>
+            <% gComment.map(function(v,i){ %>
+              <div class="comment">
+                <!-- 左邊 -->
+                <div class="cleft">
+                  <div class="cleft_top">
+                    <div class="avatarDiv">
+                      <img src="<%- v.avatar %>" alt="" />
+                    </div>
+                    <div class="cl_t_text">
+                      <span class="nickname"><%- v.nickname||v.username %></span>
+                      <span class="postDate"><%- v.created_date %></span>
+                    </div>
+                  </div>
+                  <div class="cleft_bottom">
+                    <span>評分</span>
+                    <div>
+                      <span id="gameRating" class="rating"><%- v.rating %></span>
+                    </div>
+                  </div>
+                </div>
+                <hr />
+                <!-- 右邊 -->
+                <div class="cright">
+                  <div>
+                    <p>評論</p>
+                    <div>
+                      <p id="gameComment"><%- v.comment %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <% }) %>       
+              <button>查看更多</button>
+            <% } %>
+      </div> 
+    </dialog>
+
+    <!-- footer -->
+    <%- include('share/footer')%>
+
+    <script src="/app/app.js"></script>
+
+    <script>
+
+     $("input[name=rating]").on("change", function () {
+        var inputRating = $("input[name=rating]:checked").val();
+        $("#yourRating").html(inputRating);
+
+        var stars = document.getElementsByClassName("star");
+
+        for (var i = 0; i < parseInt(inputRating); i++) {
+         stars[i].addEventListener("click", function () {
+           var rating = parseInt(this.previousElementSibling.value);
+
+          // 移除所有星
+        for (var j = 0; j < stars.length; j++) {
+         stars[j].classList.remove("star_filled");
+        }
+
+        for (var k = 0; k < rating; k++) {
+          stars[k].classList.add("star_filled");
+       }
+      });
+    }
+      });
+
+ 
+
+      /* 點小圖換大圖 */
+      function selectPic(x) {
+        $("#bigPic").css("opacity", 1) // 初始為 100% 可見度
+        .animate({ opacity: 0 }, 150, function() { // 淡出
+        $(this).attr("src", `/img/Games/${x}`) // 在淡出完後才換圖
+        .animate({ opacity: 1 }, 100); // 淡入
+    });
+      }
+
+      /* 登入才可加入遊戲 */
+      $("#notLogin").on("click", function () {
+        var result = window.confirm(
+          "登入後才可以將遊戲加入遊戲庫喔！\n是否要前往登入頁呢？"
+        );
+        if (result) {
+          // 轉至登入頁
+          window.location.href = "/login"; // 替換成您要導航的目標頁面的URL
+        } else {
+          // 拒絕跳頁
+        }
+      });
+
+      /* dialog rating */
+      $("#editRating").val($('input[name="yourRating"]').val())
+      $(".editRatingBig").html($("#editRating").val());
+      // 大字
+      $("#editRating").on("click", function () {
+        var x = $("#editRating").val();
+        $(".editRatingBig").html(x);
+      });
+      $("#commentEdit").on("click",function(){
+        document.querySelector("dialog.commentEditDialog").showModal();
+      })
+      $("#closeEditDialog").on("click",function(){
+        document.querySelector("dialog.commentEditDialog").close();
+      })
+
+    /* 打開留言區 */
+     $("#commentAreaBtn").on("click",function(){
+      var dialogComment = document.querySelector("dialog#commentDialog")
+      dialogComment.showModal();
+      document.querySelector("div.commentArea").scrollTop = 0; // 讓留言區起始點在最上方
+     })
+     $("#closeCommentArea").on("click",function(){
+        document.querySelector("dialog#commentDialog").close();
+     })
+
+
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+      
+      $(function () {
+        const gameId = $("#productID").val();
+        const userId = $("#userID").val();
+
+        /* 加入遊戲庫 */
+        $("#joinGame").on("click",function(e){
+          e.preventDefault();
+          if(parseInt("<%- ageLimit.user_age %>") >= parseInt("<%- ageLimit.age_rating %>")){
+            $.ajax({
+            url: `http://localhost:80/games/api/insertUG/GID/${gameId}`,
+            type: "POST",
+            data: {
+              game_id: gameId,
+              user_id: userId,
+              game_name: $("#gameName").text(),
+              image: $("input[name='gameCoverImg']").val()
+            },
+          }).done((data)=>{
+            alert("已將遊戲加入遊戲庫！")
+            location.reload();
+          })
+          } else {
+            alert("不好意思，該遊戲為「<%- ageRating %>」，根據法律規定，您的年齡還不能遊玩該遊戲。")
+          }
+         })
+
+        /* 上傳評論 */
+        $("#formReview").on("submit", function (e) {
+          e.preventDefault();
+          if ($("input[name=rating]:checked").val() == null){
+            alert("請先選擇評分。")
+          } else {
+            $.ajax({
+            url: `http://localhost:80/games/api/insertGR/GID/${gameId}`,
+            type: "POST",
+            data: {
+              game_id: gameId,
+              user_id: userId,
+              rating: $("input[name=rating]:checked").val(),
+              comment: $("textarea[name=comment]").val(),
+            },
+          })
+            .done((data) => {
+              alert(`評論已經發布囉！`);
+              $("#averageRating").text(data.newAverageRating);
+              location.reload();
+            })
+            .fail((jqXHR, textStatus, errorThrown) => {
+              console.error("Error:", textStatus, errorThrown);
+              alert("系統出了問題請稍後重試。");
+            }); 
+          }
+        });
+
+        /* 評論刪除 */
+        $("#commentDelete").on("click", function(e){
+          e.preventDefault();
+          $.ajax({
+            url: `http://localhost:80/games/api/DeleteGR/GID/${gameId}`,
+            type: "DELETE",
+            data: {
+              game_id: gameId,
+              user_id: userId,
+            },
+          }).done((data)=>{
+            alert("已將評論刪除！")
+            location.reload();
+          })
+         })
+
+         /* 修改評論 */
+         $("#commentEditForm").on("submit",function(e){
+          e.preventDefault();
+          $.ajax({
+            url: `http://localhost:80/games/api/updateGR/GID/${gameId}`,
+            type: "PUT",
+            data: {
+              game_id: gameId,
+              user_id: userId,
+              rating:$("#editRating").val(),
+              comment:$("textarea[name='editComment']").val()
+            },
+          }).done((data)=>{
+            alert("評論已更新！")
+            location.reload();
+          })
+         })
+
+
+      /* 評論排列方法 */
+    //  $("select[name='commentOrderBy']").on("change",function(e){
+    //   e.preventDefault();
+    //   const selectedOption = $(this).val();
+    //   $.ajax({
+    //     url:`http://localhost/games/game_ID/${gameId}`,
+    //     type:"POST",
+    //     data:{sort:selectedOption},
+    //      })
+    //     });  
+
+      });
+
+
+
+      /* 切換遊戲 */
+      // 切換按鈕
+      var changeBtnBool = true;
+      $("#changeGameBtn").on("click",function(){
+        if (changeBtnBool == true) {
+        $("select#gameChange").css("display", "block");
+           changeBtnBool = false;
+        } else {
+        $("select#gameChange").css("display", "none");
+           changeBtnBool = true;
+        }
+      })
+      // 切換選單
+      $("select#gameChange").on("change",function(){
+        window.location = $("#gameChange").val()
+      })
+
+      /* 切換後的背景效果 (在準備完網頁前就要先做了) */
+      // document.addEventListener("DOMContentLoaded", function () {
+      //   const urlParams = new URLSearchParams(window.location.search);
+      //   const changeGameParam = urlParams.get("type");
+
+      //   if (changeGameParam === "shooting") {
+      //     window.onload = function() {
+      //       $("#show").addClass("showAction").fadeOut(2200)
+      //   }
+      //   } else if(changeGameParam === "avg"){
+      //     window.onload = function() {
+      //       $("#show").addClass("showAVG").fadeOut(2000);
+      //   }
+      //   }
+      // });
+    </script>
+  </body>
+</html>

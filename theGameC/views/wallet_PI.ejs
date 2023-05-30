@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>錢包 - 個人資訊</title>
+    <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="/style/wallet.css" />
+    <script type="text/javascript" src="/app/jquery.js"></script>
+  </head>
+  <body>
+    <!-- header -->
+    <%- include('share/header')%>
+
+    <!-- section -->
+    <section class="section">
+      <!-- 左半部 -->
+      <%- include('share/wallet/wallet_left')%>
+
+      <!-- 右半部 -->
+      <div class="s1right">
+        <div class="s1rightSec">
+          <div class="s1Rtop"><p>帳號資訊</p></div>
+          <div class="s1Rdown">
+            <!-- 你擁有的遊戲 -->
+            <div class="s1RDtitle">
+              <p>我的遊戲庫</p>
+            </div>
+            <div id="Gamesdropdown">
+              <p>點擊查看您擁有的遊戲</p>
+              <img
+                class="GamesdropdownImg"
+                src="/img/header/head_dropdown.png"
+                alt=""
+              />
+            </div>
+            <br />
+            <div id="myGamesArea" class="expanded">
+              <!-- 一個遊戲 -->
+              <% if(userGame.games != []){ %>
+              <%userGame.games.map(function(v,i){ %>
+              <div
+                id="myGame"
+                onclick="goGamePage('<%- userGame.gameID[i] %>')"
+              >
+                <div id="myGameImgDiv">
+                  <img src=<%=`/img/Games/${userGame.images[i]}` %> />
+                </div>
+                <div id="myGameInfo">
+                  <p><%= v %></p>
+                  <p>當前點數：<span><%= userGame.gameCoin[i] %></span></p>
+                </div>
+              </div>
+              <% }) } else if (userGame.games == 0) {%>
+              <div
+                class="game_div"
+                style="
+                  padding-left: 40px;
+                  flex-direction: column;
+                  justify-content: center;
+                  width: 50%;
+                  height: 200px;
+                "
+              >
+                <p style="font-size: 1.15rem; color: black">
+                  您目前尚未遊玩任何遊戲，
+                </p>
+                <br />
+                <p style="font-size: 1.15rem; color: black">
+                  加入遊戲後就可以體驗轉點功能囉！
+                </p>
+                <br /><br />
+                <a
+                  href="/games"
+                  style="font-size: 1.15rem; text-decoration: none"
+                  >點我進入遊戲頁面</a
+                >
+              </div>
+              <% } %>
+            </div>
+            <div class="s1RDtitle">
+              <p>基本資訊</p>
+              <img
+                onclick="editPI()"
+                src="/img/wallet/edit.png"
+                alt=""
+                title="編輯基本資訊"
+              />
+            </div>
+            <div class="s1RDinfo">
+              <table>
+                <tr>
+                  <th>暱稱：</th>
+                  <td id="nickname">
+                    <%= userData.nickname ? userData.nickname :
+                    userData.username ? userData.username : '尚未填寫'; %>
+                  </td>
+                </tr>
+                <tr>
+                  <th>使用者名稱：</th>
+                  <td id="username">
+                    <%= userData.username?userData.username:"尚未填寫" %>
+                  </td>
+                </tr>
+                <tr>
+                  <th>手機號碼：</th>
+                  <td id="phone">
+                    <%= userData.phone?userData.phone:"尚未填寫" %>
+                  </td>
+                </tr>
+                <tr>
+                  <th>電子信箱：</th>
+                  <td id="email">
+                    <%= userData.email?userData.email:"尚未填寫" %>
+                  </td>
+                </tr>
+                <tr>
+                  <th>出生日期：</th>
+                  <td id="birthday">
+                    <%= userData.birthday?userData.birthday:"尚未填寫" %>
+                  </td>
+                </tr>
+              </table>
+              <br />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 修改個人資訊 -->
+    <dialog id="PIdialog">
+      <button id="closePIDialog">
+        <img src="/img/wallet/close.png" alt="" />
+      </button>
+      <form id="updateForm" method="put" action="/updatePI">
+        <input
+          type="hidden"
+          id="user_id"
+          name="user_id"
+          value="<%= userData.user_id %>"
+        />
+        <div>
+          <p>修改個人資訊</p>
+          <div class="PIfirm">
+            <li>
+              <span>暱稱：</span>
+              <input
+                id="edit_nickname"
+                name="edit_nickname"
+                placeholder="取一個喜歡的暱稱"
+                pattern="^(?:[\x00-\x7F]|[\u4E00-\u9FFF]){1,15}$"
+                value="<%= userData.nickname %>"
+              />
+            </li>
+            <li>
+              <span>手機：</span>
+              <input
+                type="tel"
+                id="edit_phone"
+                name="edit_phone"
+                pattern="^09\d{2}\d{6}$"
+                title="請輸入09開頭的10碼電話號碼"
+                value="<%= userData.phone %>"
+                required
+              />
+            </li>
+            <hr />
+            <!-- <li>
+              <div>
+                <span>頭貼：</span>
+                <input type="file" name="avatar" accept=".jpg, .jpeg, .png" />
+              </div>
+            </li> -->
+          </div>
+        </div>
+        <button id="update" type="submit">確認修改</button>
+      </form>
+    </dialog>
+
+    <script src="/app/app.js"></script>
+
+    <script>
+      /* dialog展示 */
+      function editPI() {
+        document.querySelector("#PIdialog").showModal();
+      }
+      closePIDialog.addEventListener("click", () => {
+        document.querySelector("#PIdialog").close();
+      });
+
+      // nickname 限制自數 (尚未寫)
+      let nicknameLimit = $("input#edit_nickname").val();
+
+      /* 遊戲選單 */
+      let dropdownBool = false;
+      $("#Gamesdropdown").on("click", function () {
+        dropdownBool = !dropdownBool;
+        if (dropdownBool) {
+          $("#myGamesArea").slideDown();
+          $(".GamesdropdownImg").css("transform", "rotateX(180deg)");
+        } else {
+          $("#myGamesArea").slideUp();
+          $(".GamesdropdownImg").css("transform", "rotateX(0)");
+        }
+      });
+
+      /* 更新 */
+      $(function () {
+        $("#updateForm").on("submit", function () {
+          event.preventDefault();
+          const userId = $("#user_id").val();
+          $.ajax({
+            url: `http://localhost:80/wallet/updatePI/${userId}`,
+            type: "PUT",
+            data: {
+              phone: $("input[name='edit_phone']").val(),
+              nickname: $("input[name='edit_nickname']").val(),
+              // avatar: $("input[name='avatar']").val(),
+            },
+          }).done((data) => {
+            console.log(data);
+            $("#phone").text($("input[name='edit_phone']").val());
+            $("#nickname").text($("input[name='edit_nickname']").val());
+            document.querySelector("#PIdialog").close();
+          });
+        });
+      });
+
+      // 轉入遊戲網頁
+      function goGamePage(x) {
+        window.location = `/games/game_ID/${x}`;
+      }
+    </script>
+  </body>
+</html>

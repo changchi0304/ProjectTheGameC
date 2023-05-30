@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"
+    integrity="sha256-5uKiXEwbaQh9cgd2/5Vp6WmMnsUr3VZZw0a8rKnOKNU=" crossorigin="anonymous" />
+  <title>TheGameC-遊戲頁</title>
+  <link rel="stylesheet" href="/style/games.css" />
+  <link rel="stylesheet" href="/style/style.css" />
+</head>
+
+<body>
+  <!-- header -->
+  <%- include('share/header')%>
+
+    <!-- 這是我搜索欄的東西 -->
+    <div class="overlay" id="overlay">
+      <!-- 這是包住裡面所有東西的大外框 -->
+      <div class="thecococ">
+        <!-- 這是叉叉符號區 -->
+        <div id="closeBtn" class="close-btn">
+          <p>&times;</p>
+        </div>
+        <!-- .close-btn 結束標籤 -->
+
+        <!-- 這是放大鏡搜尋區+收尋欄+收尋按鈕 -->
+        <div class="thefindcontent">
+          <img src="/img/header/head_search.png" />
+          <input id="searchInput" type="text" />
+          <button id="searchBtn" type="button">搜尋</button>
+          
+          
+          
+          
+        </div>
+        <div id="resultsContainer"></div>
+      </div>
+      <!-- .thecococ 結束標籤 -->
+    </div>
+    <!-- .overlay 結束標籤 -->
+
+    <!-- section1 最上方影片 + 封面 -->
+    <section class="section1">
+      <div class="s1container">
+        <video  src="/img/games/PS55.mp4" autoplay muted loop style="filter: blur(10px);" width="100%"></video>
+      <div class="video">
+        <video src="/img/games/PS55.mp4"  autoplay muted loop >
+          </video>
+        </video>
+      </div>
+    </section>
+
+    <!-- ---------------------------------遊戲種類----------------------------------------- ---->
+    <!-- 遊戲種類列表+圖片區 大外框 -->
+    <div class="bigbox">
+      <!-- 遊戲種類列表 -->
+      <div class="thegametype">
+        <h3>選擇遊戲種類</h3>
+        <a id="shooting" data-type="射擊遊戲">射擊遊戲</a>
+        <a id="action" data-type="冒險遊戲">冒險遊戲</a>
+        <a id="racing" data-type="競技遊戲">競技遊戲</a>
+      </div>
+      <!-- .thegametype  結束標籤-->
+
+      <!-- 遊戲種類圖片最外框 -->
+      <!-- 以下為跑出15張的程式碼 -->
+      <div id="mygametypeimg" class="image-container">
+        <!-- <% apple.forEach(function(item) { %> -->
+        <!-- <div class="image-box"> -->
+        <!-- <img src="/img/Games/<%- item.image %>"> -->
+        <!-- <img class="hover-image" src="/img/Games/GameTypeBg/hoverimg.jpeg" alt=""> -->
+        <!-- </div> -->
+        <!-- <% }); %>    -->
+        <!--  -->
+
+        <% apple.forEach(function(item) { %>
+          <div class="image-box" data-gamestype="<%- item.game_type %>" onclick="getGameUrl('<%- item.game_id %>')">
+            <img src="/img/Games/<%- item.image %>" />
+            <!-- <img class="hover-image" src="/img/Games/GameTypeBg/hoverimg.jpeg" alt="" /> -->
+          </div>
+          <% }); %>
+
+            <!-- <div class="image-box">
+          <img src="/img/Games/SF/cover.webp">
+          <img class="hover-image" src="/img/Games/GameTypeBg/bk/hoverimg.jpeg" alt="">
+        </div>
+        <div class="image-box">
+          <img src="/img/Games/AVA/cover.jpg">
+          <img class="hover-image" src="/img/Games/GameTypeBg/bk/hoverimg.jpeg" alt="">
+        </div>
+        <div class="image-box">
+          <img src="/img/Games/Valorant/cover.jpg">
+          <img class="hover-image" src="/img/Games/GameTypeBg/bk/hoverimg.jpeg" alt="">
+        </div>
+        <div class="image-box">
+          <img src="/img/Games/SvenCoop/cover.jpg">
+          <img class="hover-image" src="/img/Games/GameTypeBg/bk/hoverimg.jpeg" alt="">
+        </div> -->
+      </div>
+      <!-- .image-container  結束標籤-->
+    </div>
+    <!-- .bigbox  結束標籤-->
+
+    <!-- 最外層大容器 -->
+    <div id="changebg" class="theoutbox">
+      <!-- 這是輪播圖的外框 -->
+      <div class="theleftbox">
+        <section id="main-carousel" class="splide"
+          aria-label="The carousel with thumbnails. Selecting a thumbnail will change the Beautiful Gallery carousel.">
+          <div class="splide__track">
+            <ul id="bigbox" class="splide__list thepink">
+              <!-- <li id="changeimg" class="splide__slide"> -->
+              <!-- <img src="/img/Games/CSO/cover.jfif" alt=""> -->
+              <!-- </li> -->
+              <li class="splide__slide is-active is-visible thepinkli" id="main-carousel-slide05" role="group"
+                aria-roledescription="slide" aria-label="5 of 5" style="
+                  width: calc(100%);
+                  transform: translateX(-400%);
+                  transition: opacity 400ms cubic-bezier(0.25, 1, 0.5, 1) 0s;
+                ">
+                <img src="/img/Games/CSO/cover.jfif" alt="" />
+              </li>
+              <li class="splide__slide">
+                <img src="/img/Games/SF/cover.webp" alt="" />
+              </li>
+              <li class="splide__slide">
+                <img src="/img/Games/AVA/cover.jpg" alt="" />
+              </li>
+              <li class="splide__slide">
+                <img src="/img/Games/Valorant/cover.jpg" alt="" />
+              </li>
+              <li class="splide__slide">
+                <img src="/img/Games/SvenCoop/cover.jpg" alt="" />
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="thumbnail-carousel" class="splide"
+          aria-label="The carousel with thumbnails. Selecting a thumbnail will change the Beautiful Gallery carousel.">
+          <div class="splide__track">
+            <ul id="changeimg" class="splide__list">
+              <% apple.forEach(function(item) { %>
+                <li class="splide__slide" data-imgtype="<%- item.game_type %>">
+                  <img src="/img/Games/<%- item.image %>" data-gamename="<%- item.game_name %>" />
+                </li>
+                <% }); %>
+                  <!-- <li class="splide__slide"> -->
+                  <!-- <img src="/img/Games/SF/cover.webp" alt=""> -->
+                  <!-- </li> -->
+                  <!-- <li class="splide__slide"> -->
+                  <!-- <img src="/img/Games/AVA/cover.jpg" alt=""> -->
+                  <!-- </li> -->
+                  <!-- <li class="splide__slide"> -->
+                  <!-- <img src="/img/Games/Valorant/cover.jpg" alt=""> -->
+                  <!-- </li> -->
+                  <!-- <li class="splide__slide"> -->
+                  <!-- <img src="/img/Games/SvenCoop/cover.jpg" alt=""> -->
+                  <!-- </li> -->
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <!-- 原本下方得的<p>段落,現在下方的ejs 已經順利撈到所有的遊戲種類介紹了! -->
+      <!-- <p> -->
+      <!-- 射擊遊戲是一款極具挑戰性和刺激性的遊戲，玩家需要在遊戲中運用武器、技能和策略擊敗敵人，通過不斷提高自己的技能和經驗，達成更高的目標。射擊遊戲的畫面和音效非常逼真，讓玩家感受到身臨其境的遊戲體驗，讓玩家感受到身臨其境的遊戲體驗。 -->
+      <!-- </p> -->
+
+      <div id="changeconte" class="picbox3">
+        <div class="picbox4">
+          <h3>CSO絕對武力</h3>
+
+          <% cat.forEach(function(item) { %>
+            <div class="pbox" data-type="<%- item.game_type_name %>">
+              <p><%- item.description %></p>
+            </div>
+            <% }); %>
+        </div>
+
+        <!--.picbox4  結束標籤 -->
+
+        <div class="picbox5">
+          <button id="theshootingbtn" class="thesgbtn thehoverbutton" data-gametype="射擊遊戲">
+            射擊遊戲
+          </button>
+          <button id="theactionbtn" class="theabtn thehoverbutton" data-gametype="冒險遊戲">
+            冒險遊戲
+          </button>
+          <button id="theracingbtn" class="therbtn  thehoverbutton" data-gametype="競技遊戲">
+            競技遊戲
+          </button>
+        </div>
+      </div>
+      <!--.picbox3  結束標籤 -->
+    </div>
+    <!--.theoutbox  結束標籤 -->
+
+    <!--網頁右下方的快速往上鍵 -->
+<div class="thetopbtn">
+  <a  href="#" id="totop">
+    <img src="/img/header/topimg.png" width="60px" height="60px"></a>
+</div>   <!--.thetopbtn  結束標籤 -->
+    
+    <!-- footer -->
+    <%- include('share/footer')%>
+
+      <!-- 引用的js檔案 -->
+      <script src="/app/app.js"></script>
+      <script src="/app/games.js"></script>
+</body>
+
+<!-- //jQuery cdn -->
+<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+  crossorigin="anonymous"></script>
+
+<script>
+  // 渲染中間區塊的圖片 ok
+
+  //選取了.thegametype 裡面所有的 a 標籤
+  const gameTypeButtons = document.querySelectorAll(".thegametype a");
+  //選取了 #mygametypeimg 裡面所有的 .image-box => 共有15個
+  const imageBoxes = document.querySelectorAll("#mygametypeimg .image-box");
+
+  gameTypeButtons.forEach(function (button) {
+    button.addEventListener("click", function (e) {
+      const gameType = e.target.getAttribute("data-type");
+      // console.log(gameType); //會出現你點擊到的遊戲種類
+
+      imageBoxes.forEach(function (box) {
+        const boxGameType = box.getAttribute("data-gamestype");
+        //如果 右邊放圖片區遊戲種類 == 左邊按鈕種類
+        if (boxGameType === gameType) {
+          //就顯示相對應種類的圖片
+          box.style.display = "block";
+        } else {
+          //否則 就隱藏其他不是相對應的種類
+          box.style.display = "none";
+        }
+      });
+    });
+  });
+
+  //當網頁載入好時就先觸發 射擊遊戲 的按鈕
+  document.addEventListener("DOMContentLoaded", function () {
+    const shootingBtn = document.querySelector("#shooting");
+    shootingBtn.click();
+  });
+
+  // ---------------------------------------------------------------------
+  //渲染下方的遊戲種類介紹 ok
+
+  //選取了.picbox5 裡面所有的 button 標籤
+  const picbox5 = document.querySelectorAll(".picbox5 button");
+  //選取了 .pbox 裡面所有的 p => 共有3個
+  const pbox = document.querySelectorAll(".pbox");
+
+  const changeimg = document.querySelectorAll("#changeimg li ");
+  console.log(changeimg);
+
+  const bigbox = document.querySelector("#bigbox");
+  console.log(bigbox);
+
+  picbox5.forEach(function (button) {
+    button.addEventListener("click", function (e) {
+      const datagametype = e.target.getAttribute("data-gametype");
+      // console.log(datagametype);//會出現你點擊到的遊戲種類
+
+      pbox.forEach(function (thep) {
+        const thepbox = thep.getAttribute("data-type");
+
+        if (thepbox === datagametype) {
+          thep.style.display = "block";
+        } else {
+          thep.style.display = "none";
+        }
+      });
+
+      // -------------- 黃框長條處----------------------
+      changeimg.forEach(function (thegpic) {
+        const thechangepic = thegpic.getAttribute("data-imgtype");
+        // console.log('是我出錯'+thechangepic);
+        if (thechangepic === datagametype) {
+          thegpic.style.display = "block";
+        } else {
+          thegpic.style.display = "none";
+        }
+      });
+      // －－－－－－－－－－－－－－－－－－－－－－－－－－－－
+      changeimg.forEach(function (thegpic) {
+        const thechangepic = thegpic.getAttribute("data-imgtype");
+
+        if (thechangepic === datagametype) {
+          thegpic.style.display = "block";
+
+          const firstImage = thegpic.querySelector("img");
+          const imagePath = firstImage.getAttribute("src");
+          const gameName = firstImage.getAttribute("data-gamename");
+
+          document.querySelector(".picbox4 h3").textContent = gameName;
+          bigbox.innerHTML = `<img src="${imagePath}" alt="">`;
+
+        } else {
+          thegpic.style.display = "none";
+        }
+      });
+    });
+  });
+
+  // －－－－－－－－－－－－－－－－－－－－－－－－－－－－
+  //當點到輪播圖的哪一張時上面大圖片就會變成那一張
+  changeimg.forEach(function (thegpic) {
+    thegpic.addEventListener("click", function (e) {
+      // 獲取點擊的圖片路徑
+      const imagePath = e.target.getAttribute("src");
+      const gameName = e.target.getAttribute("data-gamename");
+      console.log(gameName);
+      const picbox4 = (document.querySelector(".picbox4 h3").textContent =
+        gameName);
+      // 將圖片顯示在 bigbox 中
+      bigbox.innerHTML = `<img src="${imagePath}" alt="">`;
+    });
+  });
+
+
+  //當網頁載入好時就先觸發 射擊遊戲 的按鈕
+  document.addEventListener("DOMContentLoaded", function () {
+    const theshootingbtn = document.querySelector("#theshootingbtn");
+    theshootingbtn.click();
+  });
+
+  // 以下為之前使用的方法
+  // -----------------------------------------------------
+  //  $(document).ready(function() {
+  //     $('#shooting').click(function() {
+  //       $.ajax({
+  //         url: '/api/games', // 服务器端提供数据的API接口
+  //         method: 'GET',
+  //         dataType: 'json',
+  //         data: { gameType: '射擊遊戲' },
+  //         success: function(response) {
+  //           // 渲染图像
+  //           var imageBox = $('#image-box');
+  //           imageBox.empty();
+
+  //           response.forEach(function(item) {
+  //             var imageElement = $('<img>');
+  //             imageElement.attr('src', '/img/Games/' + item.image);
+  //             imageBox.append(imageElement);
+  //           });
+  //         },
+  //         error: function(error) {
+  //           console.error(error);
+  //         }
+  //       });
+  //     });
+  //   });
+
+  // //渲染中間遊戲種類的部分 ok
+  // $(document).ready(function () {
+  //   getgamepageimg();
+  // })
+
+  // function getgamepageimg() {
+  //   $.ajax({
+  //     type: 'GET',
+  //     url: '/gametype/games',
+  //     success: function (gameimg) {
+  //       // console.log('getgamepageimg 有跑進 success');
+  //       //確認有收到url給出的資料
+  //       // console.log(gameimg);
+
+  //       // 綁定按鈕的單擊事件
+  //       //shooting
+  //       $('#shooting').click(function () {
+  //         // 清空之前顯示的圖片
+  //         $('#mygametypeimg').empty();
+
+  //         // 讀取遊戲類型
+  //         var gameType = $(this).data('type');
+
+  //         // 遍歷圖片數組，將符合遊戲類型的圖片添加到HTML中
+  //         $.each(gameimg, function (index, item) {
+  //           if (item.game_type === gameType) {
+  //             $('#mygametypeimg').append(`
+  //       <div class="image-box">
+  //         <img src="/img/games/${item.image}">
+  //         <img class="hover-image" src="/img/Games/GameTypeBg/bk/hoverimg.jpeg" alt="">
+  //       </div>
+  //     `);
+  //           }
+  //         });
+  //       });
+
+  //       //action
+  //       $('#action').click(function () {
+  //         // 清空之前顯示的圖片
+  //         $('#mygametypeimg').empty();
+
+  //         // 讀取遊戲類型
+  //         var gameType = $(this).data('type');
+
+  //         // 遍歷圖片數組，將符合遊戲類型的圖片添加到HTML中
+  //         $.each(gameimg, function (index, item) {
+  //           if (item.game_type === gameType) {
+  //             $('#mygametypeimg').append(`
+  //       <div class="image-box">
+  //         <img src="/img/games/${item.image}">
+  //         <img class="hover-image" src="/img/Games/GameTypeBg/bk/hoverimg.jpeg" alt="">
+  //       </div>
+  //     `);
+  //           }
+  //         });
+  //       });
+
+  //       //racing
+  //       $('#racing').click(function () {
+  //         // 清空之前顯示的圖片
+  //         $('#mygametypeimg').empty();
+
+  //         // 讀取遊戲類型
+  //         var gameType = $(this).data('type');
+
+  //         // 遍歷圖片數組，將符合遊戲類型的圖片添加到HTML中
+  //         $.each(gameimg, function (index, item) {
+  //           if (item.game_type === gameType) {
+  //             $('#mygametypeimg').append(`
+  //       <div class="image-box">
+  //         <img src="/img/games/${item.image}">
+  //         <img class="hover-image" src="/img/Games/GameTypeBg/bk/hoverimg.jpeg" alt="">
+  //       </div>
+  //     `);
+  //           }
+  //         });
+  //       });
+
+  //     }
+  //   })
+  // }
+
+  // -------------------測試按鈕底色
+
+  gameTypeButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      // 移除所有按鈕的背景顏色
+      gameTypeButtons.forEach(function (btn) {
+        btn.classList.remove("active-button");
+      });
+
+      // 將被點擊按鈕的底部加上背景顏色
+      button.classList.add("active-button"); // 這裡可以自行調整顏色
+
+      // 獲取遊戲種類
+      const gameType = button.getAttribute("data-type");
+      console.log(gameType); // 顯示被點擊按鈕的遊戲種類
+    });
+
+    // 設置默認的背景顏色
+    if (button.getAttribute("data-type") === "射擊遊戲") {
+      button.classList.add("active-button"); // 設置默認的背景顏色
+    }
+  });
+
+  //  下方輪播圖的部分
+  // $(document).ready(function () {
+  //   changethecontent();
+  // })
+
+  // function changethecontent() {
+  //   $.ajax({
+  //     type: 'GET',
+  //     url: '/gametype/games',
+  //     success: function (content) {
+  //       // console.log('getgamepageimg 有跑進 success');
+  //       //確認有收到url給出的資料
+  //       console.log(content);
+  //       $('#shootingbtn').click(function () {
+  //         //確認點擊按鈕之後有出現東西
+  //         console.log('射擊遊戲OK');
+  //         // 清空之前顯示的圖片
+  //         $('#main-carousel-slide05 img').attr('src', '');
+  //         // 讀取遊戲類型
+  //         //射擊遊戲
+  //         var thegameType = $(this).data('gametype');
+  //         var selectedImagePath = '';
+  //         $.each(content, function (index, item) {
+  //           if (item.game_type == thegameType) {
+  //             console.log(item.image);
+  //             $('#changtypeimg').append(`
+
+  //             <li class="splide__slide is-active is-visible" id="thumbnail-carousel-slide01" role="button" aria-label="Go to slide 1" aria-controls="main-carousel-slide01" aria-current="true" tabindex="0" style="margin-right: 10px; width: 100px; height: 60px;">
+  //               <img src="/img/Games/${item.image}" alt="">
+  //             </li>
+
+  //         `)
+  //             $('#changeimg img').click(function () {
+  //               var selectedImagePath = $(this).attr('src');
+  //               $('#main-carousel-slide05 img').attr('src', selectedImagePath);
+  //             });
+  //           }
+  //         })
+  //       })
+
+  //       //冒險遊戲
+  //       $('#actionbtn').click(function () {
+  //         //確認點擊按鈕之後有出現東西
+  //         console.log('冒險遊戲oK');
+  //         // 清空之前顯示的圖片
+  //         $('#changeimg').empty();
+  //         // 讀取遊戲類型
+  //         var thegameType = $(this).data('gametype');
+  //         var selectedImagePath = '';
+  //         $.each(content, function (index, item) {
+  //           if (item.game_type == thegameType) {
+  //             console.log(item.image);  //這裡有正確抓到5 張圖片的路徑
+  //             // <li class="splide__slide" >
+  //             // <img src="/img/Games/${item.image}" alt="">
+  //             // </li>
+  //             $('#changeimg').append(`
+  //             <li class="splide__slide is-active is-visible" id="thumbnail-carousel-slide01" role="button" aria-label="Go to slide 1" aria-controls="main-carousel-slide01" aria-current="true" tabindex="0" style="margin-right: 10px; width: 100px; height: 60px;">
+  //               <img src="/img/Games/${item.image}" alt="">
+  //             </li>
+
+  //         `);
+  //             $('#changeimg img').click(function () {
+  //               var selectedImagePath = $(this).attr('src');
+  //               $('#main-carousel-slide05 img').attr('src', selectedImagePath);
+  //             });
+  //           }
+  //         })
+  //       })
+
+  //     }
+  //   }
+  //   )
+  // }
+
+  //  抓最下方換背景底圖的部分  ok
+  //  下方輪播圖背景的部分
+  $(document).ready(function () {
+    changbg();
+  });
+
+  function changbg() {
+    $.ajax({
+      type: "GET",
+      url: "games/game_select_bg",
+      success: function (info) {
+        // console.log('有成功' + info);
+        var data = JSON.parse(info);
+       
+
+        //射擊遊戲
+        $(".thesgbtn").click(function () {
+          // console.log('下面背景更換成競技遊戲OK');
+          var thegamebg = $(this).data("gametype");
+          var bg_image = "";
+
+          $.each(data, function (index, item) {
+            if (item.game_type_name == thegamebg) {
+              bg_image = item.bg_image;
+              // console.log(item.bg_image); //這裡有成功出現資料庫的競技遊戲的資料
+              $("#changebg").css(
+                "background-image",
+                `url("../img/Games/${item.bg_image}")`
+              );
+            }
+          });
+        });
+
+        //冒險遊戲
+        $(".theabtn").click(function () {
+          // console.log('下面背景更換成競技遊戲OK');
+          var thegamebg = $(this).data("gametype");
+          var bg_image = "";
+
+          $.each(data, function (index, item) {
+            if (item.game_type_name == thegamebg) {
+              bg_image = item.bg_image;
+              // console.log(item.bg_image); //這裡有成功出現資料庫的競技遊戲的資料
+              $("#changebg").css(
+                "background-image",
+                `url("../img/Games/${item.bg_image}")`
+              );
+            }
+          });
+        });
+
+        // 競技遊戲
+        $(".therbtn").click(function () {
+          // console.log('下面背景更換成競技遊戲OK');
+
+          var thegamebg = $(this).data("gametype");
+          var bg_image = "";
+
+          $.each(data, function (index, item) {
+            // console.log(item);
+            if (item.game_type_name == thegamebg) {
+              bg_image = item.bg_image;
+              // console.log(item.bg_image); //這裡有成功出現資料庫的競技遊戲的資料
+              $("#changebg").css(
+                "background-image",
+                `url("../img/Games/${item.bg_image}")`
+              );
+            }
+          });
+        });
+      },
+    });
+  }
+
+  // ---這裡為黑色遮罩層
+  //這裡的thefindBtn 是我去->views->share->header.ejs裡面的 navbar-icons 的搜索欄埋的id
+  const thefindBtn = document.querySelector("#thefindBtn");
+  const overlay = document.querySelector("#overlay");
+  const closeBtn = document.querySelector("#closeBtn");
+
+  //如果點擊收尋放大鏡,黑色遮罩就會出現
+  document.addEventListener("DOMContentLoaded", function () {
+    thefindBtn.addEventListener("click", function () {
+      overlay.style.display = "block";
+    });
+    //如果點叉叉按鈕,黑色遮罩就會消失
+    closeBtn.addEventListener("click", function () {
+      overlay.style.display = "none";
+    });
+  });
+
+  // 這裡開始為收尋欄位的設定
+  const searchBtn = document.querySelector("#searchBtn");
+  const searchInput = document.querySelector("#searchInput");
+  // console.log(searchBtn,searchInput);
+
+  document.addEventListener("DOMContentLoaded", function () {
+    searchBtn.addEventListener("click", function () {
+      var keyword = searchInput.value;
+      // console.log('你收尋的東西是:'+ keyword);
+
+      if (keyword !== "") {
+        $.ajax({
+          type: "GET",
+          url: "games/game_select",
+          data: { keyword: keyword },
+          success: function (data) {
+            var theFindData = JSON.parse(data);
+            // console.log('你現在得到的資料是:',theFindData);
+            renderResults(theFindData, keyword);
+          },
+        });
+      }
+    });
+
+    function renderResults(results, keyword) {
+      // console.log("你搜到的結果是", results);
+      //清空收尋的結果
+      resultsContainer.innerHTML = "";
+
+      if (results.length > 0) {
+        var hasMatch = false;
+        results.forEach(function (results) {
+          var gameName = results.game_name;
+          var gameAge = results.age_rating;
+          var gameImage = results.image;
+          // console.log("你的結果為:", gameName + gameAge + gameImage);
+
+          if (gameName.includes(keyword)) {
+            var resultItem = document.createElement("div");
+            resultItem.classList.add("result-item");
+
+            resultItem.innerHTML = `
+              <a href="/games/game_ID/${results.game_id}">
+                <img src="/img/Games/${gameImage}">
+          <p>${gameName}</p>
+          <p>年齡限制：${gameAge}歲</p>
+                </a>
+        `;
+            resultsContainer.appendChild(resultItem);
+            hasMatch = true;
+          }
+        });
+      }
+      if (!hasMatch) {
+        // 没有搜索结果的情况下，顯示以下對話
+        var noResult = document.createElement("p");
+        noResult.classList.add("result-p");
+        noResult.textContent = "查無此遊戲！";
+        // console.log(noResult);
+        resultsContainer.appendChild(noResult);
+
+      }
+    }
+  });
+
+  function getGameUrl(x){
+    window.location = `/games/game_ID/${x}`
+  }
+
+
+//當點籍到右下角按鈕時網頁會回到最上方
+const totop = document.getElementById('totop');
+
+totop.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+
+
+
+
+
+</script>
+
+</html>

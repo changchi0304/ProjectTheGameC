@@ -1,0 +1,789 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 1920px;
+  font-family: "Microsoft YaHei", sans-serif;
+  letter-spacing: 2px;
+}
+body p {
+  letter-spacing: 1px;
+  color: white;
+}
+body span {
+  color: white;
+}
+
+/* 背景 */
+.background_shooting {
+  background-image: url("../img/Games/GameTypeBg/Shooting.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: -1;
+  filter: brightness(50%);
+}
+
+.background_avg {
+  background-image: url("../img/Games/GameTypeBg/avg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: -1;
+  filter: brightness(90%);
+}
+
+.background_com {
+  background-image: url("../img/Games/GameTypeBg/esport.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: -1;
+  filter: brightness(70%);
+}
+
+.allScreen {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  /* 左邊遊戲 bar */
+  /* 中間(s2)區域 */
+  /* 右邊功能 bar */
+}
+.allScreen .section1 {
+  width: 20%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background-color: rgba(31, 31, 31, 0.8);
+  overflow-y: auto;
+  height: 100%;
+  gap: 5px;
+  position: relative;
+}
+.allScreen .section1 .gameTypeBtn {
+  width: 100%;
+  height: 70px;
+  font-size: 1.5rem;
+  padding: 15px 5px;
+  text-align: center;
+  color: white;
+  font-weight: 600;
+  background-color: #373737;
+  border: none;
+  cursor: pointer;
+  -webkit-appearance: none; /* 隱藏預設箭頭 */
+}
+.allScreen .section1 .gameTypeBtn option {
+  background-color: #2b2b2b;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+.allScreen .section1 .downNote {
+  color: rgb(255, 255, 255);
+  font-size: 1.25rem;
+  padding: 12px 14px;
+  background-color: rgba(73, 73, 73, 0.75);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  position: fixed;
+  width: 19%;
+  bottom: 0;
+  z-index: 5;
+  text-align: center;
+}
+.allScreen .section1 .game {
+  width: 100%;
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+.allScreen .section1 .game img {
+  width: 100%;
+  filter: brightness(40%);
+  transition: 0.25s;
+}
+.allScreen .section1 .game p {
+  position: absolute;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: white;
+  bottom: 30px;
+  left: 25px;
+  filter: brightness(70%);
+  transition: 0.25s;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 6px 14px;
+  border-radius: 5px;
+}
+.allScreen .section1 .game:hover img {
+  filter: brightness(100%);
+}
+.allScreen .section1 .game:hover p {
+  filter: brightness(100%);
+}
+.allScreen .section2 {
+  width: 80%;
+  height: 100%;
+  /* 中間(s2)遊戲資訊 */
+  /* 中間(s2)評論功能 */
+  /* 中間(s2)推薦遊戲 */
+}
+.allScreen .section2 .section2_info {
+  height: 100%;
+  display: flex;
+  position: relative;
+}
+.allScreen .section2 .section2_info .gameAge {
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  z-index: 6;
+  top: 30px;
+  right: 35px;
+}
+.allScreen .section2 .section2_info .s2left {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+.allScreen .section2 .section2_info .s2left .s2Ldiv {
+  background-color: rgba(31, 31, 31, 0.8);
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  height: 100vh;
+}
+.allScreen .section2 .section2_info .s2left .s2Ldiv .s2Ltop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 35px 25px;
+  margin-top: 20px;
+}
+.allScreen .section2 .section2_info .s2left .s2Ldiv .s2Ltop span {
+  font-size: 3.3rem;
+}
+.allScreen .section2 .section2_info .s2left .s2Ldiv hr {
+  width: 90%;
+  margin: 0 auto;
+}
+.allScreen .section2 .section2_info .s2left .s2Ldiv .s2Lbot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 35px 25px;
+}
+.allScreen .section2 .section2_info .s2left .s2Ldiv .s2Lbot .gameTypeDiv {
+  width: 100%;
+  margin-bottom: 30px;
+  padding: 0 20px;
+}
+.allScreen .section2 .section2_info .s2left .s2Ldiv .s2Lbot .gameTypeDiv .gameType {
+  font-size: 1.3rem;
+  padding: 6px 15px;
+  background-color: azure;
+  color: black;
+  border-radius: 30px;
+  border: 3px rgb(66, 66, 66) solid;
+  font-weight: 600;
+}
+.allScreen .section2 .section2_info .s2left .s2Ldiv .s2Lbot .gameInfo {
+  letter-spacing: 3px;
+  font-size: 1.25rem;
+  line-height: 2.25rem;
+  padding: 0 20px;
+}
+.allScreen .section2 .section2_info .s2left .s2Ldiv .s2Lbot .gameInfo2 {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.allScreen .section2 .section2_info .s2left .s2Ldiv .s2Lbot .gameInfo2 div {
+  flex: 7;
+  width: 500px;
+  margin: 0 auto;
+}
+.allScreen .section2 .section2_info .s2left .s2Ldiv .s2Lbot .gameInfo2 div p {
+  font-size: 1.25rem;
+  display: flex;
+  margin: 20px auto;
+}
+.allScreen .section2 .section2_info .s2left .s2Ldiv .s2Lbot .gameInfo2 div p span:nth-of-type(1) {
+  margin-left: 20%;
+  flex: 5;
+}
+.allScreen .section2 .section2_info .s2left .s2Ldiv .s2Lbot .gameInfo2 div p span:nth-of-type(2) {
+  flex: 6;
+}
+.allScreen .section2 .section2_info .s2left .s2Ldiv .s2Lbot .gameInfo2 .s2btnDiv {
+  text-align: center;
+}
+.allScreen .section2 .section2_info .s2left .s2Ldiv .s2Lbot .gameInfo2 .s2btnDiv button {
+  background-color: rgb(0, 0, 0);
+  padding: 15px 32px;
+  font-size: 1.35rem;
+  font-weight: 600;
+  border: 2px white solid;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.allScreen .section2 .section2_info .s2left .s2Ldiv .s2Lbot .gameInfo2 .s2btnDiv button:hover {
+  border: 2px rgb(160, 160, 160) solid;
+  background-color: rgb(0, 0, 0);
+  color: rgb(160, 160, 160);
+}
+.allScreen .section2 .section2_info .s2right {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.allScreen .section2 .section2_info .s2right .PicSec {
+  background-color: rgba(0, 0, 0, 0.25);
+  width: 95%;
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  gap: 15px;
+}
+.allScreen .section2 .section2_info .s2right .PicSec .bigImg {
+  width: 800px;
+  height: 550px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 15px rgb(0, 0, 0);
+}
+.allScreen .section2 .section2_info .s2right .PicSec .bigImg img {
+  width: auto;
+  height: 100%;
+}
+.allScreen .section2 .section2_info .s2right .PicSec .PicBar {
+  background-color: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 15px rgb(0, 0, 0);
+  border-radius: 5px;
+  width: 800px;
+  height: 15%;
+  display: flex;
+  justify-content: space-around;
+  gap: 8px;
+}
+.allScreen .section2 .section2_info .s2right .PicSec .PicBar .smallPicDiv {
+  width: 20%;
+  height: auto;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  border-radius: 2px;
+  background-color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+.allScreen .section2 .section2_info .s2right .PicSec .PicBar .smallPicDiv img {
+  width: auto;
+  height: 100%;
+}
+.allScreen .section2 .section2_comment .chartCover {
+  width: 90%;
+  height: 275px;
+  overflow: hidden;
+  margin: 0 auto;
+  margin-top: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: #4a4a4a;
+}
+.allScreen .section2 .section2_comment .createComment {
+  background-color: #4a4a4a;
+  width: 90%;
+  margin: 30px auto 30px auto;
+  padding: 10px;
+  position: relative;
+  border-radius: 10px;
+}
+.allScreen .section2 .section2_comment .createComment .commentAreaBtnDiv {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.allScreen .section2 .section2_comment .createComment .commentAreaBtnDiv h2 {
+  color: white;
+}
+.allScreen .section2 .section2_comment .createComment .commentAreaBtnDiv #commentAreaBtn {
+  background-color: #131313;
+  border: 1px solid #131313;
+  border-radius: 6px;
+  padding: 10px 15px;
+  font-weight: 600;
+  color: white;
+  font-size: 1rem;
+  margin-left: auto;
+  transition: 0.15s;
+  cursor: pointer;
+}
+.allScreen .section2 .section2_comment .createComment .commentAreaBtnDiv #commentAreaBtn:hover {
+  background-color: #000000;
+  border: 1px solid rgb(196, 196, 196);
+  color: rgb(176, 176, 176);
+}
+.allScreen .section2 .section2_comment .createComment .commitNotLogin {
+  background-color: #3b3b3b;
+  padding: 25px 50px;
+  border-radius: 5px;
+}
+.allScreen .section2 .section2_comment .createComment .commitNotLogin div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.allScreen .section2 .section2_comment .createComment .commitNotLogin div span {
+  color: white;
+  font-size: 1.35rem;
+}
+.allScreen .section2 .section2_comment .createComment .commitNotLogin div a {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  background-color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.allScreen .section2 .section2_comment .createComment .commitNotLogin div a:hover {
+  background-color: rgb(172, 172, 172);
+}
+.allScreen .section2 .section2_comment .createComment .commitNotLogin div a:visited {
+  color: inherit;
+}
+.allScreen .section2 .section2_comment .createComment .commitLogin {
+  background-color: #3b3b3b;
+  height: 400px;
+  padding: 25px 50px;
+  border-radius: 5px;
+  display: flex;
+}
+.allScreen .section2 .section2_comment .createComment .commitLogin .s2left {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.allScreen .section2 .section2_comment .createComment .commitLogin .s2left div span {
+  color: white;
+  font-size: 1.25rem;
+}
+.allScreen .section2 .section2_comment .createComment .commitLogin .s2left div div {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  line-height: 4rem;
+  gap: 10px;
+}
+.allScreen .section2 .section2_comment .createComment .commitLogin .s2left div div #yourRating,
+.allScreen .section2 .section2_comment .createComment .commitLogin .s2left div div #averageRating {
+  margin: 15px 0;
+  font-size: 4rem;
+}
+.allScreen .section2 .section2_comment .createComment .commitLogin .s2right {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.allScreen .section2 .section2_comment .createComment .commitLogin .s2right p {
+  color: white;
+  font-size: 1.25rem;
+}
+.allScreen .section2 .section2_comment .createComment .commitLogin .s2right textarea {
+  width: 100%;
+  height: 70%;
+  padding: 10px 15px;
+  font-size: 1.5rem;
+  border-radius: 2.5px;
+  resize: none;
+}
+.allScreen .section2 .section2_comment .createComment .commitLogin .s2right div {
+  text-align: end;
+}
+.allScreen .section2 .section2_comment .createComment .commitLogin .s2right div button {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  background-color: white;
+  padding: 7px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.15s;
+}
+.allScreen .section2 .section2_comment .createComment .commitLogin .s2right div button:hover {
+  background-color: rgb(172, 172, 172);
+}
+.allScreen .section2 .section2_comment .createComment .Comment_edit_deleteButton {
+  margin: 10px 0;
+}
+.allScreen .section2 .section2_comment .createComment .Comment_edit_deleteButton button {
+  background-color: #0e0e0e;
+  border: 1px solid #0e0e0e;
+  border-radius: 10px;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: 10px 17px;
+  color: white;
+  transition: 0.15s;
+  cursor: pointer;
+}
+.allScreen .section2 .section2_comment .createComment .Comment_edit_deleteButton button:hover {
+  background-color: #000000;
+  border: 1px solid rgb(196, 196, 196);
+  color: rgb(176, 176, 176);
+}
+.allScreen .section2 .section2_suggest {
+  background-color: #4a4a4a;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 20px;
+  border-radius: 10px;
+}
+.allScreen .section2 .section2_suggest h2 {
+  font-size: 1.5rem;
+  color: white;
+}
+.allScreen .section2 .section2_suggest .recommendedProducts {
+  width: 100%;
+}
+.allScreen .section2 .section2_suggest .recommendedProducts .recomProduct {
+  width: 90%;
+  height: 230px;
+  margin: 20px auto;
+  background-color: #272727;
+  padding: 20px;
+  border-radius: 7.5px;
+  display: flex;
+}
+.allScreen .section2 .section2_suggest .recommendedProducts .recomProduct .recPImgDiv {
+  width: 25%;
+  height: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.allScreen .section2 .section2_suggest .recommendedProducts .recomProduct .recPImgDiv img {
+  width: auto;
+  height: 100%;
+}
+.allScreen .section2 .section2_suggest .recommendedProducts .recomProduct .recPInfo {
+  width: 60%;
+  padding: 10px 0 10px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 10px;
+}
+.allScreen .section2 .section2_suggest .recommendedProducts .recomProduct .recPInfo .recPtitle {
+  flex: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+.allScreen .section2 .section2_suggest .recommendedProducts .recomProduct .recPInfo .recPtitle h3 {
+  color: white;
+  font-size: 1.4rem;
+}
+.allScreen .section2 .section2_suggest .recommendedProducts .recomProduct .recPInfo .recPtitle div #recPtype {
+  padding: 3px 15px;
+  background-color: rgb(0, 0, 0);
+  color: #ffffff;
+  margin-right: 15px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 30px;
+  border: 2px solid rgb(201, 201, 201);
+  text-align: center;
+}
+.allScreen .section2 .section2_suggest .recommendedProducts .recomProduct .recPInfo .recPTextLimit {
+  flex: 5;
+  overflow: hidden;
+}
+.allScreen .section2 .section2_suggest .recommendedProducts .recomProduct .recPInfo .recPTextLimit p {
+  color: white;
+  line-height: 1.5rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.allScreen .section2 .section2_suggest .recommendedProducts .recomProduct .recPgoPage {
+  width: 15%;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+}
+.allScreen .section2 .section2_suggest .recommendedProducts .recomProduct .recPgoPage a {
+  background-color: #3b3b3b;
+  text-decoration: none;
+  border: none;
+  border-radius: 7.5px;
+  color: white;
+  font-size: 1rem;
+  padding: 10px 20px;
+  margin-right: 10px;
+  transition: 0.15s;
+  cursor: pointer;
+}
+.allScreen .section2 .section2_suggest .recommendedProducts .recomProduct .recPgoPage a:hover {
+  background-color: #7f7f7f;
+  color: rgb(0, 0, 0);
+}
+.allScreen .section3 div {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+}
+.allScreen .section3 div li {
+  width: 60px;
+  list-style: none;
+  padding: 40px 55px;
+  background-color: rgba(99, 99, 99, 0.6);
+  cursor: pointer;
+  transition: 0.25s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.allScreen .section3 div li p {
+  text-align: center;
+  font-size: 1.3rem;
+  color: white;
+  line-height: 1.9rem;
+}
+.allScreen .section3 div li:hover {
+  filter: brightness(70%);
+  background-color: gray;
+}
+
+/* 中間(s2)評論區 */
+/* 選中效果 */
+#gameSelect img {
+  filter: brightness(100%);
+}
+#gameSelect p {
+  filter: brightness(100%);
+}
+
+#funcSelect {
+  background-color: gray;
+}
+
+.uHaveIt {
+  font-size: 1.5rem;
+  color: #a9a9a9;
+}
+
+/* scroll 設置 */
+::-webkit-scrollbar {
+  width: 0;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #cccccc;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #686868;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+/* star rating */
+.star-rating {
+  display: inline-block;
+  direction: rtl; /* 使星星從右至左排序，不作用於 inline */
+  font-size: 0;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.star-rating input[type=radio] {
+  display: none; /* 隱藏原始的 radio 按鈕 */
+}
+
+.star-rating label {
+  cursor: pointer;
+  display: inline-block;
+  width: 22.5px;
+  height: 22.5px;
+  background: url("../img/reviews/Star_Empty.png") no-repeat;
+  background-size: cover;
+}
+
+.star-rating input[type=radio]:checked ~ label {
+  background: url("../img/reviews/Star.png") no-repeat;
+  background-size: cover;
+}
+
+.spotlight {
+  display: none;
+}
+
+.spotlight::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.2) 20%, rgba(255, 255, 255, 0) 80%), linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+  border-radius: 4px;
+}
+
+/* 已發表過評論 */
+.alreadyComment * {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  filter: opacity(0.6);
+  pointer-events: none;
+}
+
+.alreadyComment::after {
+  content: "已發表評論，您可以對評論進行修改或刪除";
+  font-size: 1.75rem;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 15px 35px;
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* editComment dialog */
+.commentEditDialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 35%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background-color: rgb(104, 104, 104);
+  width: 40%;
+  padding: 15px 30px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 0 7px black;
+}
+.commentEditDialog #commentEditForm {
+  display: flex;
+  gap: 20px;
+}
+.commentEditDialog #commentEditForm p {
+  color: white;
+  font-size: 1.15rem;
+  margin: 10px 0;
+}
+.commentEditDialog #commentEditForm .editDialogLeft {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+.commentEditDialog #commentEditForm .editDialogLeft select {
+  width: 100%;
+  font-size: 1.25rem;
+  padding: 2.5px;
+}
+.commentEditDialog #commentEditForm .editDialogLeft .editRatingBig {
+  margin-top: auto;
+  margin-bottom: 55px;
+  text-align: center;
+  font-size: 4.6rem;
+}
+.commentEditDialog #commentEditForm .editDialogRight {
+  flex: 8;
+}
+.commentEditDialog #commentEditForm .editDialogRight textarea {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 1.5rem;
+  border-radius: 2.5px;
+  resize: none;
+}
+.commentEditDialog #commentEditForm .editDialogRight div {
+  width: 100%;
+  padding: 0 5px;
+  display: flex;
+  justify-content: end;
+  gap: 20px;
+}
+.commentEditDialog #commentEditForm .editDialogRight div button {
+  margin-top: 7.5px;
+  padding: 10px 15px;
+  font-size: 1.05rem;
+  border-radius: 5px;
+  border: 1px solid white;
+  background-color: #000000;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+}
+.commentEditDialog #commentEditForm .editDialogRight div button:hover {
+  border: 1px solid rgb(170, 170, 170);
+  background-color: #000000;
+  color: rgb(122, 122, 122);
+}
+
+#myChart {
+  color: white;
+}/*# sourceMappingURL=gamePack.css.map */

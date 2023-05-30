@@ -1,0 +1,469 @@
+body {
+  margin: 0px;
+  font-family: "Microsoft YaHei", sans-serif;
+  letter-spacing: .2rem;
+}
+
+p {
+  margin: 0px;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  /* background-color: wheat; */
+}
+
+.loginleft {
+  float: left;
+  width: 30%;
+  height: 100%;
+  /* background-color: yellow; */
+  background-image: url(../img/login/bluebg2.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.btnbox {
+  position: relative;
+  top: 40%;
+  width: 110px;
+  /* background-color: blue; */
+  float: right;
+  text-align: right;
+  border-radius: 1rem 0px 0px 1rem;
+}
+
+.btnbg {
+  float: right;
+  position: absolute;
+  /* top: 100px; */
+  top: 3px;
+  background-color: white;
+  border-radius: 1rem 0px 0px 1rem;
+  width: 110px;
+  height: 80px;
+  z-index: 0;
+  transition: .5s;
+}
+
+.btnlogin,
+.btnsign {
+  position: relative;
+  z-index: 1;
+  padding: 2rem 0rem;
+  padding-right: 1.5rem;
+  letter-spacing: .3rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btnlogin {
+  color: #1C3D5C;
+}
+
+.btnsign {
+  color: white;
+}
+
+
+/* 右側 -----------------------------------------------------------------------*/
+.rightbox {
+  float: left;
+  text-align: center;
+  width: 70%;
+  /* background-color: aqua; */
+  height: 100%;
+  /* display: none; */
+}
+
+.loginpage {
+  width: 40%;
+  /* background-color: antiquewhite; */
+  position: relative;
+  left: 30%;
+  top: 25%;
+}
+
+.signbox {
+  width: 70%;
+  /* background-color: antiquewhite; */
+  position: relative;
+  left: 15%;
+  top: 25%;
+}
+
+#signbox {
+  display: none;
+}
+
+.signindex {
+  display: flex;
+  width: 100%;
+  /* background-color: aqua; */
+}
+
+.signleftbox {
+
+  width: 50%;
+  /* background-color: #85add3; */
+}
+
+.signrightbox {
+
+  width: 50%;
+  /* background-color: #0071DB; */
+}
+
+.loginPagelogo {
+  margin-bottom: 2rem;
+}
+
+.divinput {
+  /* background-color: aqua; */
+  width: 90%;
+  position: relative;
+  padding: 10px 15px;
+  /* padding-bottom: 10px; */
+  left: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid gray;
+  margin-bottom: 2.5rem;
+}
+
+.bi {
+  width: 10%;
+}
+
+.bi-envelope,
+.bi-unlock,
+.bi-telephone,
+.bi-person,
+.bi-calendar-heart {
+  width: 10%;
+  font-size: 30px;
+  margin-right: 10px;
+  color: #1C3D5C;
+  /* background-color: #0071DB; */
+}
+.gg-lock,.gg-profile,.gg-pocket,.gg-lock-unlock{
+  color: #1C3D5C;
+}
+.lockbox{
+  width: 22px;
+  /* height: 22px; */
+display: flex;
+/* align-self: center; */
+justify-content: center;
+}
+
+.lockIcon {
+  width: 10%;
+  font-size: 30px;
+  margin-right: 10px;
+  color: #1C3D5C;
+  background-color: #0071DB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 眼睛的顯示 */
+.bi-eye,
+.bi-eye-slash {
+  position: absolute;
+  /* width: 5%; */
+  left: 86%;
+  font-size: 20px;
+  /* margin-left: 10px; */
+  color: #1C3D5C;
+  cursor: pointer;
+}
+
+.bi-eye,
+.bi-eye2 {
+  display: none;
+}
+
+.loginu {
+  letter-spacing: .2rem;
+  font-weight: 500;
+  padding: 10px 0px 10px 20px;
+  width: 80%;
+  font-size: 16px;
+  border: none;
+  color: #1C3D5C;
+}
+
+::-webkit-input-placeholder {
+  color: rgb(179, 179, 179);
+  opacity: .9;
+}
+
+.loginu:focus {
+  background-color: rgb(248, 248, 248);
+  outline: none;
+}
+
+.logins {
+  font-weight: 550;
+  margin-bottom: 2rem;
+  background-color: #0071DB;
+  border: none;
+  padding: .5rem 5rem;
+  border-radius: .5rem;
+  cursor: pointer;
+  color: white;
+  letter-spacing: .3rem;
+  font-size: 20px;
+  box-shadow: 7px 7px 11px rgba(78, 78, 78, 0.25);
+  /* transition: 1s; */
+}
+
+.logins:active {
+  background-color: #0057A8;
+  transform: scale(.95);
+}
+
+.line-with-circle {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.divhr {
+  width: 30%;
+  /* font-weight: bold; */
+  height: 1px;
+  background-color: gray;
+}
+
+.circle {
+  /* background-color: gray; */
+  border: .2rem solid gray;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 0px 30px;
+}
+
+.logobtn {
+  /* width: 80%; */
+  /* margin-top: 1.5rem; */
+  text-align: center;
+}
+
+.logobtn a {
+  font-size: 1.2rem;
+  text-decoration: none;
+  font-weight: bold;
+  color: #1C3D5C;
+  padding: .5rem 1.5rem;
+}
+
+.logobtn a:hover {
+  background-color: rgb(240, 240, 240);
+  border-radius: 1rem;
+}
+
+/* 忘記密碼彈跳窗 */
+.wrap {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.btn {
+  /* background-color: #FFB80C; */
+  text-decoration: none;
+  color: #1e1e1e;
+  padding: .5rem 3rem;
+  border-radius: 5px;
+}
+.btn:hover{
+  background-color: rgb(230, 230, 230);
+}
+
+#Verification_But{
+  position: absolute;
+  right: -50px;
+  /* left: 100px; */
+  cursor: pointer;
+  background-color: #0057A8;
+  color: #fff;
+  padding: .4rem 1rem;
+  font-size: 15px;
+  border-radius: .3rem;
+  letter-spacing: .3rem;
+}
+#Verification_But:active{
+  background-color:#1C3D5C;
+  transform: scale(.95);
+}
+.popup-wrap {
+  background-color: #0071DB;
+  width: 100%;
+  height: 100%;
+  display: none;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  content: '';
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 10;
+}
+
+.popup-box {
+  background-color: #0071DB;
+  width: 40%;
+  padding: 4% 4%;
+  transform: translate(-50%, -50%) scale(0.5);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  box-shadow: 0px 2px 16px rgba(167, 167, 167, 0.5);
+  border-radius: 3px;
+  background: #fff;
+  text-align: center;
+  display: flex;
+}
+
+.fgH1{
+  margin-bottom: 2rem;
+  color: #1C3D5C;
+  letter-spacing: .5rem;
+}
+.fgInput {
+  letter-spacing: .3rem;
+  font-weight: 500;
+  padding: 10px 0px 10px 20px;
+  width: 70%;
+  font-size: 16px;
+  border: none;
+  color: #000000;
+  margin-left: 20px;
+  font-size: 20px;
+  outline: none;
+}
+
+.fgBut{
+  width: 40%;
+  background-color:#0071DB;
+  padding: 5px 20px 5px 20px;
+  box-shadow: 5px 5px 11px rgba(26, 26, 26, 0.5);
+  color: #fff;
+  border-radius: .5rem;
+  cursor: pointer;
+  /* transform: translate(-50%, -50%) scale(1); */
+}
+.fgBut:active{
+  background-color: #1C3D5C;
+  transform:  scale(.95);
+}
+
+
+.fgdivinput {
+  /* background-color: aqua; */
+  width: 75%;
+  position: relative;
+  padding: 10px 15px;
+  /* padding-bottom: 10px; */
+  left: 12.5%;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  border-bottom: 1px solid gray;
+  margin-bottom: 2.5rem;
+}
+
+.close-btn {
+  width: 25px;
+  height: 25px;
+  /* display: flex; */
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 100%;
+  background: #d75f70;
+  font-weight: bold;
+
+  /* text-align: center; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* line-height: 20px; */
+}
+.popup-close{
+  color: #fff;
+  font-size: 20px;
+  text-decoration: none;
+  box-sizing: border-box;
+  margin: 0px;
+  position: absolute;
+  bottom: 2px;
+  right: 3px;
+}
+
+.transform-in,
+.transform-out {
+  display: block;
+  -webkit-transition: all ease 0.5s;
+  transition: all ease 0.5s;
+}
+
+.transform-in {
+  -webkit-transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.transform-out {
+  -webkit-transform: translate(-50%, -50%) scale(0.9);
+  transform: translate(-50%, -50%) scale(.9);
+}
+/* 取消驗證碼數字框的上下加減符號 */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+
+/* onlogin.css */
+.userName{
+  color: #0071DB;
+  font-size: 24px;
+}
+.onloginH2{
+  margin-bottom: 1.3rem;
+  letter-spacing: 8px;
+}
+.onloginA{
+  font-size: 1.2rem;
+  color: #0057A8;
+  text-decoration: none;
+}
+.onloginDiv{
+  margin-top: 3rem;
+}
+
+
+
+
+
+/* RWD */
+@media screen and (max-width:1300px) {
+
+  .loginpage {
+    width: 50%;
+    left: 25%;
+  }
+
+  .signbox {
+    width: 80%;
+    left: 10%;
+  }
+}

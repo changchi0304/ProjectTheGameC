@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>遊戲庫</title>
+    <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="./style/gamePack.css" />
+    <style>
+      #vanta-canvas {
+        background-image: url("../public/img/Games/GameTypeBg/Shooting.jpg");
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- 左邊：遊戲選擇 -->
+    <div class="background"></div>
+    <div class="allScreen">
+      <section class="section1">
+        <div class="downNote">往下滾動查看更多遊戲</div>
+        <div class="game" id="gameSelect">
+          <img src="../public/img/Games/AVA/cover.jpg" alt="" />
+          <p>CSO 絕對武力</p>
+        </div>
+        <div class="game">
+          <img src="../public/img/Games/CSO/cover.jfif" alt="" />
+          <p>CSO 絕對武力</p>
+        </div>
+        <div class="game">
+          <img src="../public/img/Games/SuddenAttack/cover.jpg" alt="" />
+          <p>CSO 絕對武力</p>
+        </div>
+        <div class="game">
+          <img src="../public/img/Games/SuddenAttack/cover.jpg" alt="" />
+          <p>CSO 絕對武力</p>
+        </div>
+        <div class="game">
+          <img src="../public/img/Games/AVA/cover.jpg" alt="" />
+          <p>CSO 絕對武力</p>
+        </div>
+        <div class="game">
+          <img src="../public/img/Games/AVA/cover.jpg" alt="" />
+          <p>CSO 絕對武力</p>
+        </div>
+      </section>
+
+      <!-- 中間：遊戲資訊 -->
+      <section class="section2">
+        <div class="s2left">
+          <div class="s2Ldiv">
+            <div class="s2Ltop"><span>CSO 絕對武力</span></div>
+            <hr />
+            <div class="s2Lbot">
+              <div class="gameTypeDiv">
+                <span class="gameType">射擊</span>
+              </div>
+              <div>
+                <div class="gameInfo">
+                  <span>
+                    Counter-Strike
+                    是一款經典的第一人稱射擊遊戲，玩家需要根據任務目標進行射擊、燒毀物品、拆除炸彈等各種戰鬥行動。遊戲以恐怖分子和反恐精英兩方對戰為主題，具有深度和高度的槍械操作性和社交性的遊戲。</span
+                  >
+                </div>
+                <br /><br /><br />
+                <div class="gameInfo2">
+                  <div>
+                    <p><span>開發商：</span><span>Value</span></p>
+                    <p><span>營運商：</span><span>TheGameC</span></p>
+                    <p><span>年齡限制：</span><span>普遍級</span></p>
+                    <p><span>評分：</span><span>3.5</span></p>
+                    <p><span>遊玩人數：</span><span>15000</span></p>
+                  </div>
+                  <div class="s2btnDiv">
+                    <button>加入遊戲庫</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="s2right">
+          <div class="PicSec">
+            <div class="bigImg">
+              <img src="../public/img/Games/AVA/cover.jpg" alt="" />
+            </div>
+            <div class="PicBar">
+              <div class="smallPicDiv" onclick="selectPic()">
+                <img src="../public/img/Games/AVA/cover.jpg" alt="" />
+              </div>
+              <div class="smallPicDiv" onclick="selectPic()">
+                <img src="../public/img/Games/AVA/1.jpg" alt="" />
+              </div>
+              <div class="smallPicDiv" onclick="selectPic()">
+                <img src="../public/img/Games/AVA/2.jpg" alt="" />
+              </div>
+              <div class="smallPicDiv" onclick="selectPic()">
+                <img src="../public/img/Games/AVA/3.jpg" alt="" />
+              </div>
+              <div class="smallPicDiv" onclick="selectPic()">
+                <img src="../public/img/Games/AVA/4.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 中間：評論區 -->
+      <!-- <section class="section2Comment">
+        <div class="s2left"></div>
+        <div class="s2right"></div>
+      </section> -->
+
+      <!-- 右邊：遊戲資訊 -->
+      <section class="section3">
+        <div>
+          <li id="funcSelect"><p>遊戲資訊</p></li>
+          <li><p>評論區</p></li>
+          <li><p>推薦遊戲</p></li>
+          <li><p>個人頁面</p></li>
+        </div>
+      </section>
+    </div>
+
+    <!-- <script src="./app/three.r134.min.js"></script>
+    <script src="./app/vanta.fog.min.js"></script>
+    <script>
+      VANTA.FOG({
+        el: "#vanta-canvas",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.0,
+        minWidth: 200.0,
+        highlightColor: 0x3d3d3d,
+        midtoneColor: 0x595959,
+        lowlightColor: 0x242424,
+        baseColor: 0x0,
+        blurFactor: 0.29,
+        zoom: 1.4,
+      });
+    </script> -->
+  </body>
+</html>

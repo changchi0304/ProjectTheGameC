@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TheGameC - 首頁</title>
+    <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="/style/shopping_cart.css" />
+    <script src="/app/jquery.js"></script>
+  </head>
+  <body>
+    <!-- header -->
+    <%- include('share/header')%>
+
+    <!-- section1 最上方影片 + 封面 -->
+    <!-- <section class="section1"> -->
+    <!-- <div class="s1container"><img src="/img/wallet/bg.jpg" /></div> -->
+    <!-- <div class="video"> -->
+    <!-- <img src="/img/shop/image 23.png" alt="" /> -->
+    <!-- </div> -->
+    <!-- </section> -->
+
+    <!-- 設定step 123區 -->
+    <div class="thestepbox">
+      <div id="thestep1">
+        <h3>步驟 1</h3>
+        <p class="thestepcontent">請先確認已登入會員</p>
+      </div>
+      <div id="thestep2">
+        <h3>步驟 2</h3>
+        <p class="thestepcontent">檢查購物車的商品與數量</p>
+      </div>
+      <div id="thestep3">
+        <h3>步驟 3</h3>
+        <p class="thestepcontent">填寫信用卡資訊<br /><br />點選確認結帳</p>
+      </div>
+    </div>
+
+    <!-- section2 購物車 -->
+    <section class="section2">
+      <div class="title">
+        <img src="/img/shop/shopping-cart.png" /><span>購物車</span>
+      </div>
+      <div class="cart">
+        <ul>
+          <li class="liTitle">
+            <span></span>
+            <span>商品名稱</span>
+            <span>類型</span>
+            <span>價格</span>
+            <span></span>
+          </li>
+          <!-- 樣本 -->
+          <% if(SCdata.length>0){ SCdata.map(function(v){ %>
+          <li class="singleSC">
+            <input
+              class="ForProductID"
+              name="pid<%- v.product_id %>"
+              type="hidden"
+              value="<%- v.product_id %>"
+            />
+            <span class="imgDiv"
+              ><img src="/img/Products/<%- v.image %>" alt=""
+            /></span>
+            <span><%- v.product_name %></span>
+            <span
+              ><div><span><%- v.product_type %></span></div>
+            </span>
+            <span
+              ><div>
+                <span>NT$</span><span id="cartCost"><%- v.price %></span>
+              </div>
+            </span>
+            <span onclick="delSC('<%- v.cart_id %>')"
+              ><img src="/img/shop/Trash.png"
+            /></span>
+          </li>
+          <% }) } else {%>
+          <div class="noProduct">
+            <p>您的購物車內尚未擁有商品</p>
+            <br />
+            <a href="/store">點我前往商品頁面</a>
+          </div>
+          <% } %>
+
+          <!-- <li>
+            <span><img src="/img/shop/game/far_cry.jpg" alt="" /></span>
+            <span>極地戰嚎3</span>
+            <span
+              ><div><span>單價 NT$</span><span>499</span></div>
+            </span>
+            <span
+              ><div><span>NT$</span><span id="cartCost">499</span></div>
+            </span>
+            <span><img src="/img/shop/Trash.png" /></span>
+          </li> -->
+        </ul>
+      </div>
+    </section>
+
+    <!-- section3 結帳 -->
+    <section class="section3">
+      <form id="payForm" action="">
+        <!-- 左邊部分 -->
+        <div class="left">
+          <div class="leftcontainer">
+            <p>VISA或信用卡資訊</p>
+            <div class="creditEnter">
+              <div>
+                <label for="">持卡人姓名</label> <br />
+                <input type="text" required />
+              </div>
+              <div>
+                <label for="">信用卡卡號</label> <br />
+                <input
+                  type="text"
+                  name="creditAccount"
+                  pattern="^(4[0-9]{12}(?:[0-9]{3})?)$|^5[1-5][0-9]{14}$|^35[0-9]{14}$"
+                  required
+                />
+              </div>
+              <div>
+                <label for="">有效日期</label> <br />
+                <input
+                  type="text"
+                  placeholder="月 / 年"
+                  pattern="^(0[1-9]|1[0-2])\/([0-9]{2}|[0-9]{4})$"
+                  required
+                />
+              </div>
+              <div>
+                <label for="">安全碼</label> <br />
+                <input
+                  type="text"
+                  placeholder="背面三碼"
+                  pattern="^[0-9]{3,4}$"
+                  required
+                />
+              </div>
+              <br /><br />
+              <div class="cartCreditConfirmBtnDiv">
+                <button>確認結帳</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 右邊部分 -->
+        <div class="right">
+          <div class="rightcontainer">
+            <ul>
+              <li>
+                <span></span>
+                <span>應付金額</span>
+              </li>
+              <hr />
+              <li>
+                <span>購物車總計</span>
+                <span class="total"
+                  >NT$
+                  <span id="total"><%- SCtotal.total_price || 0 %></span></span
+                >
+              </li>
+            </ul>
+          </div>
+          <a href="#">繼續選購</a>
+        </div>
+      </form>
+    </section>
+
+    <dialog class="paySussess">
+      <div>
+        <img src="/img/login/login_logo.png" alt="" /><br />
+        <span>交易完成</span>
+        <p onclick="closeDialog()">關閉</p>
+      </div>
+    </dialog>
+
+    <!-- footer -->
+    <%- include('share/footer')%>
+
+    <script src="/app/app.js"></script>
+
+    <script>
+      // ----------------以下為最上方step的設定---------------
+      // 取得所有的 <div> 元素
+      const stepDivs = document.querySelectorAll(".thestepbox > div");
+
+      // 為每個 <div> 元素添加滑鼠懸停事件監聽器
+      stepDivs.forEach((div) => {
+        div.addEventListener("mouseenter", () => {
+          const h3 = div.querySelector("h3");
+          const p = div.querySelector(".thestepcontent");
+
+          // 將 <h3> 元素往上滑動到 <div> 的最上方
+          $(h3).css({
+            transform: "translateY(-100%)",
+            transition: "transform 0.4s",
+          });
+
+          // 顯示 <p> 元素在 <h3> 的正下方
+          $(p).fadeIn();
+          $(p).css({
+            marginTop: "-12px",
+            transform: "translateY(-60)",
+          });
+
+          // 增加 <div> 元素的高度
+          div.style.height = `${div.offsetHeight + 20}px`;
+        });
+
+        // 滑鼠離開時恢復原來的位置和樣式
+        div.addEventListener("mouseleave", () => {
+          const h3 = div.querySelector("h3");
+          const p = div.querySelector(".thestepcontent");
+
+          // 將 <h3> 元素恢復到原來的位置
+          $(h3).css({
+            transform: "none",
+            transition: "transform 0.6s",
+          });
+
+          // 隱藏 <p> 元素
+          // $(p).fadeOut();
+          $(p).css({
+            display: "none",
+            marginTop: "0",
+            transform: "none",
+          });
+
+          // 恢復 <div> 元素的原始高度
+          div.style.height = "";
+        });
+      });
+
+      /* CRUD */
+      // 刪除
+      function delSC(x) {
+        $.ajax({
+          url: `http://localhost:80/products/api/DeleteSC`,
+          type: "DELETE",
+          data: {
+            cart_id: x,
+          },
+        }).done((data) => {
+          location.reload();
+        });
+      }
+
+      // 結帳
+      $(function () {
+        $("#payForm").on("submit", function (e) {
+          e.preventDefault();
+          if (parseInt("<%- SCdata.length %>") > 0) {
+            let productIds = [];
+            $(".singleSC").each(function () {
+              let productId = $(this).find('input[class="ForProductID"]').val();
+              productIds.push(productId);
+            });
+            // 傳入商品定單
+            $.ajax({
+              url: `http://localhost:80/products/api/product_orders`,
+              type: "POST",
+              data: {
+                user_id: "<%-userID%>",
+                products_id: JSON.stringify(productIds),
+                total_price: parseInt($("#total").text()),
+                credit_account: $("input[name='creditAccount']").val(),
+              },
+            }).done((data) => {
+              // 傳入使用者已擁有此商品
+              productIds.forEach(function (v) {
+                $.ajax({
+                  url: `http://localhost:80/products/api/user_products`,
+                  type: "POST",
+                  data: {
+                    user_id: "<%-userID%>",
+                    product_id: v,
+                  },
+                }).done((data) => {
+                  $.ajax({
+                    url: `http://localhost:80/products/api/DeleteAllSC`,
+                    type: "DELETE",
+                    data: {
+                      user_id: "<%-userID%>",
+                    },
+                  }).done((data) => {
+                    window.location = "/products/shopping_cart?deal=sussess";
+                  });
+                });
+              });
+            });
+          } else {
+            alert("您的購物車內目前沒有任何商品。");
+          }
+        });
+      });
+
+      /* 交易結果 */
+      document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const alertParam = urlParams.get("deal");
+
+        if (alertParam === "sussess") {
+          document.querySelector(".paySussess").showModal();
+        }
+      });
+
+      /* 關閉交易成功 */
+      function closeDialog() {
+        document.querySelector(".paySussess").close();
+      }
+    </script>
+  </body>
+</html>

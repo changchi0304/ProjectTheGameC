@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>錢包 - 儲值頁面</title>
+    <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="/style/wallet.css" />
+  </head>
+  <body>
+    <!-- header -->
+    <header>
+      <!-- logo -->
+      <div class="logo" onclick="goIndex()">
+        <img src="/img/header/head_logo.png" alt="" />
+      </div>
+      <!-- navbar -->
+      <nav>
+        <ul>
+          <li>
+            <a href="#"
+              >遊戲
+              <img id="headdropdown" src="/img/header/head_dropdown.png" alt=""
+            /></a>
+            <div class="dropdown">
+              <ul>
+                <li><a href="./game.html">遊戲頁</a></li>
+                <li><a href="#">休閒</a></li>
+                <li><a href="#">動作</a></li>
+                <li><a href="#">運動</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">
+              商店
+              <img id="headdropdown" src="/img/header/head_dropdown.png" alt=""
+            /></a>
+            <div class="dropdown">
+              <ul>
+                <li><a href="#">商品頁</a></li>
+                <li><a href="./shopping_cart.html">購物車</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="./news.html"
+              >新聞
+              <img id="headdropdown" src="/img/header/head_dropdown.png" alt=""
+            /></a>
+            <div class="dropdown">
+              <ul>
+                <li><a href="./news.html">最新消息</a></li>
+                <li><a href="./news.html">遊戲更新</a></li>
+                <li><a href="./news.html">優惠活動</a></li>
+                <li><a href="./news.html">新品上架</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">
+              關於
+              <img id="headdropdown" src="/img/header/head_dropdown.png" alt=""
+            /></a>
+            <div class="dropdown">
+              <ul>
+                <li><a href="#">公司介紹</a></li>
+                <li><a href="#">徵才</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">
+              客服
+              <img id="headdropdown" src="/img/header/head_dropdown.png" alt=""
+            /></a>
+            <div class="dropdown">
+              <ul>
+                <li><a href="./qa.html">常見問題</a></li>
+                <li><a href="./mail">客服信箱</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div class="navbar-icons">
+        <a href="#"><img src="/img/header/head_search.png" alt="" /></a>
+        <a id="GoWalletPage" href="./wallet_PI.html"
+          ><img src="/img/header/head_wallet.png" alt=""
+        /></a>
+        <a id="GoLoginPage" href="./newlogin.html">
+          <img src="/img/header/head_user.png" alt=""
+        /></a>
+      </div>
+    </header>
+
+    <!-- section -->
+    <section class="section">
+      <!-- 左半部 -->
+      <div class="sleft">
+        <ul class="snav">
+          <li>
+            <a href="PI"
+              ><img
+                class="walletIcon"
+                src="/img/wallet/wallet_user.png"
+                alt=""
+              />
+              <img
+                class="walletIcon_hover"
+                src="/img/wallet/wallet_user(hover).png"
+                alt=""
+              /><span>個人資訊</span></a
+            >
+          </li>
+          <li class="walletMyRouter">
+            <a href="#"
+              ><img
+                class="walletIcon"
+                src="/img/wallet/wallet_recharge.png"
+                alt=""
+              /><img
+                class="walletIcon_hover"
+                src="/img/wallet/wallet_recharge(hover).png"
+                alt=""
+              /><span>儲值頁面</span></a
+            >
+          </li>
+          <li>
+            <a href="exchange"
+              ><img
+                class="walletIcon"
+                src="/img/wallet/wallet_exchange.png"
+                alt=""
+              /><img
+                class="walletIcon_hover"
+                src="/img/wallet/wallet_exchange(hover).png"
+                alt=""
+              /><span>轉點系統</span></a
+            >
+          </li>
+        </ul>
+        <!-- 餘額 -->
+        <div class="sbalance">
+          <img src="/img/wallet/coinIcon.png" />
+          <span>C幣餘額：<span>105</span> </span>
+        </div>
+      </div>
+
+      <!-- 右半部 -->
+      <div class="s2right">
+        <!-- 儲值方式 -->
+        <div class="s2rightPart1">
+          <div class="s2part1top"><p>請選擇儲值方式</p></div>
+          <div class="s2part1down">
+            <div class="s2part1methods">
+              <div class="methodDiv">
+                <input
+                  id="useCredit"
+                  type="radio"
+                  value="credit"
+                  name="payMethod"
+                />
+                <div class="method1">
+                  <li>信用卡/簽帳卡</li>
+                  <li>
+                    <img src="/img/wallet/VISA.png" /><img
+                      src="/img/wallet/Mastercard.png"
+                    /><img src="/img/wallet/JCB.png" />
+                  </li>
+                </div>
+              </div>
+              <div class="methodDiv">
+                <input
+                  id="usePaypal"
+                  type="radio"
+                  value="paypal"
+                  name="payMethod"
+                />
+                <div class="method1">
+                  <li>Pay Pal</li>
+                  <li>
+                    <img src="/img/wallet/paypal.png" />
+                  </li>
+                </div>
+              </div>
+              <div class="methodDiv">
+                <input
+                  id="useGash"
+                  type="radio"
+                  value="gash"
+                  name="payMethod"
+                />
+                <div class="method1">
+                  <div>
+                    <li>點數卡儲值</li>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br /><br />
+        <!-- 儲值面額 -->
+        <div class="s2rightPart2">
+          <div class="s2part1top"><p>請選擇儲值面額</p></div>
+          <div class="s2part2down">
+            <ul>
+              <li>
+                <div class="CoinDiv">
+                  <p>NT$ 50</p>
+                  <div class="coinImgDiv">
+                    <img src="/img/wallet/coin1.png" alt="" />
+                  </div>
+
+                  <div>
+                    <img src="/img/wallet/coinIcon.png" /><span>C幣 60</span>
+                  </div>
+                  <button onclick="recharge(50,60)">儲值</button>
+                </div>
+                <div class="CoinDiv">
+                  <p>NT$ 100</p>
+                  <div class="coinImgDiv">
+                    <img src="/img/wallet/coin2.png" alt="" />
+                  </div>
+                  <div>
+                    <img src="/img/wallet/coinIcon.png" /><span>C幣 60</span>
+                  </div>
+                  <button onclick="recharge(100,135)">儲值</button>
+                </div>
+                <div class="CoinDiv">
+                  <p>NT$ 250</p>
+                  <div class="coinImgDiv">
+                    <img src="/img/wallet/coin2.png" alt="" />
+                  </div>
+                  <div>
+                    <img src="/img/wallet/coinIcon.png" /><span>C幣 60</span>
+                  </div>
+                  <button onclick="recharge(250,300)">儲值</button>
+                </div>
+              </li>
+              <li>
+                <div class="CoinDiv">
+                  <p>NT$ 500</p>
+                  <div class="coinImgDiv">
+                    <img src="/img/wallet/coin3.png" alt="" />
+                  </div>
+                  <div>
+                    <img src="/img/wallet/coinIcon.png" /><span>C幣 60</span>
+                  </div>
+                  <button onclick="recharge(500,650)">儲值</button>
+                </div>
+                <div class="CoinDiv">
+                  <p>NT$ 750</p>
+                  <div class="coinImgDiv">
+                    <img src="/img/wallet/coin3.png" alt="" />
+                  </div>
+                  <div>
+                    <img src="/img/wallet/coinIcon.png" /><span>C幣 60</span>
+                  </div>
+                  <button onclick="recharge(750,950)">儲值</button>
+                </div>
+                <div class="CoinDiv">
+                  <p>NT$ 1000</p>
+                  <div class="coinImgDiv">
+                    <img src="/img/wallet/coin4.png" alt="" />
+                  </div>
+                  <div>
+                    <img src="/img/wallet/coinIcon.png" /><span>C幣 60</span>
+                  </div>
+                  <button onclick="recharge(1000,1400)">儲值</button>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <dialog id="rechargedialog">
+      <button id="closeDialog">
+        <img src="/img/wallet/close.png" alt="" />
+      </button>
+      <form action="">
+        <!-- 使用信用卡儲值 -->
+        <div class="credit_paypal_gash">
+          <div class="Lconfirm">
+            <div class="LCtitle">確認購買內容</div>
+            <div class="LCbuy">
+              <li>
+                <span class="LCBthing">商品</span>
+                <span
+                  ><img src="/img/wallet/coinIcon.png" />幣
+                  <span class="Cget">0</span></span
+                >
+              </li>
+              <li>
+                <span class="LCBthing">價格</span
+                ><span>NT$ <span class="Ccost">0</span></span>
+              </li>
+            </div>
+          </div>
+          <div>使用 <span id="yourMethod"></span> 購買</div>
+          <!-- 信用卡輸入 -->
+          <div class="creditEnter">
+            <div>
+              <label for="">持卡人姓名</label> <br />
+              <input type="text" name="creditName" />
+            </div>
+            <div>
+              <label for="">信用卡卡號</label> <br />
+              <input type="text" name="creditNumber" />
+            </div>
+            <div>
+              <label for="">有效日期</label> <br />
+              <input type="number" placeholder="月 / 年" />
+            </div>
+            <div>
+              <label for="">安全碼</label> <br />
+              <input type="text" placeholder="背面三碼" />
+            </div>
+            <br /><br />
+            <div class="rechargeConfirmBtnDiv"><button>確認儲值</button></div>
+          </div>
+          <!-- Paypal 輸入 -->
+          <div class="paypalEnter">
+            <div>
+              <label for="">Paypal 帳號：</label> <br />
+              <input type="text" name="payaplAccount" />
+            </div>
+            <div>
+              <label for="">Paypal 密碼：</label> <br />
+              <input type="text" />
+            </div>
+            <div>
+              <label for="">E-mail：</label> <br />
+              <input type="email" name="payaplEmail" />
+            </div>
+            <br /><br />
+            <div class="rechargeConfirmBtnDiv"><button>確認儲值</button></div>
+          </div>
+          <!-- Gash 輸入 -->
+          <div class="gashEnter">
+            <div>
+              <label for="">Gash 序號：</label> <br />
+              <input type="text" name="gashNumber" />
+            </div>
+            <div>
+              <label for="">Gash 密碼：</label> <br />
+              <input type="text" />
+            </div>
+            <br /><br />
+            <div class="rechargeConfirmBtnDiv"><button>確認儲值</button></div>
+          </div>
+        </div>
+      </form>
+    </dialog>
+    <script src="/app/app.js"></script>
+    <script>
+      // 信用卡 + dialog
+      function recharge(ntd, ccoin) {
+        var myPayMethod = Array.from(
+          document.querySelectorAll(".methodDiv input")
+        ); // 類陣列 nodelist 轉成陣列，forEach 最好用於一般陣列
+        let result;
+        myPayMethod.forEach((elem, i) => {
+          if (elem.checked) {
+            result = elem;
+            // 設 result 為符合 checked 的 input
+          }
+        });
+        if (result) {
+          switch (result.id) {
+            case "useCredit":
+              document.querySelector("span.Cget").innerHTML = ntd;
+              document.querySelector("span.Ccost").innerHTML = ccoin;
+              yourMethod.innerHTML = result
+                .closest(".methodDiv")
+                .querySelector(".method1 li").innerText;
+              document.querySelector(".creditEnter").style.display = "block";
+              document.querySelector("dialog").showModal();
+
+              console.log("credit");
+              console.log(ntd);
+              console.log(ccoin);
+              // 選擇離 result 最近的 li
+              break;
+            case "usePaypal":
+              document.querySelector("span.Cget").innerHTML = ntd;
+              document.querySelector("span.Ccost").innerHTML = ccoin;
+              yourMethod.innerHTML = result
+                .closest(".methodDiv")
+                .querySelector(".method1 li").innerText;
+              document.querySelector(".paypalEnter").style.display = "block";
+              document.querySelector("dialog").showModal();
+
+              console.log("paypal");
+              console.log(ntd);
+              console.log(ccoin);
+              // 選擇離 result 最近的 li
+              break;
+            case "useGash":
+              document.querySelector("span.Cget").innerHTML = ntd;
+              document.querySelector("span.Ccost").innerHTML = ccoin;
+              yourMethod.innerHTML = result
+                .closest(".methodDiv")
+                .querySelector(".method1 li").innerText;
+              document.querySelector(".gashEnter").style.display = "block";
+              document.querySelector("dialog").showModal();
+
+              console.log("gash");
+              console.log(ntd);
+              console.log(ccoin);
+              // 選擇離 result 最近的 li
+              break;
+          }
+        } else {
+          alert("請選擇一項儲值方式。");
+        }
+      }
+
+      // 關閉 dialog
+      closeDialog.addEventListener("click", () => {
+        document.querySelector("dialog").close();
+        document.querySelector(".creditEnter").style.display = "none";
+        document.querySelector(".paypalEnter").style.display = "none";
+        document.querySelector(".gashEnter").style.display = "none";
+      });
+    </script>
+  </body>
+</html>

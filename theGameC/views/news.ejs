@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TheGameC - 最新消息</title>
+    <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="/style/news.css" />
+    <style></style>
+  </head>
+  <body>
+    <!-- header -->
+    <%- include('share/header')%>
+
+  <!---------------------- 設定搜索欄的東西 --------------------->
+  <div class="overlay" id="overlay">
+    <!-- 這是包住裡面所有東西的大外框 -->
+    <div class="thecococ">
+      <!-- 這是叉叉符號區 -->
+      <div id="closeBtn" class="close-btn">
+        <p>&times;</p>
+      </div>
+      <!-- .close-btn 結束標籤 -->
+
+      <!-- 這是放大鏡搜尋區+收尋欄+收尋按鈕 -->
+      <div class="thefindcontent">
+        <img src="/img/header/head_search.png" />
+        <input id="searchInput" type="text" />
+        <button id="searchBtn" type="button">搜尋</button>
+      </div>
+      <div id="thenews"></div>          <!--最新消息-->
+      <div id="theupdate"></div>        <!--遊戲更新-->
+      <div id="thediscount"></div>      <!--優惠活動-->
+      <div id="newsproducts"></div>     <!--新品上架-->
+    </div>
+    <!-- .thecococ 結束標籤 -->
+  </div>
+  <!-- .overlay 結束標籤 -->
+<!-- ---------------------------------------------------------- -->
+
+
+
+    <!-- section1 -->
+    <!-- <section class="section1">
+      <div class="s1h1"><h1><%= title_TC %></h1></div>
+    </section> -->
+    <br />
+    <section class="section1">
+      <div class="s1Info">
+        <h1><%= title_TC %></h1>
+        <p><%= title_text %></p>
+      </div>
+      <div class="s1Img"><img src=<%=`/img/news/${title_Img}` %> alt="" /></div>
+    </section>
+
+    <!-- section2 -->
+    <section class="section2">
+      <!-- 左半部 -->
+      <div class="s2left">
+        <% newsArr[currentPage-1].map(function(elem, index) { %>
+        <!---->
+        <div class="new">
+          <div class="newImg">
+            <img src=<%=`/img/news/${elem.news_img}` %> alt="" />
+          </div>
+          <div class="newContent">
+            <h3><%= elem.news_title %></h3>
+            <p class="newDate">發文日期：<%= elem.formatted_created_at %></p>
+            <p class="newInfo">
+              <%= elem.content %>
+              <br />
+              <br />
+              <span><%= elem.dateTime %></span>
+            </p>
+          </div>
+        </div>
+        <hr />
+        <!---->
+        <% }) %>
+
+        <!-- <div class="s2left">
+        <% newsData.map(function (elem, i) { %>
+        <div class="new">
+          <div class="newImg">
+            <img src=<%=`/img/news/${newsData[i].news_img}` %> alt="" />
+          </div>
+          <div class="newContent">
+            <h3><%= newsData[i].news_title %></h3>
+            <p class="newDate">
+              發文日期：<%= newsData[i].formatted_created_at %>
+            </p>
+            <p class="newInfo">
+              <%= newsData[i].content %>
+              <br />
+              <br />
+              <span><%= newsData[i].dateTime %></span>
+            </p>
+          </div>
+        </div>
+        <hr />
+        <% }) %> -->
+      </div>
+      <!-- 右半部 -->
+      <!-- <hr /> -->
+      <div class="s2right">
+        <div class="newClass">
+          <!-- 單個分類 -->
+          <!-- 最新消息 -->
+          <li>
+            <a href="/news/latest">
+              <div class="oneNewClass">
+                <img src="/img/news/latest/cover.jpg" alt="" />
+                <span>最新消息</span>
+                <!-- 重疊效果 -->
+                <div class="overlap"></div>
+                <div class="bright"></div></div
+            ></a>
+          </li>
+          <!-- 遊戲更新 -->
+          <li>
+            <a href="/news/games_updates">
+              <div class="oneNewClass">
+                <img src="/img/news/games_updates/cover.jpg" alt="" />
+                <span>遊戲更新</span>
+                <!-- 重疊效果 -->
+                <div class="overlap"></div>
+                <div class="bright"></div></div
+            ></a>
+          </li>
+          <!-- 優惠活動 -->
+          <li>
+            <a href="/news/products_promotions">
+              <div class="oneNewClass">
+                <img src="/img/news/products_promotions/cover.jpg" alt="" />
+                <span>優惠活動</span>
+                <!-- 重疊效果 -->
+                <div class="overlap"></div>
+                <div class="bright"></div></div
+            ></a>
+          </li>
+          <!-- 新品上架 -->
+          <li>
+            <a href="/news/new_products">
+              <div class="oneNewClass">
+                <img src="/img/news/new_products/cover.jpg" alt="" />
+                <span>新品上架</span>
+                <!-- 重疊效果 -->
+                <div class="overlap"></div>
+                <div class="bright"></div></div
+            ></a>
+          </li>
+        </div>
+      </div>
+    </section>
+
+    <!-- section3 -->
+    <section class="section3">
+      <% for(let i = 1; i<= totalPages;i++){ %>
+      <a
+        class="<%= (i == currentPage)? 'PageSelected' : '' %>"
+        href="/news/<%= title %>?page=<%= i %>"
+      >
+        <%= i %></a
+      >
+      <% } %>
+    </section>
+
+    <!-- footer -->
+    <%- include('share/footer')%>
+
+    <script src="/app/app.js"></script>
+
+    <script
+    src="https://code.jquery.com/jquery-3.6.4.js"
+    integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+    crossorigin="anonymous"
+  ></script>
+    <script>
+      // ---這裡為黑色遮罩層
+    //這裡的thefindBtn 是我去->views->share->header.ejs裡面的 navbar-icons 的搜索欄埋的id
+    const thefindBtn = document.querySelector("#thefindBtn");
+    const overlay = document.querySelector("#overlay");
+    const closeBtn = document.querySelector("#closeBtn");
+
+    //如果點擊收尋放大鏡,黑色遮罩就會出現
+    document.addEventListener("DOMContentLoaded", function () {
+      thefindBtn.addEventListener("click", function () {
+        overlay.style.display = "block";
+      });
+      //如果點叉叉按鈕,黑色遮罩就會消失
+      closeBtn.addEventListener("click", function () {
+        overlay.style.display = "none";
+      });
+    });
+
+
+
+    // 這裡開始為收尋欄位的設定
+    const searchBtn = document.querySelector("#searchBtn");
+    const searchInput = document.querySelector("#searchInput");
+    // console.log(searchBtn,searchInput);
+
+// -------------------最新消息-----------------------------------
+    document.addEventListener("DOMContentLoaded", function () {
+      var currentUrl = window.location.href;
+      let thenews;
+      if (window.location.href.includes("/news/latest")) {
+        thenews = document.querySelector("#thenews");
+
+      searchBtn.addEventListener("click", function () {
+        var keyword = searchInput.value;
+        // console.log('你收尋的東西是:'+ keyword);
+
+        if (keyword !== "") {
+          $.ajax({
+            type: "GET",
+            url: "api/getlatest" ,
+            data: { keyword: keyword },
+            dataType: 'json', // 添加此行
+            success: function (data) {
+            // console.log('219行:',data);
+              // var theFindData = JSON.parse(data);
+              // console.log('你現在得到的資料是:',data);
+              renderResults(data,keyword);
+            },
+            error: function (xhr, status, error) {
+    console.error("AJAX 請求錯誤:", error);
+  }
+          });
+        }
+      });
+
+      function renderResults(results,keyword) {
+        // console.log("你搜到的結果是", results);
+        //清空收尋的結果
+        thenews.innerHTML = "";
+
+        if (results.length > 0) {
+          var hasMatch = false;
+          results.forEach(function (results) {
+            var newsimg = results.news_img;
+            var newstitle = results.news_title;
+            var newscontent = results.content;
+            // console.log("你的結果為:", newsimg + newstype + newstitle);
+
+            if (newstitle.includes(keyword)) {
+              var resultItem = document.createElement("div");
+              resultItem.classList.add("result-item");
+
+              resultItem.innerHTML = `
+              <a href="">
+                <img src="/img/news/${newsimg}">
+          <p>${newstitle}</p>
+          <p><span>${newscontent}</span></p>
+                </a>
+        `;
+        thenews.appendChild(resultItem);
+              hasMatch = true;
+            }
+          });
+        }  if(!hasMatch) {
+          // 没有搜索结果的情况下，顯示以下對話
+          var noResult = document.createElement("p");
+          noResult.classList.add("result-p");
+          noResult.textContent = "查無此相關資訊！";
+          // console.log(noResult);
+          thenews.appendChild(noResult);
+        }
+      }  
+      }
+    });
+    
+    // -------------------遊戲更新-----------------------------------
+    document.addEventListener("DOMContentLoaded", function () {
+      var currentUrl = window.location.href;
+      let theupdate;
+      if (window.location.href.includes("/news/games_updates")) {
+        theupdate = document.querySelector("#theupdate");
+
+
+
+      searchBtn.addEventListener("click", function () {
+        var keyword = searchInput.value;
+        // console.log('你收尋的東西是:'+ keyword);
+
+        if (keyword !== "") {
+          $.ajax({
+            type: "GET",
+            url: "api/getGameUpdates" ,
+            data: { keyword: keyword },
+            dataType: 'json', // 添加此行
+            success: function (data) {
+            console.log('294行:',data);
+              // var theFindData = JSON.parse(data);
+              // console.log('你現在得到的資料是:',data);
+              renderResults(data,keyword);
+            },
+            error: function (xhr, status, error) {
+    console.error("AJAX 請求錯誤:", error);
+    console.log("服务器返回的内容:", xhr.responseText);
+  }
+          });
+        }
+      });
+
+      function renderResults(results,keyword) {
+        // console.log("你搜到的結果是", results);
+        //清空收尋的結果
+        theupdate.innerHTML = "";
+
+        if (results.length > 0) {
+          var hasMatch = false;
+          results.forEach(function (results) {
+            var newsimg = results.news_img;
+            var newscontent = results.content;
+            var newstitle = results.news_title;
+            // console.log("你的結果為:", newsimg + newstype + newstitle);
+
+            if (newstitle.includes(keyword)) {
+              var resultItem = document.createElement("div");
+              resultItem.classList.add("result-item");
+
+              resultItem.innerHTML = `
+              <a href="">
+                <img src="/img/news/${newsimg}">
+          <p>${newstitle}</p>
+          <p><span>${newscontent}</span></p>
+                </a>
+        `;
+        theupdate.appendChild(resultItem);
+              hasMatch = true;
+            }
+          });
+        }  if(!hasMatch) {
+          // 没有搜索结果的情况下，顯示以下對話
+          var noResult = document.createElement("p");
+          noResult.classList.add("result-p");
+          noResult.textContent = "查無此相關資訊！";
+          // console.log(noResult);
+          theupdate.appendChild(noResult);
+        }
+      }  
+      }
+    });
+
+
+// -------------------優惠活動-----------------------------------
+document.addEventListener("DOMContentLoaded", function () {
+      var currentUrl = window.location.href;
+      let thediscount;
+      if (window.location.href.includes("/news/products_promotions")) {
+        thediscount = document.querySelector("#thediscount");
+
+
+
+      searchBtn.addEventListener("click", function () {
+        var keyword = searchInput.value;
+        // console.log('你收尋的東西是:'+ keyword);
+
+        if (keyword !== "") {
+          $.ajax({
+            type: "GET",
+            url: "api/getProductsPromotions" ,
+            data: { keyword: keyword },
+            dataType: 'json', // 添加此行
+            success: function (data) {
+            // console.log('373行:',data);
+              // var theFindData = JSON.parse(data);
+              // console.log('你現在得到的資料是:',data);
+              renderResults(data,keyword);
+            },
+            error: function (xhr, status, error) {
+    console.error("AJAX 請求錯誤:", error);
+    console.log("服务器返回的内容:", xhr.responseText);
+  }
+          });
+        }
+      });
+
+      function renderResults(results,keyword) {
+        // console.log("你搜到的結果是", results);
+        //清空收尋的結果
+        thediscount.innerHTML = "";
+
+        if (results.length > 0) {
+          var hasMatch = false;
+          results.forEach(function (results) {
+            var newsimg = results.news_img;
+            var newscontent = results.content;
+            var newstitle = results.news_title;
+            // console.log("你的結果為:", newsimg + newstype + newstitle);
+
+            if (newstitle.includes(keyword)) {
+              var resultItem = document.createElement("div");
+              resultItem.classList.add("result-item");
+
+              resultItem.innerHTML = `
+              <a href="">
+                <img src="/img/news/${newsimg}">
+          <p>${newstitle}</p>
+          <p><span>${newscontent}</span></p>
+                </a>
+        `;
+        thediscount.appendChild(resultItem);
+              hasMatch = true;
+            }
+          });
+        }  if(!hasMatch) {
+          // 没有搜索结果的情况下，顯示以下對話
+          var noResult = document.createElement("p");
+          noResult.classList.add("result-p");
+          noResult.textContent = "查無此相關資訊！";
+          // console.log(noResult);
+          thediscount.appendChild(noResult);
+        }
+      }  
+      }
+    });
+
+
+    // -------------------新品上架-----------------------------------
+    document.addEventListener("DOMContentLoaded", function () {
+      var currentUrl = window.location.href;
+      let newsproducts;
+      if (window.location.href.includes("/news/new_products")) {
+        newsproducts = document.querySelector("#newsproducts");
+         
+
+
+      searchBtn.addEventListener("click", function () {
+        var keyword = searchInput.value;
+        // console.log('你收尋的東西是:'+ keyword);
+
+        if (keyword !== "") {
+          $.ajax({
+            type: "GET",
+            url: "api/getNewProducts" ,
+            data: { keyword: keyword },
+            dataType: 'json', // 添加此行
+            success: function (data) {
+            // console.log('447行:',data);
+              // var theFindData = JSON.parse(data);
+              // console.log('你現在得到的資料是:',data);
+              renderResults(data,keyword);
+            },
+            error: function (xhr, status, error) {
+    console.error("AJAX 請求錯誤:", error);
+    console.log("服务器返回的内容:", xhr.responseText);
+  }
+          });
+        }
+      });
+
+      function renderResults(results,keyword) {
+        // console.log("你搜到的結果是", results);
+        //清空收尋的結果
+        newsproducts.innerHTML = "";
+
+        if (results.length > 0) {
+          var hasMatch = false;
+          results.forEach(function (results) {
+            var newsimg = results.news_img;
+            var newscontent = results.content;
+            var newstitle = results.news_title;
+            // console.log("你的結果為:", newsimg + newstype + newstitle);
+
+            if (newstitle.includes(keyword)) {
+              var resultItem = document.createElement("div");
+              resultItem.classList.add("result-item");
+
+              resultItem.innerHTML = `
+              <a href="">
+                <img src="/img/news/${newsimg}">
+          <p>${newstitle}</p>
+          <p><span>${newscontent}</span></p>
+                </a>
+        `;
+        newsproducts.appendChild(resultItem);
+              hasMatch = true;
+            }
+          });
+        }  if(!hasMatch) {
+          // 没有搜索结果的情况下，顯示以下對話
+          var noResult = document.createElement("p");
+          noResult.classList.add("result-p");
+          noResult.textContent = "查無此相關資訊！";
+          // console.log(noResult);
+          newsproducts.appendChild(noResult);
+        }
+      }  
+      }
+    });
+
+
+    
+    </script>
+  </body>
+</html>

@@ -1,0 +1,181 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Microsoft YaHei", sans-serif;
+  letter-spacing: 2px;
+}
+body p {
+  letter-spacing: 1px;
+}
+
+#commentDialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  width: 55%;
+  height: 90%;
+  margin: 0 auto;
+  border-radius: 10px;
+  border: 3px solid #e1e1e1;
+  background-color: #2c2c2c;
+  padding: 15px;
+}
+#commentDialog .closeCommentAreaDiv {
+  width: 100%;
+  position: relative;
+  padding-bottom: 15px;
+}
+#commentDialog .closeCommentAreaDiv #closeCommentArea {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 25px;
+  height: 25px;
+  padding: 5px;
+  box-sizing: content-box;
+  cursor: pointer;
+}
+#commentDialog h2 {
+  color: white;
+  padding: 15px 0;
+  margin-left: 100px;
+}
+#commentDialog .commentArea {
+  height: 90%;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#commentDialog .commentArea .comment {
+  margin: 20px auto;
+  padding: 15px;
+  width: 80%;
+  background-color: #666666;
+  border-radius: 5px;
+  border: 3.5px solid #858585;
+  display: flex;
+}
+#commentDialog .commentArea .comment .noComment {
+  color: white;
+  font-size: 1.2rem;
+  margin: 2px auto;
+}
+#commentDialog .commentArea .comment hr {
+  margin: 0 15px;
+  opacity: 0.4;
+}
+#commentDialog .commentArea .comment .cleft {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 30%;
+}
+#commentDialog .commentArea .comment .cleft .cleft_top {
+  display: flex;
+  flex: 5;
+  gap: 15px;
+  justify-content: center;
+  align-items: start;
+  overflow: hidden;
+}
+#commentDialog .commentArea .comment .cleft .cleft_top .avatarDiv {
+  width: 65px;
+  height: 65px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  border: 5px solid rgba(103, 103, 103, 0.5);
+}
+#commentDialog .commentArea .comment .cleft .cleft_top .avatarDiv img {
+  width: auto;
+  height: 100%;
+}
+#commentDialog .commentArea .comment .cleft .cleft_top .cl_t_text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 150px;
+}
+#commentDialog .commentArea .comment .cleft .cleft_top .cl_t_text span {
+  color: white;
+}
+#commentDialog .commentArea .comment .cleft .cleft_top .cl_t_text .nickname {
+  font-size: 1rem;
+}
+#commentDialog .commentArea .comment .cleft .cleft_top .cl_t_text .postDate {
+  font-size: 0.75rem;
+}
+#commentDialog .commentArea .comment .cleft .cleft_bottom {
+  display: flex;
+  flex-direction: column;
+  flex: 5;
+  gap: 15px;
+}
+#commentDialog .commentArea .comment .cleft .cleft_bottom span {
+  margin-left: 15px;
+  color: white;
+}
+#commentDialog .commentArea .comment .cleft .cleft_bottom div {
+  margin: 0 auto;
+  background-color: #333333;
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+  border: 2.5px solid #b3b3b3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#commentDialog .commentArea .comment .cleft .cleft_bottom div span {
+  margin: 0;
+  font-size: 2.25rem;
+}
+#commentDialog .commentArea .comment .cright {
+  flex: 5;
+}
+#commentDialog .commentArea .comment .cright div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 150px;
+  border-radius: 2.5px;
+}
+#commentDialog .commentArea .comment .cright div p {
+  color: white;
+  margin-left: 5px;
+}
+#commentDialog .commentArea .comment .cright div div {
+  background-color: #373737;
+  padding: 10px;
+}
+#commentDialog .commentArea .comment .cright div div p {
+  font-size: 1.05rem;
+  letter-spacing: 1.5px;
+  margin: 0;
+}
+#commentDialog .commentArea button {
+  margin: 20px 0;
+  padding: 10px 20px;
+  font-size: 1.15rem;
+  border-radius: 10px;
+  border: 2px solid white;
+  background-color: black;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+#commentDialog .commentArea button:hover {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+}/*# sourceMappingURL=comment.css.map */

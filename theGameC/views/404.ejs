@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>找不到網頁</title>
+    <link rel="stylesheet" href="/style/style.css" />
+    <style>
+      section {
+        margin-top: 150px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 70%;
+        text-align: center;
+      }
+      .s1 .p1 {
+        font-size: 4.5rem;
+        color: #1c3d5c;
+      }
+      .s1 .p2 {
+        font-size: 1.75rem;
+        color: #1c3d5c;
+        margin: 70px 0;
+      }
+      .s1 a {
+        font-size: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('share/header')%>
+
+    <section class="s1">
+      <!-------------------------------------------------------------------->
+      <p class="p1">404 Not Found</p>
+      <p class="p2">您搜尋的頁面不存在 ...</p>
+      <br />
+      <a href="/">點我回到首頁</a><br />
+    </section>
+  </body>
+</html>

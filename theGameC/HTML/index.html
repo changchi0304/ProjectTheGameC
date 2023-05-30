@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.js"
+        integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <!-- bootstrap5 icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <!-- css -->
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="stylesheet" href="./style/index.css">
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- slick -->
+    <link rel="stylesheet" href="./kits/slick/slick/slick.css">
+    <link rel="stylesheet" href="./kits/slick/slick/slick-theme.css">
+    <!-- fullPage.css -->
+    <link rel="stylesheet" href="./kits/fullpage/fullpage.css">
+    <link rel="icon" href="./img/header/logoicon.ico">
+    <title>ThegameC首頁</title>
+</head>
+
+<body>
+    <!-- header -->
+    <header>
+        <!-- logo -->
+        <div class="logo" onclick="goIndex()">
+            <img src="./img/header/head_logo.png" alt="" />
+        </div>
+        <!-- navbar -->
+        <nav>
+            <ul>
+                <li>
+                    <a href="#">遊戲
+                        <img id="headdropdown" src="./img/header/head_dropdown.png" alt="" /></a>
+                    <div class="dropdown">
+                        <ul>
+                            <li><a href="./game.html">遊戲頁</a></li>
+                            <li><a href="#">休閒</a></li>
+                            <li><a href="#">動作</a></li>
+                            <li><a href="#">運動</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">
+                        商店
+                        <img id="headdropdown" src="./img/header/head_dropdown.png" alt="" /></a>
+                    <div class="dropdown">
+                        <ul>
+                            <li><a href="#">商品頁</a></li>
+                            <li><a href="./shopping_cart.html">購物車</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="./news.html">新聞
+                        <img id="headdropdown" src="./img/header/head_dropdown.png" alt="" /></a>
+                    <div class="dropdown">
+                        <ul>
+                            <li><a href="./news.html">最新消息</a></li>
+                            <li><a href="./news.html">遊戲更新</a></li>
+                            <li><a href="./news.html">優惠活動</a></li>
+                            <li><a href="./news.html">新品上架</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">
+                        關於
+                        <img id="headdropdown" src="./img/header/head_dropdown.png" alt="" /></a>
+                    <div class="dropdown">
+                        <ul>
+                            <li><a href="#">公司介紹</a></li>
+                            <li><a href="#">徵才</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">
+                        客服
+                        <img id="headdropdown" src="./img/header/head_dropdown.png" alt="" /></a>
+                    <div class="dropdown">
+                        <ul>
+                            <li><a href="./qa.html">常見問題</a></li>
+                            <li><a href="./mail">客服信箱</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="navbar-icons">
+            <a href="#"><img src="./img/header/head_search.png" alt="" /></a>
+            <a id="GoWalletPage" href="./wallet_PI.html"><img src="./img/header/head_wallet.png" alt="" /></a>
+            <a id="GoLoginPage" href="./newlogin.html">
+                <img src="./img/header/head_user.png" alt="" /></a>
+        </div>
+    </header>
+    <div id="fullpage">
+        <div class="section">
+            <!-- carousel -->
+            <div class="carousel">
+                <h1>線上遊戲</h1>
+                <section class="center slider" style="transition: 1s;" data-aos="zoom-in">
+                    <div>
+                        <img src="./img/index/maplestory.jpg">
+                        <h1>《新楓之谷》</h1>
+                        <p>2D冒險遊戲
+                        <p>
+                    </div>
+                    <div>
+                        <img src="./img/index/maplestory.jpg">
+                        <h1>《新楓之谷》</h1>
+                        <p>2D冒險遊戲
+                        <p>
+                    </div>
+                    <div>
+                        <img src="./img/index/maplestory.jpg">
+                        <h1>《新楓之谷》</h1>
+                        <p>2D冒險遊戲
+                        <p>
+                    </div>
+                    <div>
+                        <img src="./img/index/maplestory.jpg">
+                        <h1>《新楓之谷》</h1>
+                        <p>2D冒險遊戲
+                        <p>
+                    </div>
+                    <div>
+                        <img src="./img/index/maplestory.jpg">
+                        <h1>《新楓之谷》</h1>
+                        <p>2D冒險遊戲
+                        <p>
+                    </div>
+                    <div>
+                        <img src="./img/index/maplestory.jpg">
+                        <h1>《新楓之谷》</h1>
+                        <p>2D冒險遊戲
+                        <p>
+                    </div>
+                    <div>
+                        <img src="./img/index/maplestory.jpg">
+                        <h1>《新楓之谷》</h1>
+                        <p>2D冒險遊戲
+                        <p>
+                    </div>
+                    <div>
+                        <img src="./img/index/maplestory.jpg">
+                        <h1>《新楓之谷》</h1>
+                        <p>2D冒險遊戲
+                        <p>
+                    </div>
+                    <div>
+                        <img src="./img/index/maplestory.jpg">
+                        <h1>《新楓之谷》</h1>
+                        <p>2D冒險遊戲
+                        <p>
+                    </div>
+               
+                </section>
+                <div class="carouselbut">
+                    <a href="">探索更多</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="d1">
+                <div class="title">
+                    <h1>熱門商品</h1>
+                </div>
+                <div class="botm">
+                    <div class="pic">
+                        <div id="picimg5" class="picimgAll"><img src="./img/index/maplestory.jpg" alt=""></div>
+                        <div id="picimg4" class="picimgAll"><img src="./img/index/maplestory.jpg" alt=""></div>
+                        <div id="picimg3" class="picimgAll"><img src="./img/index/maplestory.jpg" alt=""></div>
+                        <div id="picimg2" class="picimgAll"><img src="./img/index/maplestory.jpg" alt=""></div>
+                        <div id="picimg1" class="picimgAll"><img src="./img/index/maplestory.jpg" alt=""></div>
+                    </div>
+                    <div class="text">
+                        <h1>《極地戰壕3》</h1>
+                        <p>進入血脈賁張的現代游擊革命世界。探索令人嘆為觀止的景觀、直覺式的槍戰、多元的遊戲體驗與更多精彩內容——現在正是加入戰鬥的最好時機。</p>
+                        <p>免費試玩《極地戰嚎 6》，親自體驗為何《GAME INFORMER》刊物會給予「從頭到尾絕無冷場」的評價。購買遊戲本體還可保留你所有的進度。 </p>
+                        <a href=""><i class="bi bi-shop"></i></a>
+                        <a href=""><i class="bi bi-cart3"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="d2">
+                <div class="timebox">
+                    <!-- <h1>ThegameC</h1> -->
+                    <img src="./img/header/head_logo.png" alt="logo">
+                    <h2>熱門遊戲夏季特賣</h2>
+                    <div class="timebox1">
+                        <span class="timetext">30</span>
+                        <span>Day</span>
+                        <span class="timetext">18</span>
+                        <span>Hr</span>
+                        <span class="timetext">35</span>
+                        <span>Min</span>
+                        <span class="timetext">10</span>
+                        <span>Sec</span>
+                    </div>
+                    <!-- <a href=""><span>火速前往</span></a> -->
+                    <p><a href="">火速前往!</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="d3">
+                <br><br><br><br><br>
+                <h1>最新消息</h1>
+                <br>
+                <div class="newsbar">
+                    <ul>
+                        <li id="newsbut"><span id="newsButs" class="butfocus">新聞</span></li>
+                        <li id="renewbut" class="newsbarhr"><span id="renewButs">遊戲更新</span></li>
+                        <li id="discountbut" class="newsbarhr"><span id="discountButs">優惠活動</span></li>
+                        <li id="productbut" class="newsbarhr"><span id="productButs">新品上架</span></li>
+                    </ul>
+                </div>
+                <div class="newsAll" id="newsAll">
+                    <div class="newsindex" id="newsindex">
+                        <div class="newsleft">
+                            <a href="">
+                                <div class="newsbox">
+                                    <img src="./img/index/LOL.jpg" alt="">
+                                    <h2>03/26 英雄聯盟更新 全新英雄登場！</h2>
+                                    <p>進入血脈賁張的現代游擊革命世界。探索令人嘆為觀止的景觀、直覺式的槍戰、多元的遊戲體驗與更多精彩內容——現在正是加入戰鬥的最好時機。 </p>
+                                </div>
+                                <br><br><br><br><br><br>
+                            </a>
+                            <a href="">
+                                <div class="newsbox">
+                                    <img src="./img/index/LOL.jpg" alt="">
+                                    <h2>03/26 英雄聯盟更新 全新英雄登場！</h2>
+                                    <p>進入血脈賁張的現代游擊革命世界。探索令人嘆為觀止的景觀、直覺式的槍戰、多元的遊戲體驗與更多精彩內容——現在正是加入戰鬥的最好時機。 </p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="newscenter"></div>
+                        <div class="newsright newsright2">
+                            <br><br><br><br><br><br>
+                            <a href="">
+                                <div class="newsbox">
+                                    <img src="./img/index/LOL.jpg" alt="">
+                                    <h2>03/26 英雄聯盟更新 全新英雄登場！</h2>
+                                    <p>進入血脈賁張的現代游擊革命世界。探索令人嘆為觀止的景觀、直覺式的槍戰、多元的遊戲體驗與更多精彩內容——現在正是加入戰鬥的最好時機。 </p>
+                                </div>
+                            </a>
+                            <br><br><br><br><br><br>
+                            <a href="">
+                                <div class="newsbox">
+                                    <img src="./img/index/LOL.jpg" alt="">
+                                    <h2>03/26 英雄聯盟更新 全新英雄登場！</h2>
+                                    <p>進入血脈賁張的現代游擊革命世界。探索令人嘆為觀止的景觀、直覺式的槍戰、多元的遊戲體驗與更多精彩內容——現在正是加入戰鬥的最好時機。 </p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="newsbut">
+                        <a href="">查看更多</a>
+                    </div>
+                </div>
+                <div class="renewAll" id="renewAll">
+
+                    <div class="renewindex">
+                        <div class="renewpic">
+                            <img src="./img/index/LOL.jpg" alt="">
+                        </div>
+                        <div class="renewtext">
+                            <h2>13.7版本更新公告</h2>
+                            <p>在13.8版本，一批聯盟精靈和「聯萌英雄 墨菲特」將化身機甲特工！趕快進入駕駛艙，操縱鐵金剛拯救世界吧！覺得火箭飛拳太耗燃料，想用比較環保的投石攻擊？沒問題！「聯萌英雄
+                                墨菲特」也會在這個版本於商店登場！
+                                除了各種新的機甲主題風格裝飾以外，我們還重製了牛年特戰隊，並大幅削弱了近期人氣爆發的駭客和路西恩刷角流。</p>
+                            <a href="">查看全文</a>
+                        </div>
+                    </div>
+
+                    <div class="renewindex mg-top">
+                        <div class="renewpic">
+                            <img src="./img/index/楓之谷.jpg" alt="">
+                        </div>
+                        <div class="renewtext">
+                            <h2>13.7版本更新公告</h2>
+                            <p>在13.8版本，一批聯盟精靈和「聯萌英雄 墨菲特」將化身機甲特工！趕快進入駕駛艙，操縱鐵金剛拯救世界吧！覺得火箭飛拳太耗燃料，想用比較環保的投石攻擊？沒問題！「聯萌英雄
+                                墨菲特」也會在這個版本於商店登場！
+                                除了各種新的機甲主題風格裝飾以外，我們還重製了牛年特戰隊，並大幅削弱了近期人氣爆發的駭客和路西恩刷角流。</p>
+                            <a href="">查看全文</a>
+                        </div>
+                    </div>
+                    <div class="renewindex mg-top">
+                        <div class="renewpic">
+                            <img src="./img/index/PUBG.jpg" alt="">
+                        </div>
+                        <div class="renewtext">
+                            <h2>13.7版本更新公告</h2>
+                            <p>在13.8版本，一批聯盟精靈和「聯萌英雄 墨菲特」將化身機甲特工！趕快進入駕駛艙，操縱鐵金剛拯救世界吧！覺得火箭飛拳太耗燃料，想用比較環保的投石攻擊？沒問題！「聯萌英雄
+                                墨菲特」也會在這個版本於商店登場！
+                                除了各種新的機甲主題風格裝飾以外，我們還重製了牛年特戰隊，並大幅削弱了近期人氣爆發的駭客和路西恩刷角流。</p>
+                            <a href="">查看全文</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="discountAll" id="discountAll">
+                    <div class="discountindex">
+                        <div class="discountpic">
+                            <img src="./img/index/LOL.jpg" alt="">
+                        </div>
+                        <div class="discounttext">
+                            <h2>13.7版本更新公告</h2>
+                            <p>在13.8版本，一批聯盟精靈和「聯萌英雄 墨菲特」將化身機甲特工！趕快進入駕駛艙，操縱鐵金剛拯救世界吧！覺得火箭飛拳太耗燃料，想用比較環保的投石攻擊？沒問題！「聯萌英雄
+                                墨菲特」也會在這個版本於商店登場！
+                                除了各種新的機甲主題風格裝飾以外，我們還重製了牛年特戰隊，並大幅削弱了近期人氣爆發的駭客和路西恩刷角流。</p>
+                            <a href="">查看全文</a>
+                        </div>
+                    </div>
+
+                    <div class="renewindex mg-top">
+                        <div class="renewpic">
+                            <img src="./img/index/楓之谷.jpg" alt="">
+                        </div>
+                        <div class="renewtext">
+                            <h2>13.7版本更新公告</h2>
+                            <p>在13.8版本，一批聯盟精靈和「聯萌英雄 墨菲特」將化身機甲特工！趕快進入駕駛艙，操縱鐵金剛拯救世界吧！覺得火箭飛拳太耗燃料，想用比較環保的投石攻擊？沒問題！「聯萌英雄
+                                墨菲特」也會在這個版本於商店登場！
+                                除了各種新的機甲主題風格裝飾以外，我們還重製了牛年特戰隊，並大幅削弱了近期人氣爆發的駭客和路西恩刷角流。</p>
+                            <a href="">查看全文</a>
+                        </div>
+                    </div>
+                    <div class="renewindex mg-top">
+                        <div class="renewpic">
+                            <img src="./img/index/PUBG.jpg" alt="">
+                        </div>
+                        <div class="renewtext">
+                            <h2>13.7版本更新公告</h2>
+                            <p>在13.8版本，一批聯盟精靈和「聯萌英雄 墨菲特」將化身機甲特工！趕快進入駕駛艙，操縱鐵金剛拯救世界吧！覺得火箭飛拳太耗燃料，想用比較環保的投石攻擊？沒問題！「聯萌英雄
+                                墨菲特」也會在這個版本於商店登場！
+                                除了各種新的機甲主題風格裝飾以外，我們還重製了牛年特戰隊，並大幅削弱了近期人氣爆發的駭客和路西恩刷角流。</p>
+                            <a href="">查看全文</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="productAll" id="productAll">
+                    <img src="./img/index/射擊.png" alt="">
+                </div>
+            </div>
+            <!-- footer -->
+            <footer>
+                <div class="footer-s1">
+                    <div class="footer-logo">
+                        <img src="./img/header/head_logo.png" alt="" />
+                    </div>
+                    <div class="footer-content">
+                        <ul>
+                            <li><a href="./rule.html">隱私權政策</a></li>
+                            <li><a href="./rule_2.html">使用條款</a></li>
+                            <li><a href="./rule_3.html">法律資訊</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#">公司資訊</a></li>
+                            <li><a href="#">工作機會</a></li>
+                            <li><a href="#">據點</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#">客服支援</a></li>
+                            <li><a href="#">錢包</a></li>
+                            <li><a href="#">我需要協助</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="#">Cookie政策</a></li>
+                            <li><a href="#">Cookie設定</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-s2">
+                    <p>©TheGameC | XXX遊戲代理公司 客服專線：02-000-0000</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="./js/index.js"></script>
+
+    <!-- slick輪播圖 -->
+    <script src="./kits/slick/slick/slick.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+        $('.center').slick({
+            centerMode: true,
+            centerPadding: '60px',
+            slidesToShow: 5,
+            responsive: [
+                {
+                    breakpoint: 1500,
+                    settings: {
+                        arrows: false,
+                        centerMode: true,
+                        centerPadding: '40px',
+                        slidesToShow: 3
+                    }
+                },
+                {
+                    breakpoint: 760,
+                    settings: {
+                        arrows: false,
+                        centerMode: true,
+                        centerPadding: '40px',
+                        slidesToShow: 1
+                    }
+                }
+            ]
+        });
+    </script>
+    <!-- fullpage.js -->
+    <script src="./kits/fullpage/fullpage.js"></script>
+    <script>
+        new fullpage('#fullpage', {
+            sectionsColor: ['white', 'white', 'white'],
+            licenseKey: 'YOUR LICENSE KEY HERE '
+        });
+    </script>
+        <script src="./js/app.js"></script>
+</body>
+
+</html>

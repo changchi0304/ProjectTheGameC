@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>商品 - 商品單頁</title>
+    <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="/style/productPage.css" />
+    <link rel="stylesheet" href="/style/comment.css" />
+    <script type="text/javascript" src="/app/jquery.js"></script>
+  </head>
+  <body>
+    <!-- header -->
+    <%- include('share/header')%>
+
+    <div class="<%= typeCss %>">
+      <div class="ProductPage">
+        <p class="productNav">
+          TheGameC > 商店 > <span><%- productData.product_name%></span>
+        </p>
+        <!-- s1 商品介紹 -->
+        <section class="section1">
+          <img id="typeIcon" src="<%- typeIcon %>" alt="" />
+          <div class="s1left">
+            <div class="bigPicDiv">
+              <img
+                id="bigPic"
+                src="/img/products/<%- productData.image%>"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="s1right">
+            <h2><%- productData.product_name%></h2>
+            <div class="type"><span><%- productData.product_type%></span></div>
+            <div>
+              <p><%- productData.description%></p>
+            </div>
+            <div>
+              <p>開發商：<span><%- productData.developer%></span></p>
+              <p>營運商：<span><%- productData.publisher%></span></p>
+              <p>年齡限制： <span><%- ageRating%></span></p>
+            </div>
+            <div>
+              <p>評分：<span><%- productRating %></span></p>
+              <p>購買人數：<span><%- productData.buy_count%></span></p>
+            </div>
+            <div class="s1btnDiv">
+              <span>價格：NT$ <span id="productCost"><%- productData.price %></span></span>
+              <% if(login_user_id){ %> 
+                <% if(uProduct){%>
+                  <div>已購買</div>
+                  <%  } else {%>
+                  <%- inshoppingCart?"<div>已加入購物車</div>":"<button id='joinShoppingCart' type='button'>加入購物車</button>" %> 
+                  <% }   %> 
+                <% } else {%>
+                <button id='notLogin' type='button'>登入才可購買</button>
+                <% } %> 
+            </div>
+          </div>
+        </section>
+
+        <!-- s2 評論 -->
+        <section class="section2">
+          <div class="commentAreaBtnDiv"><h2>發表評論</h2><span id="commentAreaBtn">查看評論區</span></div>
+          <% if (login_user_id){%>
+          <!-- 已登入 -->
+          <form id="formReview" class="commitLogin <%- u_p_review?"alreadyComment":"" %>">
+            <input
+              id="productID"
+              type="hidden"
+              value="<%- productData.product_id%>"
+            />
+            <input id="userID" type="hidden" value="<%- login_user_id %>" />
+            <div class="s2left">
+              <div>
+                <span>評分：</span
+                ><span class="star-rating">
+                  <input id="star5" type="radio" name="rating" value="5" />
+                  <label for="star5" class="star" title="5 stars"></label>
+                  <input id="star4" type="radio" name="rating" value="4" />
+                  <label for="star4" class="star" title="4 stars"></label>
+                  <input id="star3" type="radio" name="rating" value="3" />
+                  <label for="star3" class="star" title="3 stars"></label>
+                  <input id="star2" type="radio" name="rating" value="2" />
+                  <label for="star2" class="star" title="2 stars"></label>
+                  <input id="star1" type="radio" name="rating" value="1" />
+                  <label for="star1" class="star" title="1 star"></label>
+                </span>
+              </div>
+              <div>
+                <span>您的評分：</span> <br />
+                <div>
+                  <span id="yourRating"
+                    ><%- u_p_review?u_p_review.rating:"N" %></span
+                  >
+                  <span>/5</span>
+                </div>
+              </div>
+              <div>
+                <span>當前評分：</span><br />
+                <div>
+                  <span id="averageRating"><%- productRating %></span>
+                  <span>/5</span>
+                </div>
+              </div>
+            </div>
+            <div class="s2right">
+              <p>撰寫評論</p>
+              <textarea name="comment" id="" cols="30" rows="10"><%- u_p_review?u_p_review.comment:"" %></textarea>
+              <div><button>張貼</button></div>
+            </div>
+          </form>
+          <!-- 評論修改、刪除 -->
+          <div class="Comment_edit_deleteButton">
+            <%- u_p_review ? '<button id="commentEdit" type="button">修改</button> <button id="commentDelete" type="button">刪除</button>' : null %>
+          </div> 
+          <% } else {%>
+          <!-- 未登入 -->
+          <div class="commitNotLogin">
+            <div>
+              <span>登入您的帳號 向大家發表您的想法吧 ！</span>
+              <a href="/login">登入</a>
+            </div>
+          </div>
+          <%}%>
+        </section>
+
+        <!-- s3 推薦商品 -->
+        <section class="section3">
+          <h2>或許您也會喜歡</h2>
+          <div class="recommendedProducts">
+            <!-- 單個商品 -->
+            <% userLike.map(function(v,i){%>
+            <div class="recomProduct">
+              <div class="recPImgDiv">
+                <img src="<%-`/img/Products/${v.image}` %>" alt="" />
+              </div>
+              <div class="recPInfo">
+                <div class="recPtitle">
+                  <h3><%- v.product_name %></h3>
+                  <div><span id="recPtype"><%- v.product_type %></span></div>
+                </div>
+                <div class="recPTextLimit">
+                  <p>
+                    <%- v.description %>
+                  </p>
+                </div>
+              </div>
+              <div class="recPgoPage"><a href="/products/product_ID/<%- v.product_id %>">前往頁面</a></div>
+            </div>
+            <% }) %>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- 評論修改表單 -->
+    <dialog class="commentEditDialog">
+      <form id="commentEditForm">
+        <div class="editDialogLeft">
+          <p>修改評分：</p>
+          <input name="yourRating" type="hidden" value="<%- u_p_review.rating%>">
+          <select id="editRating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <p class="editRatingBig">5</p>
+        </div>
+        <div class="editDialogRight">  
+          <p>修改評論：</p>
+          <textarea name="editComment" id="" cols="30" rows="10"><%- u_p_review.comment%></textarea>
+          <div><button id="closeEditDialog" type="button">取消修改</button><button>確認修改</button></div>
+        </div>
+      </form>
+    </dialog>
+
+    <!-- 評論區 -->
+    <dialog id="commentDialog">
+      <div class="closeCommentAreaDiv"><img id="closeCommentArea" src="/img/Products/tools/X.png" alt=""></div>
+      <h2>評論區</h2>
+      <div class="commentArea">
+        <!-- 一則評論 -->
+        <% if(pComment[0] == undefined){%>
+          <div class="comment"><span class="noComment">當前還沒有人評論，歡迎您成為第一位評論者 ！</span></div>
+          <%} else {%>
+            <% pComment.map(function(v,i){ %>
+              <div class="comment">
+                <!-- 左邊 -->
+                <div class="cleft">
+                  <div class="cleft_top">
+                    <div class="avatarDiv">
+                      <img src="<%- v.avatar %>" alt="" />
+                    </div>
+                    <div class="cl_t_text">
+                      <span class="nickname"><%- v.nickname?v.nickname:v.username %></span>
+                      <span class="postDate"><%- v.created_date %></span>
+                    </div>
+                  </div>
+                  <div class="cleft_bottom">
+                    <span>評分</span>
+                    <div>
+                      <span class="rating"><%- v.rating %></span>
+                    </div>
+                  </div>
+                </div>
+                <hr />
+                <!-- 右邊 -->
+                <div class="cright">
+                  <div>
+                    <p>評論</p>
+                    <div>
+                      <p><%- v.comment %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <% }) %>
+        
+              <button>查看更多</button>
+            <% } %>
+      </div> 
+    </dialog>
+   
+    <!-- footer -->
+    <%- include('share/footer')%>
+    <script src="/app/app.js"></script>
+
+    <script>
+      /* 星星 */
+      $("input[name=rating]").on("change", function () {
+        var inputRating = $("input[name=rating]:checked").val();
+        $("#yourRating").html(inputRating);
+      });
+
+      // var stars = document.getElementsByClassName("star");
+
+      // for (var i = 0; i < stars.length; i++) {
+      //   stars[i].addEventListener("click", function () {
+      //     var rating = parseInt(this.previousElementSibling.value);
+
+      //     // 移除所有星
+      //     for (var j = 0; j < stars.length; j++) {
+      //       stars[j].classList.remove("star_filled");
+      //     }
+
+      //     for (var k = 0; k < rating; k++) {
+      //       stars[k].classList.add("star_filled");
+      //     }
+      //   });
+      // }
+
+      /* 登入才可購買 */
+      $("#notLogin").on("click", function(){
+        var result = window.confirm("登入後才可以購買商品喔！\n是否要前往登入頁呢？");
+        if (result) {
+            // 轉至登入頁
+           window.location.href = "/login"; // 替換成您要導航的目標頁面的URL
+        } else {
+            // 拒絕跳頁
+        }
+      })
+      
+
+      /* dialog rating */
+      $("#editRating").val($('input[name="yourRating"]').val())
+      $(".editRatingBig").html($("#editRating").val());
+      // 大字
+      $("#editRating").on("click", function () {
+        var x = $("#editRating").val();
+        $(".editRatingBig").html(x);
+      });
+      $("#commentEdit").on("click",function(){
+        document.querySelector("dialog.commentEditDialog").showModal();
+      })
+      $("#closeEditDialog").on("click",function(){
+        document.querySelector("dialog.commentEditDialog").close();
+      })
+      
+    
+      /* 打開留言區 */
+     $("#commentAreaBtn").on("click",function(){
+      var dialogComment = document.querySelector("dialog#commentDialog")
+      dialogComment.showModal();
+      document.querySelector("div.commentArea").scrollTop = 0; // 讓留言區起始點在最上方
+     })
+     $("#closeCommentArea").on("click",function(){
+        document.querySelector("dialog#commentDialog").close();
+     })
+
+      ////////////////////////////////////////////////////////////////
+      ////////////////////////////////////////////////////////////////
+      
+      $(function () {
+        const productId = $("#productID").val();
+        const userId = $("#userID").val();
+        /* 上傳評論 */
+        $("#formReview").on("submit", function (e) {
+          e.preventDefault();
+          if ($("input[name=rating]:checked").val() == null){
+            alert("請先選擇評分。")
+          } else {
+            $.ajax({
+            url: `http://localhost:80/products/api/insertPR/PID/${productId}`,
+            type: "POST",
+            data: {
+              product_id: productId,
+              user_id: userId,
+              rating: $("input[name=rating]:checked").val(),
+              comment: $("textarea[name=comment]").val(),
+            },
+          })
+            .done((data) => {
+              alert(`評論已經發布囉！`);
+              $("#averageRating").text(data.newAverageRating);
+              location.reload();
+            })
+            .fail((jqXHR, textStatus, errorThrown) => {
+              console.error("Error:", textStatus, errorThrown);
+              alert("系統出了問題請稍後重試。");
+            }); 
+          }
+        });
+
+         /* 評論刪除 */
+         $("#commentDelete").on("click", function(e){
+          e.preventDefault();
+          $.ajax({
+            url: `http://localhost:80/products/api/DeletePR/PID/${productId}`,
+            type: "DELETE",
+            data: {
+              product_id: productId,
+              user_id: userId,
+            },
+          }).done((data)=>{
+            alert("已將評論刪除！")
+            location.reload();
+          })
+         })
+
+         /* 修改評論 */
+         $("#commentEditForm").on("submit",function(e){
+          e.preventDefault();
+          $.ajax({
+            url: `http://localhost:80/products/api/updatePR/PID/${productId}`,
+            type: "PUT",
+            data: {
+              product_id: productId,
+              user_id: userId,
+              rating:$("#editRating").val(),
+              comment:$("textarea[name='editComment']").val()
+            },
+          }).done((data)=>{
+            alert("評論已更新！")
+            location.reload();
+          })
+         })
+
+         /* 加入購物車 */
+         $("#joinShoppingCart").on("click",function(e){
+          e.preventDefault();
+          if(parseInt("<%- ageLimit.user_age %>") >= parseInt("<%- ageLimit.age_rating %>")){
+            $.ajax({
+            url: `http://localhost:80/products/api/insertSC/PID/${productId}`,
+            type: "POST",
+            data: {
+              product_id: productId,
+              user_id: userId,
+              price: parseInt($("#productCost").text())
+            },
+          }).done((data)=>{
+            alert("已將商品加入購物車！")
+            location.reload();
+          })
+          } else {
+            alert("不好意思，該商品為「<%- ageRating %>」，根據法律規定，您的年齡還不能購買該商品。")
+          }
+          
+         })
+      });
+    </script>
+  </body>
+</html>

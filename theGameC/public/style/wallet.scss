@@ -1,0 +1,982 @@
+body {
+  padding-top: 0;
+}
+
+.section {
+  display: flex;
+  height: 100%;
+}
+
+/* 左半部 */
+.section {
+  padding-top: 75px;
+  .sleft {
+    // flex: 2;
+    padding: 85px 0;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-between;
+    align-items: center;
+    background-image: url("../img/wallet/bg(15).png");
+    background-size: cover;
+    background-position: center center;
+    .avatarDiv {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px rgba(0, 0, 0, 0.2) solid;
+      background-color: #d4d4d4;
+      cursor: pointer;
+      position: relative;
+      img {
+        width: auto;
+        height: 100%;
+        object-fit: contain;
+        transition: 0.2s;
+      }
+      #imgEditbtn {
+        position: absolute;
+        width: 40px;
+        display: none;
+      }
+    }
+    .avatarDiv:hover {
+      background-color: #acacac;
+      img {
+        opacity: 0.35;
+      }
+      #imgEditbtn {
+        display: block;
+        opacity: 1;
+      }
+    }
+    // 導覽列
+    .snav {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 250px;
+      li {
+        display: flex;
+        align-items: center;
+        border-bottom: 2px rgba(0, 0, 0, 0.4) solid;
+        width: fit-content; // 容器等於內容寬
+        height: fit-content; // 容器等於內容高
+        margin-bottom: 40px;
+        a {
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          color: black;
+          font-size: 1.2rem;
+          padding: 10px 15px;
+          img {
+            padding: 0 8px 0 0;
+            width: 30px;
+          }
+          img.walletIcon_hover {
+            display: none;
+          }
+          span {
+          }
+        }
+      }
+      li:hover {
+        box-shadow: 0 5px 0 #0071db;
+        background-color: #0071db;
+        border-bottom: 2px #f8f8f8 solid;
+        border-radius: 5px;
+        a {
+          color: #f8f8f8;
+          img {
+            display: none;
+          }
+          img.walletIcon_hover {
+            display: block;
+          }
+        }
+      }
+      .walletMyRouter {
+        box-shadow: 0 5px 0 #0071db;
+        background-color: #0071db;
+        border-bottom: 2px #f8f8f8 solid;
+        border-radius: 5px;
+        a {
+          color: #f8f8f8;
+          img {
+            display: none;
+          }
+          img.walletIcon_hover {
+            display: block;
+          }
+        }
+      }
+    }
+    .sbalance {
+      // fixed
+      position: fixed;
+      bottom: 60px;
+      // ------
+      font-size: 1.15rem;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      user-select: none;
+      img {
+        width: 25px;
+      }
+      span {
+        span {
+          font-size: 1.2rem;
+        }
+      }
+    }
+    .sbalance:hover {
+      img {
+        filter: brightness(110%);
+      }
+      span {
+        color: #0071db;
+      }
+    }
+  }
+}
+
+//--------------------------------
+//--------------------------------
+/* 右半部 */
+
+/* 個人資訊 */
+/* s1 */
+.section {
+  .s1right {
+    // flex: 8;
+    padding: 60px 0;
+    width: 75%;
+    min-height: 100vh;
+    div.s1rightSec {
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: #f1f1f1;
+      border-radius: 5px;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      .s1Rtop {
+        background-color: #0071db;
+        border-radius: 5px 5px 0 0;
+        p {
+          width: 95%;
+          margin-left: auto;
+          margin-right: auto;
+          // margin-left: 10px;
+          color: white;
+          font-size: 1.1rem;
+          padding: 10px;
+          letter-spacing: 3px;
+        }
+      }
+      .s1Rdown {
+        // 基本資訊
+        .s1RDtitle {
+          display: flex;
+          justify-content: space-between;
+          width: 95%;
+          margin-left: auto;
+          margin-right: auto;
+          p {
+            color: #8d8d8d;
+            color: black;
+            font-size: 1.15rem;
+            margin-top: 20px;
+            padding: 0 10px 10px 10px;
+            letter-spacing: 3px;
+          }
+          img {
+            margin-top: 20px;
+            width: 17px;
+            height: 17px;
+            cursor: pointer;
+          }
+          img:hover {
+            opacity: 0.5;
+          }
+        }
+        .s1RDinfo {
+          width: 95%;
+          margin-left: auto;
+          padding-bottom: 30px;
+          table {
+            width: 95%;
+            margin-left: auto;
+            margin-right: auto;
+            margin-right: auto;
+            text-align: left;
+            tr {
+              th {
+                font-size: 1.05rem;
+                font-weight: 400;
+                padding: 20px 0;
+                color: rgb(0, 0, 0);
+              }
+              td {
+                font-size: 1.05rem;
+                color: #000000;
+              }
+            }
+          }
+        }
+
+        hr {
+          width: 80%;
+          margin: 0 auto;
+        }
+
+        // 遊戲庫下拉選單按鈕
+        #Gamesdropdown {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 5px 0 20px 0;
+          width: fit-content;
+          margin: 0 auto;
+          gap: 10px;
+          // background-color: #0071db;
+          cursor: pointer;
+          p {
+            // color: #8d8d8d;
+            color: black;
+          }
+          .GamesdropdownImg {
+            filter: brightness(50%);
+            width: 20px;
+            transition: transform 0.65s;
+          }
+        }
+
+        // 遊戲庫
+        p {
+          color: #8d8d8d;
+          font-size: 1.1rem;
+          margin-top: 20px;
+          padding: 0 10px 10px 10px;
+          letter-spacing: 3px;
+        }
+        #myGamesArea.expanded {
+          display: none;
+        }
+        #myGamesArea {
+          width: 70%;
+          height: auto; // auto
+          overflow: hidden;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 0 0 50px 0;
+          // gap: 15px;
+          transition: max-height 0.3s ease;
+          #myGame {
+            background-color: #1d1d1d;
+            width: 100%;
+            height: 150px;
+            // padding: 15px;
+            border-radius: 10px;
+            // border: 2px solid rgb(0, 0, 0);
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            margin-bottom: 15px;
+            #myGameImgDiv {
+              border-top-left-radius: 10px;
+              border-bottom-left-radius: 10px;
+              width: 60%;
+              height: 90%;
+              margin-left: 7.5px;
+              overflow: hidden;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              clip-path: polygon(0 0, 100% 0, 89% 100%, 0 100%);
+              img {
+                width: 100%;
+                height: auto;
+              }
+            }
+            #myGameInfo {
+              padding: 5px;
+              width: 40%;
+              height: 100%;
+              border-top-right-radius: 10px;
+              border-bottom-right-radius: 10px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              p {
+                text-align: center;
+                letter-spacing: 3px;
+                font-size: 1.7rem;
+                color: white;
+                margin: 5px;
+                margin-right: 40px;
+              }
+            }
+            #myGameInfo p:nth-of-type(2) {
+              font-size: 1.3rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//----------------------------------------
+//----------------------------------------
+
+/* 儲值畫面 */
+/* s2 */
+.section {
+  .s2right {
+    padding: 60px 0;
+    width: 75%;
+    // 方法
+    div.s2rightPart1 {
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: #f1f1f1;
+      border-radius: 5px;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      // 方法
+      .s2part1top {
+        background-color: #0071db;
+        border-radius: 5px 5px 0 0;
+        p {
+          width: 95%;
+          margin-left: auto;
+          margin-right: auto;
+          // margin-left: 10px;
+          color: white;
+          font-size: 1.1rem;
+          padding: 10px;
+          letter-spacing: 3px;
+        }
+      }
+      .s2part1down {
+        padding: 30px;
+        .s2part1methods {
+          display: flex;
+          justify-content: space-evenly;
+
+          .methodDiv {
+            display: flex;
+            gap: 25px;
+            input {
+              cursor: pointer;
+            }
+            .method1 {
+              background-color: #ffffff;
+              // padding: 10px 20px;
+              width: 150px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              cursor: pointer;
+              li {
+                list-style: none;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 7.5px 0;
+                img {
+                  width: 37px;
+                  margin: 2px;
+                }
+              }
+              // 點數卡儲值
+              div {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: rgb(29, 117, 255);
+                background: linear-gradient(
+                  90deg,
+                  rgba(29, 117, 255, 1) 15%,
+                  rgba(84, 173, 255, 1) 51%,
+                  rgba(196, 227, 255, 1) 100%
+                );
+                li {
+                  font-size: 1.15rem;
+                  letter-spacing: 0.15rem;
+                  color: white;
+                  text-shadow: 0px 1px 2px rgb(59, 59, 59);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    // 面額
+    div.s2rightPart2 {
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: #f1f1f1;
+      border-radius: 5px;
+      .s2part1top {
+        background-color: #0071db;
+        border-radius: 5px 5px 0 0;
+        p {
+          width: 95%;
+          margin-left: auto;
+          margin-right: auto;
+          // margin-left: 10px;
+          color: white;
+          font-size: 1.1rem;
+          padding: 10px;
+          letter-spacing: 3px;
+        }
+      }
+
+      .s2part2down {
+        background-color: white;
+        ul {
+          display: flex;
+          flex-direction: column;
+          gap: 50px;
+          li {
+            display: flex;
+            justify-content: space-between;
+            .CoinDiv {
+              width: 30%;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              gap: 20px;
+              padding: 50px 0;
+              border-top: 0;
+              background-color: #f1f1f1;
+              box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.25);
+              p {
+              }
+              .coinImgDiv {
+                width: 160px;
+                height: 107px;
+                img {
+                  width: 150px;
+                  height: 150px;
+                }
+              }
+              div {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                img {
+                  width: 25px;
+                  height: 25px;
+                }
+              }
+              button {
+                font-size: 1.05rem;
+                color: #ffffff;
+                background-color: #0071db;
+                padding: 5px 30px;
+                border-radius: 2.5px;
+                border: none;
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* 儲值頁面：信用卡確認 */
+dialog#rechargedialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 35%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background-color: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  border: none;
+  gap: 35px;
+
+  .credit_paypal_gash {
+    padding: 35px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 15px;
+    .Lconfirm {
+      text-align: center;
+      font-weight: 700;
+      color: #1c3d5c;
+      .LCtitle {
+        font-size: 1.15rem;
+      }
+      .LCbuy {
+        margin-top: 25px;
+        text-align: start;
+        li {
+          list-style-type: none;
+          display: flex;
+          span {
+            font-size: 1.1rem;
+          }
+          .LCBthing {
+            margin-right: 120px;
+            margin-bottom: 15px;
+          }
+        }
+        li span:nth-of-type(2) {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          img {
+            width: 22.5px;
+            height: 22.5px;
+          }
+        }
+      }
+    }
+    #yourMethod {
+      font-weight: 600;
+    }
+
+    hr {
+      width: 80%;
+    }
+
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .creditEnter,
+      .paypalEnter,
+      .gashEnter {
+        display: none;
+        width: 80%;
+        div {
+          margin-bottom: 10px;
+          label {
+            font-size: 1.025rem;
+            font-weight: 500;
+          }
+          input {
+            margin-top: 10px;
+            width: 100%;
+            border-radius: 5px;
+            padding: 5px 5px;
+            font-size: 1.2rem;
+          }
+        }
+        div.rechargeConfirmBtnDiv {
+          text-align: center;
+          button {
+            background-color: #0071db;
+            color: white;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+
+  button#closeRDialog {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ffffff;
+    border: none;
+    cursor: pointer;
+    img {
+      width: 20px;
+      height: 20px;
+      user-select: none;
+    }
+  }
+}
+
+//----------------------------------------
+//----------------------------------------
+/* 轉點系統 */
+.section {
+  .s2right {
+    padding: 60px 0;
+    width: 75%;
+    // 選擇遊戲
+    div.s2rightPart1 {
+      .s2part1down {
+        .wallet_games {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: flex-start;
+          .game_div {
+            width: 20%; // 四個就換行
+            padding: 15px 0;
+            display: flex;
+            justify-content: center;
+            .wallet_game {
+              border: 2px solid #9a9a9a;
+              width: 85%;
+              height: 260px;
+              border-radius: 5px;
+              // display: inline-block;
+              padding: 20px;
+              padding-bottom: 25px;
+              text-align: center;
+              background-color: #ffffff;
+              transition: 0.15s;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              cursor: pointer;
+              div {
+                width: 90%;
+                height: 220px;
+                overflow: hidden;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 5px;
+                margin-bottom: 20px;
+                img {
+                  width: auto;
+                  height: 100%;
+                  object-fit: contain;
+                }
+              }
+              span,
+              p {
+                display: inline-block;
+                font-size: 1.15rem;
+              }
+            }
+            .wallet_game:hover,
+            .GSelected {
+              background-color: rgba(0, 113, 219, 0.2);
+              border: 2px solid rgba(69, 69, 69, 0.6);
+            }
+          }
+        }
+      }
+    }
+    // 選擇轉點面額
+    div.s2rightPart1 {
+      .s3part1down {
+        padding: 50px 0;
+        ul {
+          width: 80%;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          gap: 30px;
+          li {
+            background-color: #0071db;
+            list-style-type: none;
+            display: flex;
+            align-items: center;
+            padding: 12.5px 35px;
+            border-radius: 5px;
+            span {
+              color: white;
+              font-size: 1.05rem;
+              font-weight: 600;
+              margin-right: auto;
+            }
+            button {
+              border: none;
+              background-color: white;
+              border-radius: 5px;
+              padding: 5px 10px;
+              font-size: 1rem;
+              font-weight: 600;
+              cursor: pointer;
+            }
+            button:hover {
+              background-color: #bbbbbb;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* 轉點系統：轉點確認 */
+#exchangedialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 30%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background-color: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  border: none;
+  form {
+    padding: 35px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    div {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      p {
+        font-size: 1.15rem;
+        text-align: center;
+        color: #1c3d5c;
+        font-weight: bold;
+      }
+      .exconfirm {
+        font-weight: 600;
+        color: #1c3d5c;
+        width: 80%;
+        margin: 0 auto;
+        li {
+          list-style-type: none;
+          display: flex;
+          justify-content: flex-start;
+          span {
+            font-size: 1.1rem;
+          }
+        }
+        li span:nth-of-type(1) {
+          margin-right: auto;
+        }
+        li span:nth-of-type(2) {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          img {
+            width: 22.5px;
+            height: 22.5px;
+          }
+        }
+      }
+    }
+    button {
+      width: 120px;
+      background-color: #0071db;
+      color: white;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  }
+  button#closeEXDialog {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ffffff;
+    border: none;
+    cursor: pointer;
+    img {
+      width: 20px;
+      height: 20px;
+      user-select: none;
+    }
+  }
+}
+
+/* 個人資訊業面：修改個人資訊 */
+#PIdialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 30%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background-color: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  border: none;
+  form {
+    padding: 35px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    div {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      p {
+        font-size: 1.15rem;
+        text-align: center;
+        color: #1c3d5c;
+        font-weight: bold;
+      }
+      .PIfirm {
+        font-weight: 600;
+        color: #1c3d5c;
+        width: 80%;
+        margin: 25px auto;
+        li {
+          list-style-type: none;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          margin: 5px 0;
+          span {
+            font-size: 1.15rem;
+          }
+          input {
+            border-radius: 5px;
+            padding: 3px 5px;
+            font-size: 1.15rem;
+            // border: 1px solid red;
+          }
+        }
+        li span:nth-of-type(1) {
+          margin-right: auto;
+        }
+        li span:nth-of-type(2) {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          img {
+            width: 22.5px;
+            height: 22.5px;
+          }
+        }
+      }
+    }
+    button {
+      width: 120px;
+      background-color: #0071db;
+      color: white;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  }
+  button#closePIDialog {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ffffff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    img {
+      width: 20px;
+      height: 20px;
+      user-select: none;
+    }
+  }
+}
+
+#avatarDialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 30%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background-color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  border: none;
+  padding: 40px 20px;
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    gap: 15px;
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      .avatarSim {
+        width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        border: 1px black dotted;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #d4d4d4;
+        margin: 15px 0;
+        img {
+          width: auto;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+      p {
+        font-size: 1.15rem;
+        color: #1c3d5c;
+        text-align: center;
+        font-weight: 600;
+      }
+      input {
+        width: 220px;
+        font-size: 1.1rem;
+      }
+    }
+
+    button {
+      width: 120px;
+      background-color: #0071db;
+      color: white;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.05rem;
+      cursor: pointer;
+    }
+  }
+
+  button#closeAVADialog {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ffffff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    img {
+      width: 20px;
+      height: 20px;
+      user-select: none;
+    }
+  }
+}

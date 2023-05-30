@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AboutMe</title>
+    <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="/style/about.css">
+    <link rel="icon" href="/img/header/logoicon.ico" />
+    <script src="/app/jquery.js"></script>
+
+</head>
+
+<body>
+    <%- include('share/header')%>
+        <div class="bg">
+            <img src="https://media.gqmagazine.fr/photos/5e95c5f20b84640008631db4/16:9/w_1920,c_limit/1322778-beta-key-art-valorant-1-amp_main_media_schema-1%20(1).jpg" alt="">
+        </div>
+        <div class="index">
+            <h1>TheGameC致力於提供玩家最佳的遊戲體驗</h1>
+            <div class="Allbut">
+                <button id="aboutmeBut">關於我們</button>
+                <!-- <button id="memberBut">成員介紹</button> -->
+                <button id="joinmeBut">加入我們</button>
+            </div>
+            <div class="Alltext">
+                <!-- <h2>TheGameC 致力於提供玩家最佳的遊戲體驗</h2> -->
+                <p>TheGameC一家致力於提供玩家最佳的遊戲體驗的遊戲代
+                    理商。我們的使命是為玩家帶來最好的遊戲體驗，並致力於成為遊
+                    戲產業中最值得信賴的公司之一。
+                    <br>
+                    線上遊戲是我們的核心業務之一。我們與多家遊戲開發商合作，提
+                    供各種不同類型的線上遊戲，包括角色扮演遊戲、戰略遊戲、競技
+                    遊戲等等。我們不斷為玩家更新最新版本，優化遊戲體驗，並提供
+                    完善的客戶服務，確保玩家在遊戲中獲得最大的樂趣。
+                    <br>
+                    除了線上遊戲外，我們還提供各種優質的遊戲商品，包括遊戲點數、
+                    虛擬物品、周邊產品等等。我們與各大遊戲開發商、製造商合作，
+                    確保我們的商品質量和價格都是最優的。此外，我們還提供方便的
+                    付款方式和快速的交貨服務，以滿足玩家的需求。
+                    <br>
+                    我們還關注遊戲產業的最新動態和新聞，並定期發布相關資訊。我
+                    們相信，這對於玩家來說是非常重要的，因為他們需要了解他們最
+                    喜愛的遊戲的最新動態和趨勢，以及行業中其他重要的發展。因此，
+                    我們在我們的網站上提供最新的遊戲新聞和資訊，以幫助玩家更好
+                    地了解遊戲世界和行業趨勢。總之，我們的目標是為玩家提供最佳的
+                    遊戲體驗，並成為他們最信賴的遊戲代理商之一。我們將繼續與遊戲
+                    開發商、製造商合作，提供最優質的線上遊戲、遊戲商品和最新的遊
+                    戲新聞。我們相信，在不斷努力和改進的過程中，我們可以實現這一
+                    目標。
+                </p>
+            </div>
+            <div class="joinMe">
+                <div class="joinbox">
+                    <div class="jointext">
+                        <div class="item1">
+                            <h3>薪資待遇</h3>
+                            <p>保障年薪14個月</p>
+                            <p>三節禮金</p>
+                            <p>員工認股選擇權</p>
+                            <p>按照工作表現一年調薪一次</p>
+                        </div>
+                        <div class="item2">
+                            <h3>連續假期沒有補班</h3>
+                            <p>彈性上下班，不用擠公車</p>
+                            <p>三節禮金</p>
+                            <p>標準工時不加班</p>
+                            <p>上工第一天即享7天特休</p>
+                        </div>
+                        <div class="item3">
+                            <h3>舒適的工作環境</h3>
+                            <p>正職享有24~27吋大螢幕</p>
+                            <p>提供BYOD電腦補助</p>
+                            <p>開放式空間，依照心情選位置</p>
+                        </div>
+                        <div class="item4">
+                            <h3>休閒福利夥伴好感情</h3>
+                            <p>不定期聚餐、尾牙</p>
+                            <p>終結孤單！夥伴陪你吃晚餐</p>
+                            <p>零食許願池讓你飽飽的</p>
+                        </div>
+                        <div class="item5">
+                            <h2>關於ThegameC的福利</h2>
+                            <p>「WORK LIFE BALANCE」是我們的宗旨，提供員工多元、透明、彈性的工作環境，工作不再厭世，而是成就自己的道路！</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <script>
+                $('#aboutmeBut').click(function () {
+                    $("#aboutmeBut").css("background-color", "#1C3D5C");
+                    $("#joinmeBut").css("background-color", "#0370d6");
+                    $(".joinMe").fadeOut(0);
+                    $('.Alltext').fadeIn(800);
+                });
+                $('#joinmeBut').click(function () {
+                    $("#joinmeBut").css("background-color", "#1C3D5C");
+                    $("#aboutmeBut").css("background-color", "#0370d6");
+                    $(".Alltext").fadeOut(0);
+                    $('.joinMe').fadeIn(800);
+                });
+
+                /******************/
+
+                //新增路徑為http://localhost/about?about=join，並做下列JQ語法，須配合header.ejs
+                document.addEventListener("DOMContentLoaded", function () {
+                    const urlParams = new URLSearchParams(window.location.search);
+                   const alertParam = urlParams.get("about");
+
+                 if (alertParam === "join") {
+                    $(".Alltext").css("display","none");
+                    $(".joinMe").css("display","block");
+                    $("#joinmeBut").css("background-color", "#1C3D5C");
+                    $("#aboutmeBut").css("background-color", "#0370d6");
+                   } 
+                 });
+            </script>
+</body>
+
+</html>

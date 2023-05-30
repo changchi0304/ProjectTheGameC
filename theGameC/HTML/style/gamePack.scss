@@ -1,0 +1,351 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 1920px;
+
+  font-family: "Microsoft YaHei", sans-serif;
+  letter-spacing: 2px;
+  p {
+    letter-spacing: 1px;
+    color: white;
+  }
+  span {
+    color: white;
+  }
+}
+
+.background {
+  background-image: url("../../public/img/Games/GameTypeBg/Shooting.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: -1;
+  filter: brightness(40%);
+}
+
+.allScreen {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  /* 左邊遊戲 bar */
+  .section1 {
+    flex: 2;
+    //background-color: lightgreen;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    background-color: rgb(31, 31, 31, 0.8);
+    overflow-y: auto;
+    height: 100%;
+    gap: 5px;
+    position: relative;
+    .downNote {
+      color: rgb(255, 255, 255);
+      font-size: 1.25rem;
+      padding: 12px 14px;
+      background-color: rgba(73, 73, 73, 0.75);
+      user-select: none;
+      position: fixed;
+      width: 19%;
+      bottom: 0;
+      z-index: 5;
+      text-align: center;
+    }
+    .game {
+      width: 100%;
+      height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      img {
+        width: 100%;
+        filter: brightness(40%);
+        transition: 0.25s;
+      }
+      p {
+        position: absolute;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: white;
+        bottom: 30px;
+        left: 25px;
+        filter: brightness(70%);
+        transition: 0.25s;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 6px 14px;
+        border-radius: 5px;
+      }
+    }
+    .game:hover {
+      img {
+        filter: brightness(100%);
+      }
+      p {
+        filter: brightness(100%);
+      }
+    }
+  }
+  /* 中間(s2)遊戲資訊 */
+  .section2 {
+    flex: 8;
+    //background-color: rgba(210, 105, 30, 0.8);
+    display: flex;
+    .s2left {
+      width: 40%;
+      // background-color: aquamarine;
+      display: flex;
+      flex-direction: column;
+      // padding: 15px;
+      // margin-top: auto;
+      // margin-bottom: 135px;
+      // padding: 25px 0;
+      // padding-right: 25px;
+      .s2Ldiv {
+        background-color: rgb(31, 31, 31, 0.8);
+        display: flex;
+        flex-direction: column;
+        border-radius: 10px;
+        height: 100vh;
+        .s2Ltop {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 35px 25px;
+          margin-top: 20px;
+          span {
+            font-size: 3.3rem;
+          }
+        }
+        hr {
+          width: 90%;
+          margin: 0 auto;
+        }
+        .s2Lbot {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 35px 25px;
+          .gameTypeDiv {
+            width: 100%;
+            margin-bottom: 30px;
+            padding: 0 20px;
+            .gameType {
+              font-size: 1.3rem;
+              padding: 6px 15px;
+              background-color: azure;
+              color: black;
+              border-radius: 30px;
+              border: 3px rgb(66, 66, 66) solid;
+              font-weight: 600;
+            }
+          }
+          .gameInfo {
+            letter-spacing: 3px;
+            font-size: 1.25rem;
+            line-height: 2.25rem;
+            padding: 0 20px;
+          }
+          .gameInfo2 {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            div {
+              flex: 7;
+              width: 500px;
+              margin: 0 auto;
+              p {
+                font-size: 1.25rem;
+                display: flex;
+                margin: 20px auto;
+              }
+              p span:nth-of-type(1) {
+                margin-left: 20%;
+                flex: 5;
+              }
+              p span:nth-of-type(2) {
+                flex: 6;
+              }
+            }
+            .s2btnDiv {
+              text-align: center;
+              button {
+                background-color: rgb(0, 0, 0);
+                padding: 15px 32px;
+                font-size: 1.35rem;
+                font-weight: 600;
+                border: 2px white solid;
+                border-radius: 10px;
+                color: white;
+                cursor: pointer;
+                transition: 0.2s;
+              }
+              button:hover {
+                border: 2px rgb(160, 160, 160) solid;
+                background-color: rgb(0, 0, 0);
+                color: rgb(160, 160, 160);
+              }
+            }
+          }
+        }
+      }
+    }
+    .s2right {
+      width: 60%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .PicSec {
+        background-color: rgba(0, 0, 0, 0.25);
+        width: 95%;
+        height: 75%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        gap: 15px;
+        .bigImg {
+          width: 95%;
+          height: 550px;
+          // margin-right: auto;
+          // margin-top: 150px;
+          overflow: hidden;
+          border-radius: 5px;
+          box-shadow: 0 0 15px rgb(0, 0, 0);
+          img {
+            width: 100%;
+          }
+        }
+        .PicBar {
+          background-color: rgba(0, 0, 0, 0.4);
+          box-shadow: 0 2px 15px rgb(0, 0, 0);
+          border-radius: 5px;
+          width: 95%;
+          height: 15%;
+          // padding: 7.5px;
+          display: flex;
+          justify-content: space-around;
+          gap: 8px;
+          .smallPicDiv {
+            width: 20%;
+            height: auto;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            border-radius: 2px;
+            background-color: rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            img {
+              width: auto;
+              height: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+  /* 右邊功能 bar */
+  .section3 {
+    // flex: 1;
+    // background-color: rgba(107, 0, 0, 0.5);
+    div {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: end;
+      // gap: 50px;
+      li {
+        width: 60px;
+        list-style: none;
+        padding: 40px 55px;
+        background-color: rgba(99, 99, 99, 0.6);
+        cursor: pointer;
+        transition: 0.25s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        p {
+          text-align: center;
+          font-size: 1.3rem;
+          color: white;
+          line-height: 1.9rem;
+        }
+      }
+      li:hover {
+        filter: brightness(70%);
+        background-color: gray;
+      }
+    }
+  }
+}
+
+/* 中間(s2)評論區 */
+.section2Comment {
+  flex: 8;
+  background-color: rgba(102, 102, 102, 1);
+  display: flex;
+  .s2left {
+    width: 40%;
+    // background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+  }
+  .s2right {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+//////////////////////////////////////////
+//////////////////////////////////////////
+/* 選中效果 */
+#gameSelect {
+  img {
+    filter: brightness(100%);
+  }
+  p {
+    filter: brightness(100%);
+  }
+}
+
+#funcSelect {
+  // filter: brightness(70%);
+  background-color: gray;
+}
+
+////////////////////////////////
+////////////////////////////////
+/* scroll 設置 */
+// scroll 樣式
+::-webkit-scrollbar {
+  width: 0;
+}
+// scroll 軌道顏色
+::-webkit-scrollbar-track {
+  background-color: #cccccc;
+}
+// scroll 滑塊顏色
+::-webkit-scrollbar-thumb {
+  background-color: #686868;
+}
+// scroll 滑塊停止時顏色
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}

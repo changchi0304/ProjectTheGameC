@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <!-- jquery -->
+  <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+    crossorigin="anonymous"></script>
+  <script src="/app/jquery.js"></script>
+  <!-- bootstrap5 icon -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css" />
+  <!-- css -->
+  <link rel="stylesheet" href="/style/style.css" />
+  <link rel="stylesheet" href="/style/index.css" />
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- slick -->
+  <link rel="stylesheet" href="/kits/slick/slick/slick.css" />
+  <link rel="stylesheet" href="/kits/slick/slick/slick-theme.css" />
+
+  <!-- fullPage.css -->
+  <link rel="stylesheet" href="/kits/fullpage/fullpage.css" />
+  <link rel="icon" href="/img/header/logoicon.ico" />
+  <title>ThegameC首頁</title>
+</head>
+
+<body>
+  <!-- header -->
+  <%- include('share/header')%>
+
+    <div id="fullpage">
+      <div class="section">
+        <!-- carousel -->
+        <div class="carousel">
+          <h1>線上遊戲</h1>
+          <section class="center slider" style="transition: 1s" data-aos="zoom-in">
+            <% for (let i = 0; i < gameimg.length; i++) { %>
+              <div>
+                <img src="/img/Games/<%- gameimg[i].image %>" />
+                <h1>《<%- gameimg[i].game_name %>》</h1>
+                <p><%- gameimg[i].game_type %></p>
+              </div>
+            <% } %>
+
+          </section>
+          <div class="carouselbut">
+            <a href="/games">探索更多</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="container">
+          <div class="sec2_slide">
+            <% for (let i = 0; i < products.length; i++) { %>
+              <div class="sec2_item" style="background-image:url(/img/Products/<%=products[i].image%>);">
+                <div class="content">
+                  <div class="name">《<%= products[i].product_name %>》</div>
+                  <div class="des">
+                    <p>
+                      <%= products[i].product_type %>類遊戲
+                    </p>
+                    <p>
+                      <%- products[i].description %>
+                    </p>
+                    <p>
+                      NT$<%= products[i].price %>
+                    </p>
+                  </div>
+                  <a href="" class="shopButton"><i class="bi bi-cart2"></i></a>
+                  <a href="" class="shopButton"><i class="bi bi-shop-window"></i></a>
+                </div>
+              </div>
+            <% } %>
+          </div>
+          <div class="buttons">
+            <button class="s_button">&lt;</button>
+            <button class="s_button">&gt;</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="d2">
+          <div class="timebox">
+            <!-- <h1>ThegameC</h1> -->
+            <img src="/img/header/head_logo.png" alt="logo" />
+            <h2>熱門遊戲夏季特賣</h2>
+            <div class="timebox1">
+              <span class="timetext days"></span>
+              <span>Day</span>
+              <span class="timetext hours"></span>
+              <span>Hr</span>
+              <span class="timetext minutes"></span>
+              <span>Min</span>
+              <span class="timetext seconds"></span>
+              <span>Sec</span>
+            </div>
+            <!-- <a href=""><span>火速前往</span></a> -->
+            <p><a href="">火速前往!</a></p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="section">
+        <div class="d3">
+          <br /><br /><br /><br /><br />
+          <h1>最新消息</h1>
+          <br />
+          <div class="newsbar">
+            <ul>
+              <li id="newsbut">
+                <span id="newsButs" class="butfocus">最新消息</span>
+              </li>
+              <li id="renewbut" class="newsbarhr">
+                <span id="renewButs">遊戲更新</span>
+              </li>
+              <li id="discountbut" class="newsbarhr">
+                <span id="discountButs">優惠活動</span>
+              </li>
+              <li id="productbut" class="newsbarhr">
+                <span id="productButs">新品上架</span>
+              </li>
+            </ul>
+          </div>
+
+          
+          <div class="newsAll" id="newsAll">
+            <div class="newsindex" id="newsindex">
+              <div class="newsleft">
+                <a href="">
+                  <div class="newsbox">
+                    <img src="/img/news/<%- news[0].news_img %>" alt="" />
+                    <h2><%- news[0].news_title %></h2>
+                    <p>
+                      <%- news[0].content %>
+                    </p>
+                  </div>
+                  <br /><br /><br /><br /><br /><br />
+                </a>
+                <a href="">
+                  <div class="newsbox">
+                    <img src="/img/news/<%- news[2].news_img %>" alt="" />
+                    <h2><%- news[2].news_title %></h2>
+                    <p>
+                      <%- news[2].content %>
+                    </p>
+                  </div>
+                </a>
+              </div>
+              <div class="newscenter"></div>
+              <div class="newsright newsright2">
+                <br /><br /><br /><br /><br /><br />
+                <a href="">
+                  <div class="newsbox">
+                    <img src="/img/news/<%- news[1].news_img %>" alt="" />
+                    <h2><%- news[1].news_title %></h2>
+                    <p>
+                      <%- news[1].content %>
+                    </p>
+                  </div>
+                </a>
+                <br /><br /><br /><br /><br /><br />
+                <a href="">
+                  <div class="newsbox">
+                    <img src="/img/news/<%- news[3].news_img %>" alt="" />
+                    <h2><%- news[3].news_title %></h2>
+                    <p>
+                      <%- news[3].content %>
+                    </p>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="newsbut">
+              <a href="/news/latest">查看更多</a>
+            </div>
+          </div>
+
+
+          <div class="renewAll" id="renewAll">
+            <ul class="cards">
+              <% gameUpdate.forEach(function(update) { %>
+                <li>
+                  <a href="" class="card">
+                    <img src="/img/news/<%= update.news_img %>" class="card__image" alt="" />
+                    <div class="card__overlay">
+                      <div class="card__header">
+                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
+                        <img class="card__thumb" src="/img/news/<%= update.news_img %>" alt="" />
+                        <div class="card__header-text">
+                          <h3 class="card__title"><%= update.news_title %></h3>
+                        </div>
+                      </div>
+                      <p class="card__description"><%= update.content %></p>
+                    </div>
+                  </a>
+                </li>
+              <% }) %>
+             
+            </ul>
+            <div class="renwebut">
+              <a href="/news/games_updates">查看更多</a>
+            </div>
+          </div>
+
+
+          <div class="discountAll" id="discountAll">
+            <ul class="cards">
+              <% promotion.forEach(function(promotion) { %>
+                <li>
+                  <a href="" class="card">
+                    <img src="/img/news/<%= promotion.news_img %>" class="card__image" alt="" />
+                    <div class="card__overlay">
+                      <div class="card__header">
+                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
+                        <img class="card__thumb" src="/img/news/<%= promotion.news_img %>" alt="" />
+                        <div class="card__header-text">
+                          <h3 class="card__title"><%= promotion.news_title %></h3>
+                          <span class="card__status"><%= promotion.dateTime %></span>
+                        </div>
+                      </div>
+                      <p class="card__description"><%= promotion.content %></p>
+                    </div>
+                  </a>
+                </li>
+              <% }) %>
+             
+            </ul>
+            <div class="renwebut">
+              <a href="/news/products_promotions">查看更多</a>
+            </div>
+          </div>
+
+
+          <div class="productAll" id="productAll">
+            <ul class="cards">
+              <% newproduct.forEach(function(newproduct) { %>
+                <li>
+                  <a href="" class="card">
+                    <img src="/img/news/<%= newproduct.news_img %>" class="card__image" alt="" />
+                    <div class="card__overlay">
+                      <div class="card__header">
+                        <svg class="card__arc" xmlns="http://www.w3.org/2000/svg"><path /></svg>                     
+                        <img class="card__thumb" src="/img/news/<%= newproduct.news_img %>" alt="" />
+                        <div class="card__header-text">
+                          <h3 class="card__title"><%= newproduct.news_title %></h3>
+                        </div>
+                      </div>
+                      <p class="card__description"><%= newproduct.content %></p>
+                    </div>
+                  </a>
+                </li>
+              <% }) %>
+             
+            </ul>
+            <div class="renwebut">
+              <a href="/news/new_products">查看更多</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- footer -->
+        <%- include('share/footer')%>
+      </div>
+    </div>
+    <script src="/app/index.js"></script>
+    <script src="/app/app.js"></script>
+
+    <!-- slick輪播圖 -->
+    <script src="./kits/slick/slick/slick.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+      $(".center").slick({
+        centerMode: true,
+        centerPadding: "60px",
+        slidesToShow: 5,
+        responsive: [
+          {
+            breakpoint: 1500,
+            settings: {
+              arrows: false,
+              centerMode: true,
+              centerPadding: "40px",
+              slidesToShow: 3,
+            },
+          },
+          {
+            breakpoint: 760,
+            settings: {
+              arrows: false,
+              centerMode: true,
+              centerPadding: "40px",
+              slidesToShow: 1,
+            },
+          },
+        ],
+      });
+    </script>
+    <!-- fullpage.js -->
+    <script src="./kits/fullpage/fullpage.js"></script>
+    <script>
+      new fullpage("#fullpage", {
+        sectionsColor: ["white", "white", "white"],
+        licenseKey: "YOUR LICENSE KEY HERE ",
+      });
+    </script>
+    <script src="/js/app.js"></script>
+
+</body>
+
+</html>

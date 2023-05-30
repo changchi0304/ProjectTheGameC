@@ -1,0 +1,107 @@
+{
+  "CSO_images": [
+    "CSO/cover.jfif",
+    "CSO/1.png",
+    "CSO/2.jpg",
+    "CSO/3.jpg",
+    "CSO/4.jpg"
+  ],
+  "MapleStory_images": [
+    "MapleStory/cover.jpg",
+    "MapleStory/1.jpg",
+    "MapleStory/3.jpeg",
+    "MapleStory/4.jpg",
+    "MapleStory/5.jpg"
+  ],
+  "CrazyArcade_images": [
+    "CrazyArcade/cover.jpg",
+    "CrazyArcade/1.jpg",
+    "CrazyArcade/2.jfif",
+    "CrazyArcade/3.jpg",
+    "CrazyArcade/4.jfif"
+  ],
+  "SF_images": [
+    "SF/cover.webp",
+    "SF/1.jfif",
+    "SF/2.jfif",
+    "SF/3.jfif",
+    "SF/4.jfif"
+  ],
+  "AVA_images": [
+    "AVA/cover.jpg",
+    "AVA/1.jpg",
+    "AVA/2.jpg",
+    "AVA/3.jpg",
+    "AVA/4.png"
+  ],
+  "KartRider_images": [
+    "KartRider/cover.jfif",
+    "KartRider/1.png",
+    "KartRider/2.jpg",
+    "KartRider/4.webp",
+    "KartRider/5.jfif"
+  ],
+  "LOL_images": [
+    "LOL/cover.jpg",
+    "LOL/1.jpg",
+    "LOL/2.jpg",
+    "LOL/3.jpg",
+    "LOL/4.jpg"
+  ],
+  "Valorant_images": [
+    "Valorant/cover.jpg",
+    "Valorant/1.png",
+    "Valorant/2.webp",
+    "Valorant/3.jpg",
+    "Valorant/4.webp"
+  ],
+  "DragonNest_images": [
+    "DragonNest/cover.jpg",
+    "DragonNest/1.jpg",
+    "DragonNest/2.jpg",
+    "DragonNest/3.jpg",
+    "DragonNest/4.jpg"
+  ],
+  "MaguMagu_images": [
+    "MaguMagu/cover.jfif",
+    "MaguMagu/1.webp",
+    "MaguMagu/2.jpg",
+    "MaguMagu/3.jfif",
+    "MaguMagu/4.png"
+  ],
+  "SoulWorker_images": [
+    "SoulWorker/cover.webp",
+    "SoulWorker/1.jpg",
+    "SoulWorker/2.png",
+    "SoulWorker/3.png",
+    "SoulWorker/4.png"
+  ],
+  "Vindictus_images": [
+    "Vindictus/cover.jpg",
+    "Vindictus/1.jpg",
+    "Vindictus/2.jpg",
+    "Vindictus/3.jpg",
+    "Vindictus/4.jpg"
+  ],
+  "SvenCoop_images": [
+    "SvenCoop/cover.jpg",
+    "SvenCoop/1.jpg",
+    "SvenCoop/2.jpg",
+    "SvenCoop/3.jfif",
+    "SvenCoop/4.jpg"
+  ],
+  "Elsword_images": [
+    "Elsword/cover.jpg",
+    "Elsword/1.jpg",
+    "Elsword/2.jpg",
+    "Elsword/3.jpg",
+    "Elsword/4.jpg"
+  ],
+  "WOT_images": [
+    "WOT/cover.jpg",
+    "WOT/1.PNG",
+    "WOT/2.jpg",
+    "WOT/3.jpg",
+    "WOT/4.jpg"
+  ]
+}

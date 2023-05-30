@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>英雄聯盟 - 限時造型優惠</title>
+    <link rel="stylesheet" href="style/style.css" />
+    <script type="text/javascript" src="/app/jquery.js"></script>
+    <style>
+      .already {
+        filter: brightness(50%);
+        pointer-events: none;
+        transform: scale(0.88);
+      }
+
+      #treasure {
+        position: fixed;
+        width: 90px;
+        top: 35px;
+        right: 25px;
+        border: none;
+        box-shadow: none;
+        z-index: 5;
+        transform: scaleX(-1);
+        filter: brightness(80%);
+        transition: 0.15s;
+        cursor: pointer;
+      }
+      #treasure:hover {
+        filter: brightness(110%);
+      }
+    </style>
+  </head>
+  <body>
+    <img id="treasure" src="/img/treasure.png" alt="" />
+
+    <section class="section1">
+      <h1>專屬商店</h1>
+      <hr />
+      <p>限時特價大優惠！五件商品供您選擇</p>
+      <!-- 當前點數 -->
+      <span class="myCoinContent"
+        >歡迎您 "<%- userGameData.nickname||userGameData.username %>"
+        ，您的可用點數有：<span class="myCoin"
+          ><%= userGameData.coin_in_game %></span
+        ></span
+      >
+    </section>
+
+    <section class="section2">
+      <!-- 豬女 150 -->
+      <div
+        data-value="1"
+        class="SkinAndCost"
+        onclick="selectSkin(1, '菁英計畫：史瓦妮', 150, 'img/skin1.png')"
+      >
+        <div class="SkinDiv">
+          <!-- <div class="buy"><p>已擁有</p></div> -->
+          <div class="SkinImg">
+            <img src="img/skin1.png" alt="" />
+          </div>
+          <div class="fontDiv">
+            <p class="skinName">菁英計畫：史瓦妮</p>
+            <br />
+            <p class="cut">-50%</p>
+          </div>
+        </div>
+        <br />
+        <br />
+        <div class="costDiv">
+          <img src="img/point.png" alt="" />
+          <p class="cost">150</p>
+        </div>
+      </div>
+
+      <!-- 劫 150 -->
+      <div
+        data-value="2"
+        class="SkinAndCost"
+        onclick="selectSkin(2,'永恆榮耀 劫', 150, 'img/skin2.png')"
+      >
+        <div class="SkinDiv">
+          <!-- <div class="buy">已擁有</div> -->
+          <div class="SkinImg">
+            <img src="img/skin2.png" alt="" />
+          </div>
+          <div class="fontDiv">
+            <p class="skinName">永恆榮耀 劫</p>
+            <br />
+            <p class="cut">-50%</p>
+          </div>
+        </div>
+        <br />
+        <br />
+        <div class="costDiv">
+          <img src="img/point.png" alt="" />
+          <p class="cost">150</p>
+        </div>
+      </div>
+      <!-- 女巫 225 -->
+      <div
+        data-value="3"
+        class="SkinAndCost"
+        onclick="selectSkin(3,'女巫集會 魔甘娜', 225, 'img/skin3.png')"
+      >
+        <div class="SkinDiv">
+          <!-- <div class="buy">已擁有</div> -->
+          <div class="SkinImg">
+            <img src="img/skin3.png" alt="" />
+          </div>
+          <div class="fontDiv">
+            <p class="skinName">女巫集會 魔甘娜</p>
+            <br />
+            <p class="cut">-50%</p>
+          </div>
+        </div>
+        <br />
+        <br />
+        <div class="costDiv">
+          <img src="img/point.png" alt="" />
+          <p class="cost">225</p>
+        </div>
+      </div>
+      <!-- 賽恩 150 -->
+      <div
+        data-value="4"
+        class="SkinAndCost"
+        onclick="selectSkin(4,'文明末日 賽恩', 150, 'img/skin4.png')"
+      >
+        <div class="SkinDiv">
+          <!-- <div class="buy">已擁有</div> -->
+          <div class="SkinImg">
+            <img src="img/skin4.png" alt="" />
+          </div>
+          <div class="fontDiv">
+            <p class="skinName">文明末日 賽恩</p>
+            <br />
+            <p class="cut">-50%</p>
+          </div>
+        </div>
+        <br />
+        <br />
+        <div class="costDiv">
+          <img src="img/point.png" alt="" />
+          <p class="cost">150</p>
+        </div>
+      </div>
+      <!-- 阿璃 225 -->
+      <div
+        data-value="5"
+        class="SkinAndCost"
+        onclick="selectSkin(5,'靈花祭 阿璃', 225, 'img/skin5.png')"
+      >
+        <div class="SkinDiv">
+          <!-- <div class="buy">已擁有</div> -->
+          <div class="SkinImg">
+            <img src="img/skin5.png" alt="" />
+          </div>
+          <div class="fontDiv">
+            <p class="skinName">靈花祭 阿璃</p>
+            <br />
+            <p class="cut">-50%</p>
+          </div>
+        </div>
+        <br />
+        <br />
+        <div class="costDiv">
+          <img src="img/point.png" alt="" />
+          <p class="cost">225</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section3">
+      <p>優惠時間： 5月25日 至 6月10日</p>
+
+      <hr />
+      <p>看到什麼想購買的商品了嗎？心動不如馬上行動！</p>
+    </section>
+
+    <dialog class="dialog">
+      <form>
+        <div class="formImg">
+          <input id="gameID" type="hidden" name="game_id" value="7" />
+          <input
+            id="user_id"
+            type="hidden"
+            name="user_id"
+            value="<%= userGameData.user_id %>"
+          />
+          <input id="inputID" type="hidden" />
+          <input id="inputSkin" type="hidden" />
+          <input id="inputCost" type="hidden" />
+          <img id="selectSkinImg" src="" alt="" />
+        </div>
+        <div class="formInfo">
+          <div>
+            <p id="selectSkinName"></p>
+            <span>
+              價格：
+              <span
+                ><img src="img/point.png" alt="" /><span
+                  id="selectSkinCost"
+                ></span
+              ></span>
+            </span>
+          </div>
+          <div>
+            <button id="buyConfirm" type="submit">確認購買</button><br /><br />
+            <button id="closeDialog" type="button">取消購買</button>
+          </div>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="dialog2">
+      <div>
+        <h2>您的造型</h2>
+        <div>
+          <% userlolSkin.map(function(v){%>
+          <p>擁有造型： <span><%- v.skin_name %></span></p>
+          <% }) %>
+        </div>
+        <button id="closeDialog2" type="button">關閉寶箱</button>
+      </div>
+    </dialog>
+
+    <!-- 購買過的 skin ID -->
+    <input
+      id="userlolSkinID"
+      type="hidden"
+      value="<%= JSON.stringify(userlolSkin) %>"
+    />
+    <script>
+      /* 打開寶箱 */
+      $("#treasure").on("click", function () {
+        document.querySelector(".dialog2").showModal();
+      });
+      $("#closeDialog2").on("click", function () {
+        document.querySelector(".dialog2").close();
+      });
+
+      /* 購買過的變黑 */
+      let skinArr = JSON.parse($("#userlolSkinID").val());
+      skinArr.map(function (ele, index) {
+        const mylolSkin = ele.skin_id;
+        $(".SkinAndCost").each(function (i, e) {
+          if (mylolSkin == e.dataset.value) {
+            // 乖乖到網頁查屬性 e.dataset.value
+            $(`div[data-value='${e.dataset.value}']`).addClass("already");
+            // $(`div.buy`).css("display", "flex");
+          }
+        });
+      });
+
+      /* dialog 和 撈資料 */
+      const skinID = $("#inputID");
+      const skin = $("#inputSkin");
+      const cost = $("#inputCost");
+
+      function selectSkin(num, name, coin, pic) {
+        document.querySelector(".dialog").showModal();
+        $("#selectSkinImg").prop("src", pic);
+        $("#selectSkinName").html(name);
+        $("#selectSkinCost").html(coin);
+        skinID.val(num);
+        skin.val(name);
+        cost.val(coin);
+      }
+      // 關閉 dialog
+      $("#closeDialog").on("click", function () {
+        document.querySelector(".dialog").close();
+        skin.val("");
+        cost.val("");
+      });
+
+      // 確認送出
+      $(function () {
+        $("#buyConfirm").on("click", function () {
+          event.preventDefault();
+          const userId = $("#user_id").val();
+          if ($(".myCoin").text() >= parseInt(cost.val())) {
+            $.ajax({
+              url: `http://localhost:80/wallet/api/game_coin_pay`,
+              type: "PUT",
+              data: {
+                user_id: userId,
+                coin_in_game:
+                  parseInt($(".myCoin").text()) - parseInt(cost.val()),
+              },
+              success: function (res) {
+                console.log(res);
+              },
+              error: function (jqXHR, textStatus, errorThrown) {
+                console.log("error：", errorThrown);
+              },
+            });
+
+            $.ajax({
+              url: `http://localhost:80/wallet/api/game_coin_insert`,
+              type: "POST",
+              data: {
+                user_id: userId,
+                skin_id: skinID.val(),
+                skin_name: skin.val(),
+                pay: parseInt(cost.val()),
+              },
+              error: function (jqXHR, textStatus, errorThrown) {
+                console.log("error：", errorThrown);
+              },
+            }).done((data) => {
+              document.querySelector("dialog").close();
+              location.reload();
+            });
+          } else {
+            alert("您的點數餘額不足！");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>商品 - 商品單頁</title>
+    <link rel="stylesheet" href="../public/style/style.css" />
+    <link rel="stylesheet" href="./style/productPage.css" />
+    <link rel="stylesheet" href="../public/style/comment.css" />
+    <script type="text/javascript" src="/app/jquery.js"></script>
+  </head>
+  <body>
+    <!-- header -->
+    <header>
+      <!-- logo -->
+      <div class="logo" onclick="goIndex()">
+        <img src="/img/header/head_logo.png" alt="" />
+      </div>
+      <!-- navbar -->
+      <nav>
+        <ul>
+          <li>
+            <a href="#"
+              >遊戲
+              <img id="headdropdown" src="/img/header/head_dropdown.png" alt=""
+            /></a>
+            <div class="dropdown">
+              <ul>
+                <li><a href="./game.html">遊戲頁</a></li>
+                <li><a href="#">休閒</a></li>
+                <li><a href="#">動作</a></li>
+                <li><a href="#">運動</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">
+              商店
+              <img id="headdropdown" src="/img/header/head_dropdown.png" alt=""
+            /></a>
+            <div class="dropdown">
+              <ul>
+                <li><a href="#">商品頁</a></li>
+                <li><a href="./shopping_cart.html">購物車</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="./news.html"
+              >新聞
+              <img id="headdropdown" src="/img/header/head_dropdown.png" alt=""
+            /></a>
+            <div class="dropdown">
+              <ul>
+                <li><a href="./news.html">最新消息</a></li>
+                <li><a href="./news.html">遊戲更新</a></li>
+                <li><a href="./news.html">優惠活動</a></li>
+                <li><a href="./news.html">新品上架</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">
+              關於
+              <img id="headdropdown" src="/img/header/head_dropdown.png" alt=""
+            /></a>
+            <div class="dropdown">
+              <ul>
+                <li><a href="#">公司介紹</a></li>
+                <li><a href="#">徵才</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">
+              客服
+              <img id="headdropdown" src="/img/header/head_dropdown.png" alt=""
+            /></a>
+            <div class="dropdown">
+              <ul>
+                <li><a href="./qa.html">常見問題</a></li>
+                <li><a href="./mail">客服信箱</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div class="navbar-icons">
+        <a href="#"><img src="/img/header/head_search.png" alt="" /></a>
+        <a id="GoWalletPage" href="./wallet_PI.html"
+          ><img src="/img/header/head_wallet.png" alt=""
+        /></a>
+        <a id="GoLoginPage" href="./newlogin.html">
+          <img src="/img/header/head_user.png" alt=""
+        /></a>
+      </div>
+    </header>
+
+    <div class="ProductPageBgAction">
+      <div class="ProductPage">
+        <p class="productNav">TheGameC > 商店 > <span>CSO 絕對武力</span></p>
+        <!-- s1 商品介紹 -->
+        <section class="section1">
+          <img
+            id="typeIcon"
+            src="../public/img/Products/Action/typeIcon.png"
+            alt=""
+          />
+          <div class="s1left">
+            <div class="bigPicDiv">
+              <img
+                id="bigPic"
+                src="../public/img/Products/Action/GTA5.jpg"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="s1right">
+            <h2>CSO 絕對武力</h2>
+            <div class="type"><span>射擊</span></div>
+            <div>
+              <p>
+                《極地戰嚎5》是一款開放世界的第一人稱動作遊戲，玩家需要與異教勢力作戰，並自由探索世界、狩獵、駕駛車輛。<br />故事背景主要是以美國蒙大拿州當中一個名為希望郡的小鎮，受到末日教派的邪教團體紮根影響，下至人民日常生活用品製造、上至警方與政府單位，都已受其黨羽深度滲透，玩家扮演的則是一個小小的警察，隻身一人四處培植反抗勢力，以期有朝一日能絕地反攻的各種日常生活。
+              </p>
+            </div>
+            <div>
+              <p>開發商：<span>Value</span></p>
+              <p>營運商：<span>TheGameC</span></p>
+              <p>年齡限制：<span>普遍級</span></p>
+            </div>
+            <div>
+              <p>評分：<span>5</span></p>
+              <p>購買人數：<span>5000</span></p>
+            </div>
+            <div class="s1btnDiv">
+              <button>加入購物車</button><button>查看評論</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- s2 評論 -->
+        <section class="section2">
+          <h2>發表評論</h2>
+          <!-- 未登入 -->
+          <!-- <div class="commitNotLogin">
+          <div>
+            <span>登入您的帳號 向大家發表您的想法吧 ！</span>
+            <a href="/">登入</a>
+          </div>
+        </div> -->
+          <!-- 已登入 -->
+          <div class="commitLogin">
+            <div class="s2left">
+              <div>
+                <span>評分：</span
+                ><span class="star-rating">
+                  <input id="star1" type="radio" name="rating" value="1" />
+                  <label for="star1" title="1 star" class="star"></label>
+                  <input id="star2" type="radio" name="rating" value="2" />
+                  <label for="star2" title="2 stars" class="star"></label>
+                  <input id="star3" type="radio" name="rating" value="3" />
+                  <label for="star3" title="3 stars" class="star"></label>
+                  <input id="star4" type="radio" name="rating" value="4" />
+                  <label for="star4" title="4 stars" class="star"></label>
+                  <input id="star5" type="radio" name="rating" value="5" />
+                  <label for="star5" title="5 stars" class="star"></label
+                ></span>
+              </div>
+              <div>
+                <span>您的評分：</span> <br />
+                <div><span id="yourRating">5</span> <span>/5</span></div>
+              </div>
+              <div>
+                <span>當前評分：</span><br />
+                <div><span id="averageRating">4.6</span> <span>/5</span></div>
+              </div>
+            </div>
+            <div class="s2right">
+              <p>撰寫評論</p>
+              <textarea name="" id="" cols="30" rows="10"></textarea>
+              <div><button>張貼</button></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- s3 推薦商品 -->
+        <section class="section3">
+          <h2>或許您也會喜歡</h2>
+          <div class="recommendedProducts">
+            <!-- 單個商品 -->
+            <div class="recomProduct">
+              <div class="recPImgDiv">
+                <img
+                  src="../public/img/Products/simulation/Cities.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="recPInfo">
+                <div class="recPtitle">
+                  <h3>CSO 絕對武力</h3>
+                  <div><span id="recPtype">射擊</span></div>
+                </div>
+                <div class="recPTextLimit">
+                  <p>
+                    《極地戰嚎5》是一款開放世界的第一人稱動作遊戲，玩家需要與異教勢力作戰，並自由探索世界、狩獵、駕駛車輛。<br />故事背景主要是以美國蒙大拿州當中一個名為希望郡的小鎮，受到末日教派的邪教團體紮根影響，下至人民日常生活用品製造、上至警方與政府單位，都已受其黨羽深度滲透，玩家扮演的則是一個小小的警察，隻身一人四處培植反抗勢力，以期有朝一日能絕地反攻的各種日常生活。
+                  </p>
+                </div>
+              </div>
+              <div class="recPgoPage"><a href="/">前往頁面</a></div>
+            </div>
+            <!-- 單個商品 -->
+            <div class="recomProduct">
+              <div class="recPImgDiv">
+                <img
+                  src="../public/img/Products/simulation/Cities.jpg"
+                  alt=""
+                />
+              </div>
+              <div class="recPInfo">
+                <div class="recPtitle">
+                  <h3>CSO 絕對武力</h3>
+                  <div><span id="recPtype">射擊</span></div>
+                </div>
+                <div class="recPTextLimit">
+                  <p>
+                    Counter-Strike 是一款經典的第一人
+                    稱射擊遊戲，玩家需要根據任務目標
+                    進行射擊、燒毀物品、拆除炸彈等各
+                    種戰鬥行動。遊戲以恐怖分子和反恐
+                    精英兩方對戰為主題，具有深度和高
+                    度的槍械操作性和社交性的遊戲。
+                  </p>
+                </div>
+              </div>
+              <div class="recPgoPage"><a href="/">前往頁面</a></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <script src="/app/app.js"></script>
+
+    <script>
+      var stars = document.getElementsByClassName("star");
+
+      for (var i = 0; i < stars.length; i++) {
+        stars[i].addEventListener("click", function () {
+          var rating = parseInt(this.previousElementSibling.value);
+
+          // 移除所有星
+          for (var j = 0; j < stars.length; j++) {
+            stars[j].classList.remove("star_filled");
+          }
+
+          for (var k = 0; k < rating; k++) {
+            stars[k].classList.add("star_filled");
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>錢包 - 轉點系統</title>
+    <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="/style/wallet.css" />
+    <script type="text/javascript" src="/app/jquery.js"></script>
+  </head>
+  <body>
+    <!-- header -->
+    <%- include('share/header')%>
+
+    <!-- section -->
+    <section class="section">
+      <!-- 左半部 -->
+      <%- include('share/wallet/wallet_left')%>
+
+      <!-- 右半部 -->
+      <div class="s2right">
+        <!-- 選擇遊戲 -->
+        <div class="s2rightPart1">
+          <div class="s2part1top"><p>請選擇遊戲</p></div>
+          <div class="s2part1down">
+            <div class="wallet_games">
+              <% if(userGame.games != []){ %>
+              <%userGame.games.map(function(v,i){ %>
+              <div class="game_div">
+                <div class="wallet_game">
+                  <div>
+                    <img src=<%=`/img/Games/${userGame.images[i]}` %> />
+                  </div>
+                  <p><%= v %></p>
+                  <span id="gameID" style="display: none"
+                    ><%= userGame.gameID[i] %></span
+                  >
+                </div>
+              </div>
+              <% }) } else if (userGame.games == 0) {%>
+              <div
+                class="game_div"
+                style="
+                  padding-left: 120px;
+                  flex-direction: column;
+                  justify-content: center;
+                  width: 50%;
+                  height: 200px;
+                "
+              >
+                <p style="font-size: 1.15rem">您目前尚未遊玩任何遊戲，</p>
+                <br />
+                <p style="font-size: 1.15rem">
+                  加入遊戲後就可以體驗轉點功能囉！
+                </p>
+                <br /><br />
+                <a
+                  href="/games"
+                  style="font-size: 1.15rem; text-decoration: none"
+                  >點我進入遊戲頁面</a
+                >
+              </div>
+              <% } %>
+              <!-- <div class="game_div">
+                <div class="wallet_game">
+                  <div>
+                    <img src="/img/Games/AVA/cover.jpg" />
+                  </div>
+                  <p>戰地之王</p>  
+                </div>
+              </div>-->
+            </div>
+          </div>
+        </div>
+
+        <br /><br />
+        <!-- 選擇轉點面額 -->
+        <div class="s2rightPart1">
+          <div class="s2part1top"><p>請選擇轉點面額</p></div>
+          <div class="s3part1down">
+            <ul>
+              <li>
+                <span>轉入 50 C幣 至遊戲 (轉換最低金額)</span>
+                <button onclick="exchange(50)" class="exchange_btn">
+                  我要轉換
+                </button>
+              </li>
+              <li>
+                <span>轉入 100 C幣 至遊戲 </span>
+                <button onclick="exchange(100)" class="exchange_btn">
+                  我要轉換
+                </button>
+              </li>
+              <li>
+                <span>轉入 250 C幣 至遊戲 </span>
+                <button onclick="exchange(250)" class="exchange_btn">
+                  我要轉換
+                </button>
+              </li>
+              <li>
+                <span>轉入 500 C幣 至遊戲 </span>
+                <button onclick="exchange(500)" class="exchange_btn">
+                  我要轉換
+                </button>
+              </li>
+              <li>
+                <span>轉入 1000 C幣 至遊戲 </span>
+                <button onclick="exchange(1000)" class="exchange_btn">
+                  我要轉換
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 確認轉點視窗 -->
+    <dialog id="exchangedialog">
+      <button id="closeEXDialog">
+        <img src="/img/wallet/close.png" alt="" />
+      </button>
+      <form
+        method="post"
+        action="/wallet/insertExchange/<%= userData.user_id %>"
+      >
+        <!-- 使用者代號、遊戲名、轉點數、coin餘額 -->
+        <input
+          type="hidden"
+          id="user_id"
+          name="user_id"
+          value="<%= userData.user_id %>"
+        />
+        <input id="inputGameID" type="hidden" name="game_id" />
+        <input id="inputGameName" type="hidden" name="game_name" />
+        <input id="inputCoinNum" type="hidden" name="c_coin_out" />
+        <input
+          type="hidden"
+          name="c_coin_balance"
+          value="<%= userData.c_coin_balance %>"
+        />
+
+        <div>
+          <p>確認購買內容</p>
+          <div class="exconfirm">
+            <li>
+              <span>遊戲</span>
+              <span id="exchangeGame">0</span>
+            </li>
+            <li>
+              <span>C幣</span>
+              <span
+                ><img src="/img/wallet/coinIcon.png" /><span id="exchangeCoin"
+                  >0</span
+                ></span
+              >
+            </li>
+          </div>
+          <hr />
+        </div>
+        <button id="exchangeConfirm" type="submit">確認轉點</button>
+      </form>
+    </dialog>
+
+    <div
+      id="coin-balance"
+      data-coin-balance="<%= userData.c_coin_balance %>"
+    ></div>
+    <script src="/app/app.js"></script>
+    <script>
+      // 選擇遊戲
+      var gameSelect = Array.from(document.querySelectorAll(".wallet_game"));
+      gameSelect.forEach((style) => {
+        style.addEventListener("click", function () {
+          gameSelect.forEach((style) => {
+            style.classList.remove("GSelected");
+          });
+          this.classList.add("GSelected");
+        });
+      });
+
+      // 選擇轉點 + dialog
+      var game_id = $("input#inputGameID");
+      var game_name = $("input#inputGameName");
+      var coin_out = $("input#inputCoinNum");
+      function exchange(coin) {
+        var gameName = document.querySelector(".GSelected p");
+        var gameIDspan = document.querySelector(".GSelected span");
+        if (gameName == null) {
+          alert("您尚未選擇遊戲。");
+        } else {
+          coin_out.val(coin);
+          game_name.val(gameName.innerText);
+          game_id.val(gameIDspan.innerText);
+          // console.log(game_name);
+          // console.log(coin_out);
+          document.querySelector("#exchangeGame").innerHTML =
+            gameName.innerText;
+          document.querySelector("#exchangeCoin").innerHTML = coin;
+          $("input#coinNum").val(coin);
+          document.querySelector("#exchangedialog").showModal();
+        }
+      }
+      // 關閉 dialog
+      closeEXDialog.addEventListener("click", () => {
+        document.querySelector("#exchangedialog").close();
+      });
+
+      //-----------------------------------------
+      //-----------------------------------------
+      //-----------------------------------------
+
+      ////////////////////
+      /* 轉點 */
+      $(function () {
+        // 按鈕
+        $("#exchangeConfirm").on("click", function () {
+          event.preventDefault();
+          const userId = $("#user_id").val();
+          const coinBalance = $("input[name='c_coin_balance']").val();
+          let coinInGame = 0;
+          // 餘額金額
+
+          if (parseInt(coinBalance) >= parseInt(coin_out.val())) {
+            // 獲得 user_games 資料，需要兩個變數代稱，不想改變路吽，所以用 ajax
+            $.ajax({
+              url: `http://localhost/game_coin/${userId}/${game_id.val()}`,
+              type: "GET",
+            }).done(function (res) {
+              coinInGame = res[0].coin_in_game; // 資料庫的 coin_in_game
+
+              // update 使用者轉點 coin 進遊戲 user_games.sql
+              $.ajax({
+                url: `http://localhost:80/wallet/Game_coin`,
+                type: "PUT",
+                data: {
+                  user_id: userId,
+                  game_id: game_id.val(),
+                  game_name: game_name.val(),
+                  coin_in_game: parseInt(coinInGame) + parseInt(coin_out.val()),
+                },
+              });
+
+              // update c 餘額
+              $.ajax({
+                url: `http://localhost:80/wallet/updateExchange/${userId}`,
+                type: "PUT",
+                data: {
+                  c_coin_balance: parseInt(coinBalance) - coin_out.val(),
+                },
+              });
+
+              // insert c_coin_exchange.sql
+              $.ajax({
+                url: `http://localhost:80/wallet/insertExchange/${userId}`,
+                type: "POST",
+                data: {
+                  user_id: userId,
+                  game_id: game_id.val(),
+                  game_name: game_name.val(),
+                  c_coin_out: coin_out.val(),
+                },
+              })
+                .done((data) => {
+                  alert(
+                    `已將C幣${coin_out.val()}點轉入${game_name.val()}，感謝您的支持！`
+                  );
+                  coin_out.val("");
+                  game_name.val("");
+                  document.querySelector("dialog").close();
+                  location.reload();
+                })
+                .fail((jqXHR, textStatus, errorThrown) => {
+                  console.error("Error:", textStatus, errorThrown);
+                  alert("轉點過程中出現錯誤，請稍後重試。");
+                });
+            });
+          } else {
+            alert(
+              "很抱歉，您當前的C幣不足以轉換該面額。請考慮其他面額或增加您的C幣。"
+            );
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

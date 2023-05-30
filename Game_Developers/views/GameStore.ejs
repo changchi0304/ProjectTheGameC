@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>英雄聯盟 - 限時造型優惠</title>
+    <link rel="stylesheet" href="style/style.css" />
+    <script type="text/javascript" src="/app/jquery.js"></script>
+  </head>
+  <body>
+    <section class="section1">
+      <h1>專屬商店</h1>
+      <hr />
+      <p>限時特價大優惠！五件商品供您選擇</p>
+      <!-- 當前點數 -->
+      <span class="myCoinContent"
+        >您尚未登入帳號：<span
+          onclick="login()"
+          style="color: white; text-decoration: underline"
+          >點我登入帳號</span
+        ></span
+      >
+    </section>
+
+    <section class="section2">
+      <!-- 豬女 150 -->
+      <div
+        class="SkinAndCost"
+        onclick="selectSkin('菁英計畫：史瓦妮', 150, 'img/skin1.png')"
+      >
+        <div class="SkinDiv">
+          <div class="SkinImg">
+            <img src="img/skin1.png" alt="" />
+          </div>
+          <div class="fontDiv">
+            <p class="skinName">菁英計畫：史瓦妮</p>
+            <br />
+            <p class="cut">-50%</p>
+          </div>
+        </div>
+        <br />
+        <br />
+        <div class="costDiv">
+          <img src="img/point.png" alt="" />
+          <p class="cost">150</p>
+        </div>
+      </div>
+      <!-- 劫 150 -->
+      <div
+        class="SkinAndCost"
+        onclick="selectSkin('永恆榮耀 劫', 150, 'img/skin2.png')"
+      >
+        <div class="SkinDiv">
+          <div class="SkinImg">
+            <img src="img/skin2.png" alt="" />
+          </div>
+          <div class="fontDiv">
+            <p class="skinName">永恆榮耀 劫</p>
+            <br />
+            <p class="cut">-50%</p>
+          </div>
+        </div>
+        <br />
+        <br />
+        <div class="costDiv">
+          <img src="img/point.png" alt="" />
+          <p class="cost">150</p>
+        </div>
+      </div>
+      <!-- 女巫 225 -->
+      <div
+        class="SkinAndCost"
+        onclick="selectSkin('女巫集會 魔甘娜', 225, 'img/skin3.png')"
+      >
+        <div class="SkinDiv">
+          <div class="SkinImg">
+            <img src="img/skin3.png" alt="" />
+          </div>
+          <div class="fontDiv">
+            <p class="skinName">女巫集會 魔甘娜</p>
+            <br />
+            <p class="cut">-50%</p>
+          </div>
+        </div>
+        <br />
+        <br />
+        <div class="costDiv">
+          <img src="img/point.png" alt="" />
+          <p class="cost">225</p>
+        </div>
+      </div>
+      <!-- 賽恩 150 -->
+      <div
+        class="SkinAndCost"
+        onclick="selectSkin('文明末日 賽恩', 150, 'img/skin4.png')"
+      >
+        <div class="SkinDiv">
+          <div class="SkinImg">
+            <img src="img/skin4.png" alt="" />
+          </div>
+          <div class="fontDiv">
+            <p class="skinName">文明末日 賽恩</p>
+            <br />
+            <p class="cut">-50%</p>
+          </div>
+        </div>
+        <br />
+        <br />
+        <div class="costDiv">
+          <img src="img/point.png" alt="" />
+          <p class="cost">150</p>
+        </div>
+      </div>
+      <!-- 阿璃 225 -->
+      <div
+        class="SkinAndCost"
+        onclick="selectSkin('靈花祭 阿璃', 225, 'img/skin5.png')"
+      >
+        <div class="SkinDiv">
+          <div class="SkinImg">
+            <img src="img/skin5.png" alt="" />
+          </div>
+          <div class="fontDiv">
+            <p class="skinName">靈花祭 阿璃</p>
+            <br />
+            <p class="cut">-50%</p>
+          </div>
+        </div>
+        <br />
+        <br />
+        <div class="costDiv">
+          <img src="img/point.png" alt="" />
+          <p class="cost">225</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section3">
+      <p>優惠時間： 5月25日 至 6月10日</p>
+
+      <hr />
+      <p>看到什麼想購買的商品了嗎？心動不如馬上行動！</p>
+    </section>
+
+    <dialog class="dialog">
+      <form action="" type="post">
+        <div class="formImg">
+          <input id="gameID" type="hidden" name="game_id" />
+          <input id="userID" type="text" name="user_id" />
+          <input id="inputSkin" type="hidden" />
+          <input id="inputCost" type="hidden" />
+          <img id="selectSkinImg" src="" alt="" />
+        </div>
+        <div class="formInfo">
+          <div>
+            <p id="selectSkinName"></p>
+            <span>
+              價格：
+              <span
+                ><img src="img/point.png" alt="" /><span
+                  id="selectSkinCost"
+                ></span
+              ></span>
+            </span>
+          </div>
+          <div>
+            <button id="buyConfirm" type="button">確認購買</button><br /><br />
+            <button id="closeDialog" type="button">取消購買</button>
+          </div>
+        </div>
+      </form>
+    </dialog>
+
+    <!-- 登入 -->
+    <dialog class="dialogLogin">
+      <form id="loginForm">
+        <div>
+          <label for="account">帳號：</label><input id="account" type="text" />
+          <br />
+          <label for="password">密碼：</label
+          ><input id="password" type="password" />
+        </div>
+        <button id="LoginOK" type="submit">登入帳號</button>
+        <button id="closeDialogLogin" type="button">取消登入</button>
+      </form>
+    </dialog>
+
+    <script>
+      // alert("如果要購買造型，請先登入帳號");
+
+      const skin = $("#inputSkin");
+      const cost = $("#inputCost");
+
+      function selectSkin(name, coin, pic) {
+        document.querySelector(".dialog").showModal();
+        $("#selectSkinImg").prop("src", pic);
+        $("#selectSkinName").html(name);
+        $("#selectSkinCost").html(coin);
+
+        skin.val(name);
+        cost.val(coin);
+      }
+      // 關閉 dialog
+      $("#closeDialog").on("click", function () {
+        document.querySelector(".dialog").close();
+        skin.val("");
+        cost.val("");
+      });
+
+      // 購買按鈕(未登入帳號)
+      $("#buyConfirm").on("click", function () {
+        event.preventDefault();
+        alert("請先登入帳號喔！");
+      });
+
+      // 登入 dialog
+      function login() {
+        document.querySelector(".dialogLogin").showModal();
+      }
+      $("#closeDialogLogin").on("click", function () {
+        document.querySelector(".dialogLogin").close();
+      });
+      // 登入
+      $(function () {
+        $("#loginForm").on("submit", function (e) {
+          event.preventDefault(e);
+          $.ajax({
+            url: "http://localhost:80/lol/login",
+            type: "POST",
+            data: {
+              username: $("input[id='account']").val(),
+              password: $("input[id='password']").val(),
+            },
+          }).done(function (data) {
+            console.log(data);
+            if (data.username == $("input[id='account']").val()) {
+              window.location.assign(`http://localhost:90/${data.user_id}`);
+            } else {
+              alert("您的帳號或密碼輸入有誤！");
+            }
+          });
+        });
+      });
+
+      // 用戶沒此沒遊戲
+      document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const alertParam = urlParams.get("err");
+
+        if (alertParam === "noGame") {
+          alert("您目前並未擁有《英雄聯盟》，請先將其加入遊戲庫中。");
+        }
+      });
+    </script>
+  </body>
+</html>

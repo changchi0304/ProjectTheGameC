@@ -1,0 +1,49 @@
+diff a/theGameC/public/kits/slick/slick/slick-theme.css b/theGameC/public/kits/slick/slick/slick-theme.css	(rejected hunks)
+@@ -49,40 +49,37 @@
+ .slick-prev:before,
+ .slick-next:before {
+   font-family: "slick";
+-  /* font-size: 50px; */
++  font-size: 20px;
+   line-height: 1;
+-  padding: 20px 15px;
+   color: white;
+-  background-color: rgb(173, 173, 173);
+   opacity: 0.75;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+ }
+ 
+ .slick-prev {
+-  left: 20%;
+-  z-index: 1;
++  left: -25px;
+ }
+ [dir=rtl] .slick-prev {
+   left: auto;
+-  right: 100px;
++  right: -25px;
+ }
+ .slick-prev:before {
+-  content: "〈";
++  content: "←";
+ }
+ [dir=rtl] .slick-prev:before {
+   content: "→";
+ }
+ 
+ .slick-next {
+-  right: 20%;
++  right: -25px;
+ }
+ [dir=rtl] .slick-next {
+-  left: 46px;
++  left: -25px;
+   right: auto;
+ }
+ .slick-next:before {
+-  content: "〉";
++  content: "→";
+ }
+ [dir=rtl] .slick-next:before {
+   content: "←";

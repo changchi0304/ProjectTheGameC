@@ -1,0 +1,161 @@
+<div class="sleft">
+  <!-- 大頭貼 -->
+  <div class="avatarDiv" onclick="editAvatar()">
+    <img src="<%= userData.avatar %>" alt="" />
+    <img id="imgEditbtn" src="/img/login/Avatar/avatarEdit.png" alt="" />
+  </div>
+  <br /><br /><br />
+
+  <!-- 左側導覽列 -->
+  <ul class="snav">
+    <li class="<%= currentRoute === 'Route_PI' ? 'walletMyRouter' : '' %>">
+      <a href="/wallet/PI/<%= LoginUserID %>"
+        ><img class="walletIcon" src="/img/wallet/wallet_user.png" alt="" />
+        <img
+          class="walletIcon_hover"
+          src="/img/wallet/wallet_user(hover).png"
+          alt=""
+        /><span>個人資訊</span></a
+      >
+    </li>
+    <li
+      class="<%= currentRoute === 'Route_recharge' ? 'walletMyRouter' : '' %>"
+    >
+      <a href="/wallet/recharge/<%= LoginUserID %>"
+        ><img
+          class="walletIcon"
+          src="/img/wallet/wallet_recharge.png"
+          alt=""
+        /><img
+          class="walletIcon_hover"
+          src="/img/wallet/wallet_recharge(hover).png"
+          alt=""
+        /><span>儲值頁面</span></a
+      >
+    </li>
+    <li
+      class="<%= currentRoute === 'Route_exchange' ? 'walletMyRouter' : '' %>"
+    >
+      <a href="/wallet/exchange/<%= LoginUserID %>"
+        ><img
+          class="walletIcon"
+          src="/img/wallet/wallet_exchange.png"
+          alt=""
+        /><img
+          class="walletIcon_hover"
+          src="/img/wallet/wallet_exchange(hover).png"
+          alt=""
+        /><span>轉點系統</span></a
+      >
+    </li>
+  </ul>
+  <!-- 餘額 y -->
+  <div class="sbalance">
+    <img src="/img/wallet/coinIcon.png" />
+    <span
+      >C幣餘額：<span id="mybalance"><%= userData.c_coin_balance %></span></span
+    >
+  </div>
+</div>
+
+<!-- 大頭照 -->
+<dialog id="avatarDialog">
+  <button id="closeAVADialog">
+    <img src="/img/wallet/close.png" alt="" />
+  </button>
+  <form id="avatarForm">
+    <div>
+      <p>頭貼</p>
+      <br />
+      <span>步驟：選擇檔案後 1.先上傳圖片 2.再確認更改</span>
+      <div class="avatarSim">
+        <img id="avatarSimImg" src="<%= userData.avatar %>" alt="" />
+      </div>
+      <input type="file" name="avatar" accept=".jpg, .jpeg, .png" />
+      <span>只接受 jpg、jpeg、png 檔</span>
+      <br />
+      <span>是否要上傳此圖片</span
+      ><span id="imgSimUse" style="color: red"></span>
+      <button type="submit" id="avatarbtn">上傳圖片</button>
+    </div>
+  </form>
+  <form id="comfirmAvatar">
+    <input
+      type="hidden"
+      id="user_id"
+      name="user_id"
+      value="<%= userData.user_id %>"
+    />
+    <span>是否要使用此圖片</span>
+    <button>確認更改</button>
+  </form>
+</dialog>
+<script>
+  function editAvatar() {
+    document.querySelector("#avatarDialog").showModal();
+  }
+  closeAVADialog.addEventListener("click", () => {
+    document.querySelector("#avatarDialog").close();
+    $("#avatarSimImg").attr("src", "<%- userData.avatar %>");
+    $("#imgSimUse").text("");
+    $("input[name=avatar]").val("");
+  });
+
+  // 大頭貼上傳
+  $(function () {
+    let avatarUrl = "/img/login/avatar/avatar_default.jpg"; // 大頭貼結果，預設為此圖
+    /* 大頭貼選取預覽 */
+    $("#avatarForm input[type=file]").change(function () {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $("#avatarSimImg").attr("src", e.target.result);
+      };
+      reader.readAsDataURL(this.files[0]);
+    });
+    /* 大頭貼上傳 */
+    $("#avatarForm").on("submit", function (event) {
+      event.preventDefault(); // 防止表單自動提交，以便提交後從後端獲取資料在前端使用
+      const formData = new FormData(avatarForm); // 這行程式碼創建了一個FormData物件，將表單的資料添加到該物件中。avatarForm是表單的DOM元素。
+      $.ajax({
+        url: "/wallet/upload_file",
+        type: "POST",
+        data: formData,
+        processData: false, // 告訴jQuery不要對資料進行處理，以保持FormData的原始格式。
+        contentType: false, // 告訴jQuery不要自動設置Content-Type標頭，讓瀏覽器根據資料的類型進行設置。
+        success: function (response) {
+          // response 是當表單成功送出後，從後端傳回來的 res.send(filePath)
+          // 將用它來設置 users - avatar 的路徑
+          console.log(response);
+          avatarUrl = response;
+          if (avatarUrl == "/img/login/avatar/avatar_default.jpg") {
+            $("#avatarSimImg").attr("src", avatarUrl);
+            $("#imgSimUse").text("您沒有選擇圖片，將使用預設圖片");
+          } else {
+            $("#avatarSimImg").attr("src", avatarUrl);
+            $("#imgSimUse").text("您選的圖片已經上傳成功！");
+          }
+        },
+        error: function (error) {
+          console.error("上傳失敗", error);
+          // 在此處理錯誤
+        },
+      });
+    });
+
+    /* 資料庫大頭貼改動 */
+    $("#comfirmAvatar").on("submit", function (event) {
+      event.preventDefault(); // 防止表單自動提交，以便提交後從後端獲取資料在前端使用
+      const userId = $("#user_id").val();
+      $.ajax({
+        url: `/wallet/user/avatar/${userId}`,
+        type: "PUT",
+        data: {
+          avatar: avatarUrl,
+        },
+      }).done((data) => {
+        avatarUrl = "/img/login/avatar/avatar_default.jpg";
+        location.reload();
+      });
+    });
+  });
+</script>

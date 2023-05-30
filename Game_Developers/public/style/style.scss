@@ -1,0 +1,328 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 1920px; /* 設置最小寬度為 1920 像素 */
+  margin: 0 auto; /* 讓網頁置中顯示 */
+
+  background-image: url("../img/bg.jpg");
+
+  font-family: "Microsoft YaHei", sans-serif;
+  letter-spacing: 1px;
+  p {
+    text-shadow: 0 5px 15px black;
+    color: rgb(255, 218, 170);
+  }
+  img {
+    box-shadow: 0 0 15px black;
+  }
+  hr {
+    margin: 12.5px 0;
+  }
+}
+
+section {
+  width: 85%;
+  margin: 50px auto;
+  h1 {
+    color: antiquewhite;
+    font-size: 2rem;
+    text-align: center;
+    letter-spacing: 5px;
+  }
+  p {
+    font-size: 1.25rem;
+    text-align: center;
+  }
+  //   background-color: rgb(255, 185, 185);
+}
+
+.section1 {
+  margin-top: 30px;
+  position: relative;
+  .myCoinContent {
+    position: absolute;
+    top: 80px;
+    left: 35px;
+    color: aliceblue;
+    cursor: pointer;
+    font-size: 1.2rem;
+    letter-spacing: 2.5px;
+    .myCoin {
+    }
+  }
+  .myCoinContent:hover {
+    filter: brightness(150%);
+  }
+}
+
+.section2 {
+  display: flex;
+  justify-content: space-around;
+  .SkinAndCost {
+    transition: 0.25s;
+    div.SkinDiv {
+      filter: brightness(100%);
+      background-color: rgb(41, 41, 41);
+      width: fit-content;
+      text-align: center;
+      border-radius: 10px;
+      border: 3px solid rgba(66, 66, 66, 0.3);
+      box-shadow: 0 0 15px rgb(46, 0, 0);
+      position: relative;
+      // .buy {
+      //   width: 100%;
+      //   height: 100%;
+      //   color: white;
+      //   font-size: 2.75rem;
+      //   display: flex;
+      //   flex-wrap: wrap;
+      //   text-align: center;
+      //   background-color: black;
+      //   display: none;
+      //   p {
+      //   }
+      // }
+      .SkinImg {
+        border-radius: 10px;
+        width: 270px;
+        img {
+          border-radius: 10px;
+          width: 100%;
+        }
+      }
+      .fontDiv {
+        padding: 15px;
+        p {
+        }
+        .skinName {
+          font-size: 1.5rem;
+        }
+        .cut {
+          font-size: 2rem;
+          color: rgb(0, 206, 0);
+        }
+      }
+    }
+  }
+  .costDiv {
+    background-color: rgb(41, 41, 41);
+    padding: 8px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    img {
+      width: 30px;
+      height: 32px;
+      box-shadow: none;
+    }
+    .cost {
+      text-align: center;
+      font-size: 2rem;
+      text-shadow: 0 0 10px rgb(0, 0, 0);
+      color: white;
+    }
+  }
+
+  .SkinAndCost:hover {
+    filter: brightness(120%);
+    cursor: pointer;
+    div.SkinDiv {
+      transform: scale(1.08);
+    }
+    .costDiv {
+      .cost {
+        filter: brightness(150%);
+      }
+    }
+  }
+}
+
+.section3 {
+  text-align: center;
+  p {
+    font-size: 1.15rem;
+  }
+}
+
+.dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  width: 38%;
+  height: 500px;
+  background-color: rgb(49, 49, 49);
+  overflow: hidden;
+  border: 2px solid rgb(29, 29, 29);
+  border-radius: 5px;
+  padding: 15px;
+  form {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    .formImg {
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      // box-shadow: 0 0 8px black;
+      img {
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 3px 8px black;
+        border: 3px solid rgba(158, 158, 158, 0.5);
+      }
+    }
+    .formInfo {
+      width: 50%;
+      background-color: rgb(49, 49, 49);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 100px;
+      div {
+        p {
+          font-size: 1.55rem;
+          color: white;
+          margin: 15px;
+        }
+        span {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.55rem;
+          color: white;
+          margin: 15px;
+          img {
+            width: 30px;
+            height: 32px;
+            box-shadow: none;
+          }
+          span {
+          }
+        }
+      }
+      button {
+        padding: 10px 25px;
+        color: white;
+        background-color: black;
+        border-radius: 10px;
+        border: 2px solid white;
+        font-size: 1.15rem;
+        cursor: pointer;
+      }
+      button:hover {
+        color: rgb(128, 128, 128);
+        border: 2px solid rgb(128, 128, 128);
+      }
+    }
+  }
+}
+
+.dialog2 {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  width: 22.5%;
+  height: 500px;
+  background-color: rgb(49, 49, 49);
+  overflow: hidden;
+  border: 2px solid rgb(29, 29, 29);
+  border-radius: 5px;
+  padding: 35px 25px;
+  div {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    h2 {
+      color: aliceblue;
+    }
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      p {
+        font-size: 1.25rem;
+      }
+    }
+    button {
+      padding: 10px 25px;
+      color: white;
+      background-color: black;
+      border-radius: 10px;
+      border: 2px solid white;
+      font-size: 1.15rem;
+      cursor: pointer;
+    }
+    button:hover {
+      color: rgb(128, 128, 128);
+      border: 2px solid rgb(128, 128, 128);
+    }
+  }
+}
+
+.dialogLogin {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  width: 22.5%;
+  height: 500px;
+  background-color: rgb(49, 49, 49);
+  overflow: hidden;
+  border: 2px solid rgb(29, 29, 29);
+  border-radius: 5px;
+  padding: 35px 25px;
+  form {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 35px;
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      label {
+        font-size: 1.35rem;
+        color: white;
+      }
+      input {
+        font-size: 1.35rem;
+        padding: 5px;
+      }
+    }
+    button {
+      padding: 10px 25px;
+      color: white;
+      background-color: black;
+      border-radius: 10px;
+      border: 2px solid white;
+      font-size: 1.15rem;
+      cursor: pointer;
+    }
+    button:hover {
+      color: rgb(128, 128, 128);
+      border: 2px solid rgb(128, 128, 128);
+    }
+  }
+}

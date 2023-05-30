@@ -1,0 +1,425 @@
+/* section1 最上方封面 */
+.section1 {
+  padding-bottom: 350px;
+  .s1container {
+    width: 100%;
+    height: 370px;
+    object-fit: fill;
+    overflow: hidden;
+    position: relative;
+    img {
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  div.video {
+    width: 85%;
+    height: 250px;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 55;
+    img {
+      width: 100%;
+    }
+  }
+}
+
+//---------------------------------
+//---------------------------------
+/* section2 購物車 */
+.section2 {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    gap: 15px;
+    img {
+      width: 35px;
+    }
+    span {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+  }
+  .cart {
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding-bottom: 25px;
+    box-shadow: 3px 5px 5px rgb(212, 212, 212);
+    ul {
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+      list-style-type: none;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      padding: 25px 0;
+      li.liTitle {
+        height: 70px;
+      }
+      li {
+        background-color: white;
+        display: flex;
+        justify-content: space-around;
+        border-radius: 5px;
+        span {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        span:nth-of-type(1) {
+          flex: 2;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 170px;
+          height: 170px;
+          overflow: hidden;
+          img {
+            width: auto;
+            height: 100%;
+          }
+        }
+        span:nth-of-type(2) {
+          flex: 5;
+          padding: 0 0 0 60px;
+          justify-content: flex-start;
+          align-items: center;
+          font-size: 1.25rem;
+        }
+        span:nth-of-type(3) {
+          flex: 3;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 1.2rem;
+          div {
+            span {
+              display: inline;
+              padding: 0;
+            }
+          }
+        }
+        span:nth-of-type(4) {
+          flex: 3;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: #ff2b2b;
+          font-size: 1.4rem;
+          font-weight: 600;
+          div {
+            span {
+              display: inline;
+              padding: 0;
+              font-size: 1.4rem;
+            }
+          }
+        }
+        span:nth-of-type(5) {
+          flex: 1;
+          padding: 0 20px;
+          img {
+            width: 30px;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+        }
+      }
+      li:nth-of-type(1) {
+        background-color: rgba(0, 0, 0, 0);
+        font-weight: 600;
+
+        span {
+          font-size: 1rem;
+          color: #1c3d5c;
+        }
+      }
+    }
+  }
+}
+
+//---------------------------------
+//---------------------------------
+/* section3 結帳 */
+.section3 {
+  width: 80%;
+  margin: 70px auto;
+  // 左邊區域(信用卡)
+  form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .left {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .leftcontainer {
+        width: 90%;
+        background-color: #f1f1f1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        box-shadow: 3px 5px 5px rgb(212, 212, 212);
+        padding: 30px;
+        p {
+          color: #1c3d5c;
+          font-size: 1.35rem;
+          font-weight: 600;
+        }
+        .creditEnter {
+          width: 60%;
+          div {
+            margin-bottom: 10px;
+            label {
+              color: #1c3d5c;
+              font-size: 1.15rem;
+              font-weight: normal;
+            }
+            input {
+              margin-top: 10px;
+              width: 100%;
+              border: 2px solid #1c3d5c;
+              border-radius: 5px;
+              padding: 5px 5px;
+              font-size: 1.25rem;
+            }
+          }
+          div.cartCreditConfirmBtnDiv {
+            text-align: center;
+            button {
+              background-color: #1c3d5c;
+              color: white;
+              letter-spacing: 5px;
+              // padding: 8px 70px;
+              padding: 14px 40px;
+              border: none;
+              border-radius: 2.5px;
+              font-size: 1.2rem;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+    // 右邊區域(繼續選購)
+    .right {
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      .rightcontainer {
+        width: 90%;
+        background-color: #f1f1f1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        padding: 30px 0;
+        box-shadow: 3px 5px 5px rgb(212, 212, 212);
+        ul {
+          width: 90%;
+          list-style-type: none;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          gap: 20px;
+          li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 25px;
+            span {
+              color: #1c3d5c;
+              font-size: 1rem;
+              span.subtotal {
+              }
+            }
+          }
+          hr {
+            border: none;
+            border-top: 2px solid #1c3d5c;
+          }
+        }
+        ul li:nth-of-type(2) {
+          span.total {
+            font-size: 1.3rem;
+            color: #ff2b2b;
+            font-weight: 600;
+            span {
+              font-size: 1.3rem;
+              color: #ff2b2b;
+              font-weight: 600;
+            }
+          }
+        }
+      }
+      a {
+        margin-top: 40px;
+        background-color: #f1f1f1;
+        text-decoration: none;
+        padding: 15px 40px;
+        color: rgb(0, 0, 0);
+        box-shadow: 3px 5px 5px rgb(212, 212, 212);
+        letter-spacing: 3.5px;
+        border-radius: 3px;
+        transition: 0.2s;
+        font-size: 1.15rem;
+      }
+      a:hover {
+        background-color: #b5b5b5;
+        box-shadow: 3px 5px 5px rgb(152, 152, 152);
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+.noProduct {
+  margin: 0 auto;
+  background-color: white;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  p {
+    font-size: 1.35rem;
+  }
+  a {
+    font-size: 1.3rem;
+    color: #1c3d5c;
+  }
+}
+
+//-------------------------------------------
+//-------------------------------------------
+//-------------------------------------------
+//-------------------------------------------
+//-------------------------------------------
+//-------------------------------------------
+//-------------------------------------------
+/* RWD */
+
+/* video */
+// @media screen and (max-width: 1200px) {
+//   .section1 {
+//     padding-bottom: 350px;
+//   }
+// }
+
+// @media screen and (max-width: 992px) {
+//   .section1 {
+//     padding-bottom: 400px;
+//   }
+// }
+
+// @media screen and (max-width: 768px) {
+//   .section1 {
+//     padding-bottom: 450px;
+//   }
+// }
+
+// @media screen and (max-width: 576px) {
+//   .section1 {
+//     padding-bottom: 500px;
+//   }
+// }
+
+/* 以下為最上方step的設定 */
+.thestepbox {
+  /* border: 1px solid red; */
+  margin: 80px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}
+.thestepbox div {
+  cursor: pointer;
+  width: 350px;
+  height: 300px;
+  background-color: #e7e7e7;
+  border-radius: 15px;
+  margin: 20px;
+  margin-top: 30px;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-weight: bolder;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.4);
+  transition: 0.5s;
+}
+.thestepbox h3 {
+  font-size: 2.5rem;
+  color: #1c3d5c;
+  /* border: 1px solid red; */
+}
+.thestepbox p {
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 1.25rem;
+  display: none;
+  margin-top: 2px;
+  /* border: 1px solid orange; */
+}
+
+// 交易成功
+.paySussess {
+  width: 400px;
+  border: none;
+  padding: 70px 0px;
+  box-shadow: 0 2px 8px black;
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    span {
+      text-align: center;
+      color: #1c3d5c;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    p {
+      margin-top: 40px;
+      font-size: 1.35rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    p:hover {
+      color: #b5b5b5;
+    }
+  }
+}

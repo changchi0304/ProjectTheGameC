@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>遊戲庫</title>
+    <link rel="stylesheet" href="/style/gamePack.css" />
+    <link rel="stylesheet" href="/style/comment.css" />
+    <script type="text/javascript" src="/app/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+    <style></style>
+  </head>
+
+  <body>
+    <!-- 左邊：遊戲選擇 -->
+    <div class="<%- typeCss %>"></div>
+    <div class="allScreen">
+      <section class="section1">
+        <select class="gameTypeBtn">
+          <option value="#">分類：<%- SelectGame_type || "全部" %></option>
+          <option value="射擊遊戲">射擊遊戲</option>
+          <option value="冒險遊戲">冒險遊戲</option>
+          <option value="競技遊戲">競技遊戲</option>
+        </select>
+        <div class="downNote">往下滾動查看更多遊戲</div>
+        <% allGames.map(function(v){ %>
+              <%  if ( v.game_type ) { %>
+                <div onclick="changeGame('<%- v.game_id %>')" class="game" <%- v.game_id == gameData.game_id?"id='gameSelect'":"id=''" %>>
+                   <img src="/img/Games/<%- v.image %>" alt="" />
+                   <p><%- v.game_name %></p>
+                </div>
+               <% } %>
+        <% }) %>
+      </section>
+
+      <!-- 中間 -->
+      <section class="section2">
+  
+        <!-- 中間：遊戲資訊 -->
+        <div class="section2_info">
+          <img class="gameAge" src="/img/Games/<%- ageImg %>" alt="">
+          <div class="s2left">
+            <div class="s2Ldiv">
+              <input
+                type="hidden"
+                name="gameCoverImg"
+                value="<%- gameData.image %>"
+              />
+              <div class="s2Ltop">
+                <span id="gameName"><%- gameData.game_name %></span>
+              </div>
+              <hr />
+              <div class="s2Lbot">
+                <div class="gameTypeDiv">
+                  <span class="gameType"><%- gameData.game_type %></span>
+                </div>
+                <div>
+                  <div class="gameInfo">
+                    <span> <%- gameData.description %></span>
+                  </div>
+                  <br />
+                  <div class="gameInfo2">
+                    <div>
+                      <p>
+                        <span>開發商：</span
+                        ><span><%- gameData.developer %></span>
+                      </p>
+                      <p>
+                        <span>營運商：</span
+                        ><span><%- gameData.publisher %></span>
+                      </p>
+                      <p><span>年齡限制：</span><span><%- ageRating%></span></p>
+                      <p><span>評分：</span><span><%- gameRating %></span></p>
+                      <p>
+                        <span>遊玩人數：</span
+                        ><span><%- gameData.downloads %></span>
+                      </p>
+                    </div>
+                    <div class="s2btnDiv">
+                      <% if(login_user_id){ if(uGame){%>
+                      <div class="uHaveIt">此遊戲已經登錄在您的遊戲庫內</div>
+                      <% } else {%>
+                      <button id="joinGame" type="button">加入遊戲</button>
+                      <% } } else {%>
+                      <button id="notLogin" type="button">
+                        登入後才可以加入遊戲
+                      </button>
+                      <% } %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="s2right">
+            <div class="PicSec">
+              <div class="bigImg">
+                <img
+                  id="thebigImg"
+                  src="/img/Games/<%- gameData.image %>"
+                  alt=""
+                />
+              </div>
+              <div class="PicBar">
+                <% gameData.image_paths.map(function(v,i){%>
+                <div class="smallPicDiv" onclick="selectPic('<%- v %>')">
+                  <img src="/img/Games/<%- v %>" alt="" />
+                </div>
+                <% }) %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 中間：評論 -->
+        <div class="section2_comment">
+          <div class="chartCover">
+            <canvas id="myChart"></canvas>
+          </div>
+          <!-- 評論功能 -->
+          <div class="createComment">
+            <div class="commentAreaBtnDiv"><h2>發表評論</h2><span id="commentAreaBtn">查看評論區</span></div>
+            <% if (login_user_id){%>
+            <!-- 已登入 -->
+            <form id="formReview" class="commitLogin <%- u_g_review?"alreadyComment":"" %>">
+              <input
+                id="productID"
+                type="hidden"
+                value="<%- gameData.game_id%>"
+              />
+              <input id="userID" type="hidden" value="<%- login_user_id %>" />
+              <div class="s2left">
+                <div>
+                  <span>評分：</span
+                  ><span class="star-rating">
+                    <input id="star5" type="radio" name="rating" value="5" />
+                    <label for="star5" class="star" title="5 stars"></label>
+                    <input id="star4" type="radio" name="rating" value="4" />
+                    <label for="star4" class="star" title="4 stars"></label>
+                    <input id="star3" type="radio" name="rating" value="3" />
+                    <label for="star3" class="star" title="3 stars"></label>
+                    <input id="star2" type="radio" name="rating" value="2" />
+                    <label for="star2" class="star" title="2 stars"></label>
+                    <input id="star1" type="radio" name="rating" value="1" />
+                    <label for="star1" class="star" title="1 star"></label>
+                  </span>
+                </div>
+                <div>
+                  <span>您的評分：</span> <br />
+                  <div>
+                    <span id="yourRating"
+                      ><%- u_g_review?u_g_review.rating:"N" %></span
+                    >
+                    <span>/5</span>
+                  </div>
+                </div>
+                <div>
+                  <span>當前評分：</span><br />
+                  <div>
+                    <span id="averageRating"><%- gameRating %></span>
+                    <span>/5</span>
+                  </div>
+                </div>
+              </div>
+              <div class="s2right">
+                <p>撰寫評論</p>
+                <textarea name="comment" id="" cols="30" rows="10"><%- u_g_review?u_g_review.comment:"" %></textarea>
+                <div><button>張貼</button></div>
+              </div>
+            </form>
+            <!-- 評論修改、刪除 -->
+            <div class="Comment_edit_deleteButton">
+              <%- u_g_review ? '<button id="commentEdit" type="button">修改</button> <button id="commentDelete" type="button">刪除</button>' : null %>
+            </div> 
+            <% } else {%>
+            <!-- 未登入 -->
+            <div class="commitNotLogin">
+              <div>
+                <span>登入您的帳號 向大家發表您的想法吧 ！</span>
+                <a href="/login">登入</a>
+              </div>
+            </div>
+            <%}%>
+
+
+
+          </div>
+          <!-- 評論區 -->
+          <dialog id="commentDialog">
+            <div class="closeCommentAreaDiv"><img id="closeCommentArea" src="/img/Products/tools/X.png" alt=""></div>
+            <h2>評論區</h2>
+            <div class="commentArea">
+                <!-- <select name="commentOrderBy">
+                  <option value="byCreated">日期排序</option>
+                  <option value="byRating">評分排序</option>
+                </select> -->
+              <!-- 一則評論 -->
+              <% if(gComment[0] == undefined){%>
+                <div class="comment"><span class="noComment">當前還沒有人評論，歡迎您成為第一位評論者 ！</span></div>
+                <%} else {%>
+                  <% gComment.map(function(v,i){ %>
+                    <div class="comment">
+                      <!-- 左邊 -->
+                      <div class="cleft">
+                        <div class="cleft_top">
+                          <div class="avatarDiv">
+                            <img src="<%- v.avatar %>" alt="" />
+                          </div>
+                          <div class="cl_t_text">
+                            <span class="nickname"><%- v.nickname||v.username %></span>
+                            <span class="postDate"><%- v.created_date %></span>
+                          </div>
+                        </div>
+                        <div class="cleft_bottom">
+                          <span>評分</span>
+                          <div>
+                            <span id="gameRating" class="rating"><%- v.rating %></span>
+                          </div>
+                        </div>
+                      </div>
+                      <hr />
+                      <!-- 右邊 -->
+                      <div class="cright">
+                        <div>
+                          <p>評論</p>
+                          <div>
+                            <p id="gameComment"><%- v.comment %></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <% }) %>       
+                    <button>查看更多</button>
+                  <% } %>
+            </div> 
+          </dialog>
+        </div>
+        <!-- 中間：推薦遊戲 -->
+        <div class="section2_suggest">
+          <h2>或許您也會喜歡</h2>
+          <div class="recommendedProducts">
+            <!-- 單個商品 -->
+            <% userLike.map(function(v,i){%>
+            <div class="recomProduct">
+              <div class="recPImgDiv">
+                <img src="<%-`/img/games/${v.image}` %>" alt="" />
+              </div>
+              <div class="recPInfo">
+                <div class="recPtitle">
+                  <h3><%- v.game_name %></h3>
+                  <div><span id="recPtype"><%- v.game_type %></span></div>
+                </div>
+                <div class="recPTextLimit">
+                  <p>
+                    <%- v.description %>
+                  </p>
+                </div>
+              </div>
+              <div class="recPgoPage"><a href="/games/game_ID/<%- v.game_id %>">前往頁面</a></div>
+            </div>
+            <% }) %>
+          </div>
+        </div>
+      </section>
+
+      <!-- 右邊：遊戲資訊 -->
+      <section class="section3">
+        <div>
+          <li id="funcSelect" onclick="funcSelect(this, 'section2_info', '?func=info')"><p>遊戲資訊</p></li>
+          <li onclick="funcSelect(this, 'section2_comment', '?func=comment')"><p>評論區</p></li>
+          <li onclick="funcSelect(this,'section2_suggest', '?func=suggest')" ><p>推薦遊戲</p></li>
+          <li onclick="goPI('<%- login_user_id %>')"><p>個人頁面</p></li>
+        </div>
+      </section>
+    </div>
+
+    <dialog class="commentEditDialog">
+      <form id="commentEditForm">
+        <div class="editDialogLeft">
+          <p>修改評分：</p>
+          <input name="yourRating" type="hidden" value="<%- u_g_review.rating%>">
+          <select id="editRating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <p class="editRatingBig">5</p>
+        </div>
+        <div class="editDialogRight">  
+          <p>修改評論：</p>
+          <textarea name="editComment" id="" cols="30" rows="10"><%- u_g_review.comment%></textarea>
+          <div><button id="closeEditDialog" type="button">取消修改</button><button>確認修改</button></div>
+        </div>
+      </form>
+    </dialog>
+
+    <div class="spotlight"></div>
+
+    <script>
+      /* 前往個人頁 */
+      function goPI(x) {
+        var result = window.confirm("是否要前往個人頁面？");
+        if (result) {
+          // 轉至登入頁
+          window.location = `/wallet/PI/${x || "0"}`; // "0"為任意數，防止未登入時跳到 /PI/ 而呈現 404
+        } else {
+          // 拒絕跳頁
+        }
+      }
+
+      /* 切換遊戲 */
+      function changeGame(x) {
+        window.location = `/games/game_ID/${x}`;
+      }
+
+      /* 點小圖換大圖 */
+      function selectPic(x) {
+        $("#thebigImg")
+          .css("opacity", 1) // 初始為 100% 可見度
+          .animate({ opacity: 0 }, 150, function () {
+            // 淡出
+            $(this)
+              .attr("src", `/img/Games/${x}`) // 在淡出完後才換圖
+              .animate({ opacity: 1 }, 100); // 淡入
+          });
+      }
+
+      $(function () {
+        /* s1 不同類型的遊戲 */
+        $(".gameTypeBtn").on("change", function (e) {
+          var game_type = $(".gameTypeBtn").val();
+          console.log(game_type);
+          $.ajax({
+            url: `http://localhost:80/games/api/newGamePage/Game_type`,
+            type: "get",
+            data: {
+              game_type: game_type,
+            },
+          });
+          $.ajax({
+            url: `http://localhost:80/games/game_ID/<%- gameData.game_id %>`,
+            type: "get",
+            data: {
+              game_type: game_type,
+            },
+          });
+        });
+      });
+
+      /* star */
+      $("input[name=rating]").on("change", function () {
+        var inputRating = $("input[name=rating]:checked").val();
+        $("#yourRating").html(inputRating);
+
+        var stars = document.getElementsByClassName("star");
+
+        for (var i = 0; i < parseInt(inputRating); i++) {
+          stars[i].addEventListener("click", function () {
+            var rating = parseInt(this.previousElementSibling.value);
+
+            // 移除所有星
+            for (var j = 0; j < stars.length; j++) {
+              stars[j].classList.remove("star_filled");
+            }
+
+            for (var k = 0; k < rating; k++) {
+              stars[k].classList.add("star_filled");
+            }
+          });
+        }
+      });
+
+      /* 登入才可加入遊戲 */
+      $("#notLogin").on("click", function () {
+        var result = window.confirm(
+          "登入後才可以將遊戲加入遊戲庫喔！\n是否要前往登入頁呢？"
+        );
+        if (result) {
+          // 轉至登入頁
+          window.location.href = "/login"; // 替換成您要導航的目標頁面的URL
+        } else {
+          // 拒絕跳頁
+        }
+      });
+
+      /////////////////////////////////////////
+      /////////////////////////////////////////
+      /* CRUD */
+      $(function () {
+        const gameId = "<%- gameData.game_id%>";
+        const userId = "<%- login_user_id%>";
+
+        console.log(gameId, "+", userId);
+
+        /* 加入遊戲庫 */
+        $("#joinGame").on("click", function (e) {
+          e.preventDefault();
+          if (
+            parseInt("<%- ageLimit.user_age %>") >=
+            parseInt("<%- ageLimit.age_rating %>")
+          ) {
+            $.ajax({
+              url: `http://localhost:80/games/api/insertUG/GID/${gameId}`,
+              type: "POST",
+              data: {
+                game_id: gameId,
+                user_id: userId,
+                game_name: $("#gameName").text(),
+                image: $("input[name='gameCoverImg']").val(),
+              },
+            }).done((data) => {
+              $.ajax({
+              url: `http://localhost:80/games/api/addDownload/GID/${gameId}`,
+              type: "PUT",
+              data: {
+                game_id: gameId,
+                downloads: parseInt('<%- gameData.downloads %>') + 1
+              },
+            }).done((data)=>{
+              alert("已將遊戲加入遊戲庫！");
+              location.reload();})
+            });
+          } else {
+            alert(
+              "不好意思，該遊戲為「<%- ageRating %>」，根據法律規定，您的年齡還不能遊玩該遊戲。"
+            );
+          }
+        });
+
+        /* 上傳評論 */
+        $("#formReview").on("submit", function (e) {
+          e.preventDefault();
+          if ($("input[name=rating]:checked").val() == null) {
+            alert("請先選擇評分。");
+          } else {
+            $.ajax({
+              url: `http://localhost:80/games/api/insertGR/GID/${gameId}`,
+              type: "POST",
+              data: {
+                game_id: gameId,
+                user_id: userId,
+                rating: $("input[name=rating]:checked").val(),
+                comment: $("textarea[name=comment]").val(),
+              },
+            })
+              .done((data) => {
+                alert(`評論已經發布囉！`);
+                $("#averageRating").text(data.newAverageRating);
+                location.reload();
+              })
+              .fail((jqXHR, textStatus, errorThrown) => {
+                console.error("Error:", textStatus, errorThrown);
+                alert("系統出了問題請稍後重試。");
+              });
+          }
+        });
+
+        /* 評論刪除 */
+        $("#commentDelete").on("click", function (e) {
+          e.preventDefault();
+          $.ajax({
+            url: `http://localhost:80/games/api/DeleteGR/GID/${gameId}`,
+            type: "DELETE",
+            data: {
+              game_id: gameId,
+              user_id: userId,
+            },
+          }).done((data) => {
+            alert("已將評論刪除！");
+            // location.reload();
+            window.location = `http://localhost:80/games/game_ID/<%- gameData.game_id %>?func=comment`
+          });
+        });
+
+        /* 修改評論 */
+        $("#commentEditForm").on("submit", function (e) {
+          e.preventDefault();
+          $.ajax({
+            url: `http://localhost:80/games/api/updateGR/GID/${gameId}`,
+            type: "PUT",
+            data: {
+              game_id: gameId,
+              user_id: userId,
+              rating: $("#editRating").val(),
+              comment: $("textarea[name='editComment']").val(),
+            },
+          }).done((data) => {
+            alert("評論已更新！");
+            // location.reload();
+            window.location = `http://localhost:80/games/game_ID/<%- gameData.game_id %>?func=comment`
+          });
+        });
+      });
+
+      /* dialog rating */
+      $("#editRating").val($('input[name="yourRating"]').val())
+      $(".editRatingBig").html($("#editRating").val());
+      // 大字
+      $("#editRating").on("click", function () {
+        var x = $("#editRating").val();
+        $(".editRatingBig").html(x);
+      });
+      $("#commentEdit").on("click",function(){
+        document.querySelector("dialog.commentEditDialog").showModal();
+      })
+      $("#closeEditDialog").on("click",function(){
+        document.querySelector("dialog.commentEditDialog").close();
+      })
+
+    /* 打開留言區 */
+     $("#commentAreaBtn").on("click",function(){
+      var dialogComment = document.querySelector("dialog#commentDialog")
+      dialogComment.showModal();
+      document.querySelector("div.commentArea").scrollTop = 0; // 讓留言區起始點在最上方
+     })
+     $("#closeCommentArea").on("click",function(){
+        document.querySelector("dialog#commentDialog").close();
+     })
+
+     /////////////////////////////////
+     /////////////////////////////////
+     /* s3換頁 */
+     // 點擊事件
+     function funcSelect(thisLi, liName, querySting){
+      $('li#funcSelect').removeAttr('id');
+      $(thisLi).attr('id', 'funcSelect');
+      let S2info = $("div.section2_info").attr("class")
+      let S2comment = $("div.section2_comment").attr("class")
+      let S2suggest = $("div.section2_suggest").attr("class")
+      switch (liName) {
+         case S2info:
+          window.location = `http://localhost:80/games/game_ID/<%- gameData.game_id %>${querySting}`
+           break;
+         case S2comment:
+         window.location = `http://localhost:80/games/game_ID/<%- gameData.game_id %>${querySting}`
+           break;
+        case S2suggest:
+         window.location = `http://localhost:80/games/game_ID/<%- gameData.game_id %>${querySting}`
+           break;
+      }
+     }
+     // 換頁設定
+     document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const funcParam = urlParams.get("func");
+        switch (funcParam) {
+         case "info":
+           $('li#funcSelect').removeAttr('id');
+           $('li[onclick*="info"]').attr('id', 'funcSelect');
+           $("div.section2_info").css("display", "flex")
+           $("div.section2_comment").css("display", "none")
+           $("div.section2_suggest").css("display", "none")
+           break;
+         case "comment":
+           $('li#funcSelect').removeAttr('id');
+           $('li[onclick*="comment"]').attr('id', 'funcSelect');
+           $("div.section2_info").css("display", "none")
+           $("div.section2_comment").css("display", "block")
+           $("div.section2_suggest").css("display", "none")
+           break;
+         case "suggest":
+           $('li#funcSelect').removeAttr('id');
+           $('li[onclick*="suggest"]').attr('id', 'funcSelect');
+           $("div.section2_info").css("display", "none")
+           $("div.section2_comment").css("display", "none")
+           $("div.section2_suggest").css("display", "block")
+           break;
+         default:
+         $('li#funcSelect').removeAttr('id');
+           $('li[onclick*="info"]').attr('id', 'funcSelect');
+           $("div.section2_info").css("display", "flex")
+           $("div.section2_comment").css("display", "none")
+           $("div.section2_suggest").css("display", "none")
+           break;
+      }
+      });
+
+
+      /////////////////////////
+      /////////////////////////
+      /* 長條圖 */
+      Chart.defaults.font.size = 20;
+      Chart.defaults.font.color = 'white';
+      var ctx = document.getElementById('myChart').getContext('2d');
+      var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['1分', '2分', '3分', '4分', '5分'],
+                datasets: [{
+                    label: '評分人數',
+                    data: [ parseInt('<%- gameChart.rating_1||0 %>'), parseInt('<%- gameChart.rating_2||0 %>'), parseInt('<%- gameChart.rating_3||0 %>'), parseInt('<%- gameChart.rating_4||0 %>'), parseInt('<%- gameChart.rating_5||0 %>')], //這裡的數值應該要換成你從資料庫得到的數值
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.85)',
+                        'rgba(54, 162, 235, 0.85)',
+                        'rgba(255, 206, 86, 0.85)',
+                        'rgba(75, 192, 192, 0.85)',
+                        'rgba(153, 102, 255, 0.85)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+    scales: {
+        y: {
+            beginAtZero: true,
+            ticks: {
+                color: 'white' // 更改 Y 軸刻度顏色
+            }
+        },
+        x: {
+            ticks: {
+                color: 'white' // 更改 X 軸刻度顏色
+            }
+        }
+    },
+    plugins: {
+        legend: {
+            labels: {
+                color: 'white' // 更改圖例文字顏色
+            }
+        }
+    }
+}
+        });
+    </script>
+  </body>
+</html>

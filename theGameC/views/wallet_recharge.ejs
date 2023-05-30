@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>錢包 - 儲值頁面</title>
+    <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="/style/wallet.css" />
+    <script type="text/javascript" src="/app/jquery.js"></script>
+  </head>
+  <body>
+    <!-- header -->
+    <%- include('share/header')%>
+
+    <!-- section -->
+    <section class="section">
+      <!-- 左半部 -->
+      <%- include('share/wallet/wallet_left')%>
+
+      <!-- 右半部 -->
+      <div class="s2right">
+        <!-- 儲值方式 -->
+        <div class="s2rightPart1">
+          <div class="s2part1top"><p>請選擇儲值方式</p></div>
+          <div class="s2part1down">
+            <div class="s2part1methods">
+              <div class="methodDiv">
+                <input
+                  id="useCredit"
+                  type="radio"
+                  value="credit"
+                  name="payMethod"
+                />
+                <label class="method1" for="useCredit">
+                  <li>信用卡/簽帳卡</li>
+                  <li>
+                    <img src="/img/wallet/VISA.png" /><img
+                      src="/img/wallet/Mastercard.png"
+                    /><img src="/img/wallet/JCB.png" />
+                  </li>
+                </label>
+              </div>
+              <div class="methodDiv">
+                <input
+                  id="usePaypal"
+                  type="radio"
+                  value="paypal"
+                  name="payMethod"
+                />
+                <label class="method1" for="usePaypal">
+                  <li>Pay Pal</li>
+                  <li>
+                    <img src="/img/wallet/paypal.png" />
+                  </li>
+                </label>
+              </div>
+              <div class="methodDiv">
+                <input
+                  id="useGash"
+                  type="radio"
+                  value="gash"
+                  name="payMethod"
+                />
+                <label class="method1" for="useGash">
+                  <div>
+                    <li>點數卡儲值</li>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br /><br />
+        <!-- 儲值面額 -->
+        <div class="s2rightPart2">
+          <div class="s2part1top"><p>請選擇儲值面額</p></div>
+          <div class="s2part2down">
+            <ul>
+              <li>
+                <div class="CoinDiv">
+                  <p>NT$ 50</p>
+                  <div class="coinImgDiv">
+                    <img src="/img/wallet/coin1.png" alt="" />
+                  </div>
+
+                  <div>
+                    <img src="/img/wallet/coinIcon.png" /><span>C幣 60</span>
+                  </div>
+                  <button onclick="recharge(50,60)">儲值</button>
+                </div>
+                <div class="CoinDiv">
+                  <p>NT$ 100</p>
+                  <div class="coinImgDiv">
+                    <img src="/img/wallet/coin2.png" alt="" />
+                  </div>
+                  <div>
+                    <img src="/img/wallet/coinIcon.png" /><span>C幣 135</span>
+                  </div>
+                  <button onclick="recharge(100,135)">儲值</button>
+                </div>
+                <div class="CoinDiv">
+                  <p>NT$ 250</p>
+                  <div class="coinImgDiv">
+                    <img src="/img/wallet/coin2.png" alt="" />
+                  </div>
+                  <div>
+                    <img src="/img/wallet/coinIcon.png" /><span>C幣 300</span>
+                  </div>
+                  <button onclick="recharge(250,300)">儲值</button>
+                </div>
+              </li>
+              <li>
+                <div class="CoinDiv">
+                  <p>NT$ 500</p>
+                  <div class="coinImgDiv">
+                    <img src="/img/wallet/coin3.png" alt="" />
+                  </div>
+                  <div>
+                    <img src="/img/wallet/coinIcon.png" /><span>C幣 650</span>
+                  </div>
+                  <button onclick="recharge(500,650)">儲值</button>
+                </div>
+                <div class="CoinDiv">
+                  <p>NT$ 750</p>
+                  <div class="coinImgDiv">
+                    <img src="/img/wallet/coin3.png" alt="" />
+                  </div>
+                  <div>
+                    <img src="/img/wallet/coinIcon.png" /><span>C幣 950</span>
+                  </div>
+                  <button onclick="recharge(750,950)">儲值</button>
+                </div>
+                <div class="CoinDiv">
+                  <p>NT$ 1000</p>
+                  <div class="coinImgDiv">
+                    <img src="/img/wallet/coin4.png" alt="" />
+                  </div>
+                  <div>
+                    <img src="/img/wallet/coinIcon.png" /><span>C幣 1400</span>
+                  </div>
+                  <button onclick="recharge(1000,1400)">儲值</button>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <dialog id="rechargedialog">
+      <button id="closeRDialog">
+        <img src="/img/wallet/close.png" alt="" />
+      </button>
+      <!-- 使用信用卡儲值 -->
+      <div class="credit_paypal_gash">
+        <div class="Lconfirm">
+          <div class="LCtitle">確認購買內容</div>
+          <div class="LCbuy">
+            <li>
+              <span class="LCBthing">商品</span>
+              <span
+                ><img src="/img/wallet/coinIcon.png" />幣
+                <span class="Cget">0</span></span
+              >
+            </li>
+            <li>
+              <span class="LCBthing">價格</span
+              ><span>NT$ <span class="Ccost">0</span></span>
+            </li>
+          </div>
+        </div>
+        <div>使用 <span id="yourMethod"></span> 購買</div>
+        <br /><br />
+        <hr />
+        <!-- 信用卡輸入 -->
+        <form
+          id="creditForm"
+          method="post"
+          action="/wallet/insertRecharge/<%= userData.user_id %>"
+        >
+          <input
+            type="hidden"
+            id="user_id"
+            name="user_id"
+            value="<%= userData.user_id %>"
+          />
+          <input type="hidden" id="consume" name="consume" />
+          <input type="hidden" id="c_coin_get" name="c_coin_get" />
+          <input
+            type="hidden"
+            id="UseMethodCredit"
+            name="pay_method"
+            value="credit"
+          />
+          <input
+            type="hidden"
+            name="c_coin_balance"
+            value="<%= userData.c_coin_balance %>"
+          />
+          <div class="creditEnter">
+            <div>
+              <label for="">持卡人姓名</label> <br />
+              <input type="text" name="creditName" />
+            </div>
+            <div>
+              <label for="">信用卡卡號</label> <br />
+              <input
+                type="text"
+                name="credit_account"
+                pattern="^(4[0-9]{12}(?:[0-9]{3})?)$|^5[1-5][0-9]{14}$|^35[0-9]{14}$"
+              />
+            </div>
+            <div>
+              <label for="">有效日期</label> <br />
+              <input
+                type="text"
+                placeholder="月 / 年"
+                name="credit_date"
+                pattern="^(0[1-9]|1[0-2])\/([0-9]{2}|[0-9]{4})$"
+              />
+            </div>
+            <div>
+              <label for="">安全碼</label> <br />
+              <input
+                type="text"
+                placeholder="背面三碼"
+                name="credit_safe"
+                pattern="^[0-9]{3,4}$"
+              />
+            </div>
+            <br /><br />
+            <div class="rechargeConfirmBtnDiv">
+              <button id="creditConfirm" type="submit">確認儲值</button>
+            </div>
+          </div>
+        </form>
+        <!-- Paypal 輸入 -->
+        <form
+          id="paypalSubmit"
+          method="post"
+          action="/wallet/insertRecharge/<%= userData.user_id %>"
+        >
+          <input
+            type="hidden"
+            id="user_id"
+            name="user_id"
+            value="<%= userData.user_id %>"
+          />
+          <input type="hidden" id="consume" name="consume" />
+          <input type="hidden" id="c_coin_get" name="c_coin_get" />
+          <input
+            type="hidden"
+            id="UseMethodPaypal"
+            name="pay_method"
+            value="paypal"
+          />
+          <input
+            type="hidden"
+            name="c_coin_balance"
+            value="<%= userData.c_coin_balance %>"
+          />
+          <div class="paypalEnter">
+            <div>
+              <label for="">Paypal 帳號：</label> <br />
+              <input
+                type="text"
+                name="paypal_account"
+                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+              />
+            </div>
+            <div>
+              <label for="">Paypal 密碼：</label> <br />
+              <input
+                type="password"
+                name="paypal_password"
+                pattern="^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]{6,}$"
+              />
+            </div>
+            <br /><br />
+            <div class="rechargeConfirmBtnDiv">
+              <button id="payaplConfirm" type="submit">確認儲值</button>
+            </div>
+          </div>
+        </form>
+        <!-- Gash 輸入 -->
+        <form
+          id="gashSubmit"
+          method="post"
+          action="/wallet/insertRecharge/<%= userData.user_id %>"
+        >
+          <input
+            type="hidden"
+            id="user_id"
+            name="user_id"
+            value="<%= userData.user_id %>"
+          />
+          <input type="hidden" id="consume" name="consume" />
+          <input type="hidden" id="c_coin_get" name="c_coin_get" />
+          <input
+            type="hidden"
+            id="UseMethodGash"
+            name="pay_method"
+            value="gash"
+          />
+          <input
+            type="hidden"
+            name="c_coin_balance"
+            value="<%= userData.c_coin_balance %>"
+          />
+          <div class="gashEnter">
+            <div>
+              <label for="">Gash 序號：</label> <br />
+              <input
+                type="text"
+                name="gash_number"
+                pattern="^[a-zA-Z0-9]{15}$"
+              />
+            </div>
+            <div>
+              <label for="">Gash 密碼：</label> <br />
+              <input
+                type="text"
+                name="gash_password"
+                pattern="^[a-zA-Z0-9]{15}$"
+              />
+            </div>
+            <br /><br />
+            <div class="rechargeConfirmBtnDiv">
+              <button id="gashConfirm" type="submit">確認儲值</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </dialog>
+    <script src="/app/app.js"></script>
+    <script>
+      // 信用卡 + dialog
+      function recharge(ntd, ccoin) {
+        cost_get = { cost: ntd, get: ccoin };
+        $("input[name='consume']").val(cost_get.cost);
+        $("input[name='c_coin_get']").val(cost_get.get);
+        // console.log(cost_get);
+        var myPayMethod = Array.from(
+          document.querySelectorAll(".methodDiv input")
+        ); // 類陣列 nodelist 轉成陣列，forEach 最好用於一般陣列
+        let result;
+        myPayMethod.forEach((elem, i) => {
+          if (elem.checked) {
+            result = elem;
+            // 設 result 為符合 checked 的 input
+          }
+        });
+        if (result) {
+          switch (result.id) {
+            case "useCredit":
+              document.querySelector("span.Cget").innerHTML = ccoin;
+              document.querySelector("span.Ccost").innerHTML = ntd;
+              yourMethod.innerHTML = result
+                .closest(".methodDiv")
+                .querySelector(".method1 li").innerText;
+              document.querySelector(".creditEnter").style.display = "block";
+              document.querySelector("#rechargedialog").showModal();
+
+              console.log("credit");
+              console.log(ntd);
+              console.log(ccoin);
+              // 選擇離 result 最近的 li
+              break;
+            case "usePaypal":
+              document.querySelector("span.Cget").innerHTML = ccoin;
+              document.querySelector("span.Ccost").innerHTML = ntd;
+              yourMethod.innerHTML = result
+                .closest(".methodDiv")
+                .querySelector(".method1 li").innerText;
+              document.querySelector(".paypalEnter").style.display = "block";
+              document.querySelector("#rechargedialog").showModal();
+
+              console.log("paypal");
+              console.log(ntd);
+              console.log(ccoin);
+              // 選擇離 result 最近的 li
+              break;
+            case "useGash":
+              document.querySelector("span.Cget").innerHTML = ccoin;
+              document.querySelector("span.Ccost").innerHTML = ntd;
+              yourMethod.innerHTML = result
+                .closest(".methodDiv")
+                .querySelector(".method1 li").innerText;
+              document.querySelector(".gashEnter").style.display = "block";
+              document.querySelector("#rechargedialog").showModal();
+
+              console.log("gash");
+              console.log(ntd);
+              console.log(ccoin);
+              // 選擇離 result 最近的 li
+              break;
+          }
+        } else {
+          alert("請選擇一項儲值方式。");
+        }
+      }
+
+      // 關閉 dialog
+      closeRDialog.addEventListener("click", () => {
+        document.querySelector("#rechargedialog").close();
+        document.querySelector(".creditEnter").style.display = "none";
+        document.querySelector(".paypalEnter").style.display = "none";
+        document.querySelector(".gashEnter").style.display = "none";
+        $("input[name='creditName']").val("");
+        $("input[name='credit_account']").val("");
+        $("input[name='credit_date']").val("");
+        $("input[name='credit_safe']").val("");
+        $("input[name='paypal_account']").val("");
+        $("input[name='paypal_password']").val("");
+        $("input[name='payaplEmail']").val("");
+        $("input[name='gash_number']").val("");
+        $("input[name='gash_password']").val("");
+      });
+
+      /////////////////////////////
+      /* 儲值 */
+      let cost_get = { cost: 0, get: 0 };
+      $(function () {
+        /* 信用卡確認紐 */
+        $("#creditForm").on("submit", function () {
+          // 判斷是否資料都有填寫
+          if (
+            $("input[name='creditName']").val() == "" ||
+            $("input[name='credit_account']").val() == "" ||
+            $("input[name='credit_date']").val() == "" ||
+            $("input[name='credit_safe']").val() == ""
+          ) {
+            alert("請將資料填寫齊全！");
+            event.preventDefault();
+          } else {
+            event.preventDefault(); // 不跳頁
+            const userId = $("#user_id").val();
+            const coinBalance = $("input[name='c_coin_balance']").val();
+            console.log(parseInt(coinBalance));
+            // update c 餘額
+            $.ajax({
+              url: `http://localhost:80/wallet/updateRecharge/${userId}`,
+              type: "PUT",
+              data: {
+                c_coin_balance: parseInt(coinBalance) + cost_get.get,
+              },
+            });
+
+            // insert Credit c_coin_recharge.sql
+            $.ajax({
+              url: `http://localhost:80/wallet/insertRecharge/${userId}`,
+              type: "POST",
+              data: {
+                user_id: userId,
+                consume: $("input[name='consume']").val(),
+                c_coin_get: $("input[name='c_coin_get']").val(),
+                pay_method: $("input[id='UseMethodCredit']").val(),
+                credit_account: $("input[name='credit_account']").val(),
+              },
+            }).done((data) => {
+              cost_get = { cost: 0, get: 0 };
+              $("input[name='creditName']").val("");
+              $("input[name='credit_account']").val("");
+              $("input[name='credit_date']").val("");
+              $("input[name='credit_safe']").val("");
+              document.querySelector("dialog").close();
+              location.reload();
+            });
+          }
+        });
+
+        /* paypal確認紐 */
+        $("#paypalSubmit").on("submit", function () {
+          if (
+            $("input[name='paypal_account']").val() == "" ||
+            $("input[name='paypal_password']").val() == "" ||
+            $("input[name='payaplEmail']").val() == ""
+          ) {
+            alert("請將資料填寫齊全！");
+            event.preventDefault();
+          } else {
+            event.preventDefault(); // 不跳頁
+            const userId = $("#user_id").val();
+            const coinBalance = $("input[name='c_coin_balance']").val();
+            console.log(parseInt(coinBalance));
+            // update c 餘額
+            $.ajax({
+              url: `http://localhost:80/wallet/updateRecharge/${userId}`,
+              type: "PUT",
+              data: {
+                c_coin_balance: parseInt(coinBalance) + cost_get.get,
+              },
+            });
+
+            // insert Paypal c_coin_recharge.sql
+            $.ajax({
+              url: `http://localhost:80/wallet/insertRecharge/${userId}`,
+              type: "POST",
+              data: {
+                user_id: userId,
+                consume: $("input[name='consume']").val(),
+                c_coin_get: $("input[name='c_coin_get']").val(),
+                c_coin_balance: `<%- userData.username %>`,
+                pay_method: $("input[id='UseMethodPaypal']").val(),
+                paypal_account: $("input[name='paypal_account']").val(),
+              },
+            }).done((data) => {
+              cost_get = { cost: 0, get: 0 };
+              $("input[name='paypal_account']").val("");
+              $("input[name='paypal_password']").val("");
+              $("input[name='payaplEmail']").val("");
+              document.querySelector("dialog").close();
+              location.reload();
+            });
+          }
+        });
+
+        /* Gash 確認紐 */
+        $("#gashSubmit").on("submit", function () {
+          if (
+            $("input[name='gash_number']").val("") == "" ||
+            $("input[name='gash_password']").val("") == ""
+          ) {
+            alert("請將資料填寫齊全！");
+            event.preventDefault();
+          } else {
+            event.preventDefault(); // 不跳頁
+            const userId = $("#user_id").val();
+            const coinBalance = $("input[name='c_coin_balance']").val();
+            // update c 餘額
+            $.ajax({
+              url: `http://localhost:80/wallet/updateRecharge/${userId}`,
+              type: "PUT",
+              data: {
+                c_coin_balance: parseInt(coinBalance) + cost_get.get,
+              },
+            });
+
+            // insert Gash c_coin_recharge.sql
+            $.ajax({
+              url: `http://localhost:80/wallet/insertRecharge/${userId}`,
+              type: "POST",
+              data: {
+                user_id: userId,
+                consume: $("input[name='consume']").val(),
+                c_coin_get: $("input[name='c_coin_get']").val(),
+                c_coin_balance: `<%- userData.username %>`,
+                pay_method: $("input[id='UseMethodGash']").val(),
+                gash_number: $("input[name='gash_number']").val(),
+              },
+            }).done((data) => {
+              cost_get = { cost: 0, get: 0 };
+              $("input[name='gash_number']").val("");
+              $("input[name='gash_password']").val("");
+              document.querySelector("dialog").close();
+              location.reload();
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

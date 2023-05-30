@@ -1,0 +1,936 @@
+@charset "UTF-8";
+body {
+  padding-top: 0;
+}
+
+.section {
+  display: flex;
+  height: 100%;
+}
+
+/* 左半部 */
+.section {
+  padding-top: 75px;
+}
+.section .sleft {
+  padding: 85px 0;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("../img/wallet/bg(15).png");
+  background-size: cover;
+  background-position: center center;
+}
+.section .sleft .avatarDiv {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px rgba(0, 0, 0, 0.2) solid;
+  background-color: #d4d4d4;
+  cursor: pointer;
+  position: relative;
+}
+.section .sleft .avatarDiv img {
+  width: auto;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  transition: 0.2s;
+}
+.section .sleft .avatarDiv #imgEditbtn {
+  position: absolute;
+  width: 40px;
+  display: none;
+}
+.section .sleft .avatarDiv:hover {
+  background-color: #acacac;
+}
+.section .sleft .avatarDiv:hover img {
+  opacity: 0.35;
+}
+.section .sleft .avatarDiv:hover #imgEditbtn {
+  display: block;
+  opacity: 1;
+}
+.section .sleft .snav {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 250px;
+}
+.section .sleft .snav li {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px rgba(0, 0, 0, 0.4) solid;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin-bottom: 40px;
+}
+.section .sleft .snav li a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  font-size: 1.2rem;
+  padding: 10px 15px;
+}
+.section .sleft .snav li a img {
+  padding: 0 8px 0 0;
+  width: 30px;
+}
+.section .sleft .snav li a img.walletIcon_hover {
+  display: none;
+}
+.section .sleft .snav li:hover {
+  box-shadow: 0 5px 0 #0071db;
+  background-color: #0071db;
+  border-bottom: 2px #f8f8f8 solid;
+  border-radius: 5px;
+}
+.section .sleft .snav li:hover a {
+  color: #f8f8f8;
+}
+.section .sleft .snav li:hover a img {
+  display: none;
+}
+.section .sleft .snav li:hover a img.walletIcon_hover {
+  display: block;
+}
+.section .sleft .snav .walletMyRouter {
+  box-shadow: 0 5px 0 #0071db;
+  background-color: #0071db;
+  border-bottom: 2px #f8f8f8 solid;
+  border-radius: 5px;
+}
+.section .sleft .snav .walletMyRouter a {
+  color: #f8f8f8;
+}
+.section .sleft .snav .walletMyRouter a img {
+  display: none;
+}
+.section .sleft .snav .walletMyRouter a img.walletIcon_hover {
+  display: block;
+}
+.section .sleft .sbalance {
+  position: fixed;
+  bottom: 60px;
+  font-size: 1.15rem;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.section .sleft .sbalance img {
+  width: 25px;
+}
+.section .sleft .sbalance span span {
+  font-size: 1.2rem;
+}
+.section .sleft .sbalance:hover img {
+  filter: brightness(110%);
+}
+.section .sleft .sbalance:hover span {
+  color: #0071db;
+}
+
+/* 右半部 */
+/* 個人資訊 */
+/* s1 */
+.section .s1right {
+  padding: 60px 0;
+  width: 75%;
+  min-height: 100vh;
+}
+.section .s1right div.s1rightSec {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.section .s1right div.s1rightSec .s1Rtop {
+  background-color: #0071db;
+  border-radius: 5px 5px 0 0;
+}
+.section .s1right div.s1rightSec .s1Rtop p {
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  font-size: 1.1rem;
+  padding: 10px;
+  letter-spacing: 3px;
+}
+.section .s1right div.s1rightSec .s1Rdown .s1RDtitle {
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.section .s1right div.s1rightSec .s1Rdown .s1RDtitle p {
+  color: #8d8d8d;
+  color: black;
+  font-size: 1.15rem;
+  margin-top: 20px;
+  padding: 0 10px 10px 10px;
+  letter-spacing: 3px;
+}
+.section .s1right div.s1rightSec .s1Rdown .s1RDtitle img {
+  margin-top: 20px;
+  width: 17px;
+  height: 17px;
+  cursor: pointer;
+}
+.section .s1right div.s1rightSec .s1Rdown .s1RDtitle img:hover {
+  opacity: 0.5;
+}
+.section .s1right div.s1rightSec .s1Rdown .s1RDinfo {
+  width: 95%;
+  margin-left: auto;
+  padding-bottom: 30px;
+}
+.section .s1right div.s1rightSec .s1Rdown .s1RDinfo table {
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-right: auto;
+  text-align: left;
+}
+.section .s1right div.s1rightSec .s1Rdown .s1RDinfo table tr th {
+  font-size: 1.05rem;
+  font-weight: 400;
+  padding: 20px 0;
+  color: rgb(0, 0, 0);
+}
+.section .s1right div.s1rightSec .s1Rdown .s1RDinfo table tr td {
+  font-size: 1.05rem;
+  color: #000000;
+}
+.section .s1right div.s1rightSec .s1Rdown hr {
+  width: 80%;
+  margin: 0 auto;
+}
+.section .s1right div.s1rightSec .s1Rdown #Gamesdropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px 0 20px 0;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+  gap: 10px;
+  cursor: pointer;
+}
+.section .s1right div.s1rightSec .s1Rdown #Gamesdropdown p {
+  color: black;
+}
+.section .s1right div.s1rightSec .s1Rdown #Gamesdropdown .GamesdropdownImg {
+  filter: brightness(50%);
+  width: 20px;
+  transition: transform 0.65s;
+}
+.section .s1right div.s1rightSec .s1Rdown p {
+  color: #8d8d8d;
+  font-size: 1.1rem;
+  margin-top: 20px;
+  padding: 0 10px 10px 10px;
+  letter-spacing: 3px;
+}
+.section .s1right div.s1rightSec .s1Rdown #myGamesArea.expanded {
+  display: none;
+}
+.section .s1right div.s1rightSec .s1Rdown #myGamesArea {
+  width: 70%;
+  height: auto;
+  overflow: hidden;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 0 50px 0;
+  transition: max-height 0.3s ease;
+}
+.section .s1right div.s1rightSec .s1Rdown #myGamesArea #myGame {
+  background-color: #1d1d1d;
+  width: 100%;
+  height: 150px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+.section .s1right div.s1rightSec .s1Rdown #myGamesArea #myGame #myGameImgDiv {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  width: 60%;
+  height: 90%;
+  margin-left: 7.5px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-clip-path: polygon(0 0, 100% 0, 89% 100%, 0 100%);
+          clip-path: polygon(0 0, 100% 0, 89% 100%, 0 100%);
+}
+.section .s1right div.s1rightSec .s1Rdown #myGamesArea #myGame #myGameImgDiv img {
+  width: 100%;
+  height: auto;
+}
+.section .s1right div.s1rightSec .s1Rdown #myGamesArea #myGame #myGameInfo {
+  padding: 5px;
+  width: 40%;
+  height: 100%;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.section .s1right div.s1rightSec .s1Rdown #myGamesArea #myGame #myGameInfo p {
+  text-align: center;
+  letter-spacing: 3px;
+  font-size: 1.7rem;
+  color: white;
+  margin: 5px;
+  margin-right: 40px;
+}
+.section .s1right div.s1rightSec .s1Rdown #myGamesArea #myGame #myGameInfo p:nth-of-type(2) {
+  font-size: 1.3rem;
+}
+
+/* 儲值畫面 */
+/* s2 */
+.section .s2right {
+  padding: 60px 0;
+  width: 75%;
+}
+.section .s2right div.s2rightPart1 {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.section .s2right div.s2rightPart1 .s2part1top {
+  background-color: #0071db;
+  border-radius: 5px 5px 0 0;
+}
+.section .s2right div.s2rightPart1 .s2part1top p {
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  font-size: 1.1rem;
+  padding: 10px;
+  letter-spacing: 3px;
+}
+.section .s2right div.s2rightPart1 .s2part1down {
+  padding: 30px;
+}
+.section .s2right div.s2rightPart1 .s2part1down .s2part1methods {
+  display: flex;
+  justify-content: space-evenly;
+}
+.section .s2right div.s2rightPart1 .s2part1down .s2part1methods .methodDiv {
+  display: flex;
+  gap: 25px;
+}
+.section .s2right div.s2rightPart1 .s2part1down .s2part1methods .methodDiv input {
+  cursor: pointer;
+}
+.section .s2right div.s2rightPart1 .s2part1down .s2part1methods .methodDiv .method1 {
+  background-color: #ffffff;
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.section .s2right div.s2rightPart1 .s2part1down .s2part1methods .methodDiv .method1 li {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7.5px 0;
+}
+.section .s2right div.s2rightPart1 .s2part1down .s2part1methods .methodDiv .method1 li img {
+  width: 37px;
+  margin: 2px;
+}
+.section .s2right div.s2rightPart1 .s2part1down .s2part1methods .methodDiv .method1 div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(29, 117, 255);
+  background: linear-gradient(90deg, rgb(29, 117, 255) 15%, rgb(84, 173, 255) 51%, rgb(196, 227, 255) 100%);
+}
+.section .s2right div.s2rightPart1 .s2part1down .s2part1methods .methodDiv .method1 div li {
+  font-size: 1.15rem;
+  letter-spacing: 0.15rem;
+  color: white;
+  text-shadow: 0px 1px 2px rgb(59, 59, 59);
+}
+.section .s2right div.s2rightPart2 {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+}
+.section .s2right div.s2rightPart2 .s2part1top {
+  background-color: #0071db;
+  border-radius: 5px 5px 0 0;
+}
+.section .s2right div.s2rightPart2 .s2part1top p {
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  font-size: 1.1rem;
+  padding: 10px;
+  letter-spacing: 3px;
+}
+.section .s2right div.s2rightPart2 .s2part2down {
+  background-color: white;
+}
+.section .s2right div.s2rightPart2 .s2part2down ul {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+.section .s2right div.s2rightPart2 .s2part2down ul li {
+  display: flex;
+  justify-content: space-between;
+}
+.section .s2right div.s2rightPart2 .s2part2down ul li .CoinDiv {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 50px 0;
+  border-top: 0;
+  background-color: #f1f1f1;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.25);
+}
+.section .s2right div.s2rightPart2 .s2part2down ul li .CoinDiv .coinImgDiv {
+  width: 160px;
+  height: 107px;
+}
+.section .s2right div.s2rightPart2 .s2part2down ul li .CoinDiv .coinImgDiv img {
+  width: 150px;
+  height: 150px;
+}
+.section .s2right div.s2rightPart2 .s2part2down ul li .CoinDiv div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.section .s2right div.s2rightPart2 .s2part2down ul li .CoinDiv div img {
+  width: 25px;
+  height: 25px;
+}
+.section .s2right div.s2rightPart2 .s2part2down ul li .CoinDiv button {
+  font-size: 1.05rem;
+  color: #ffffff;
+  background-color: #0071db;
+  padding: 5px 30px;
+  border-radius: 2.5px;
+  border: none;
+  cursor: pointer;
+}
+
+/* 儲值頁面：信用卡確認 */
+dialog#rechargedialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 35%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background-color: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  border: none;
+  gap: 35px;
+}
+dialog#rechargedialog .credit_paypal_gash {
+  padding: 35px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 15px;
+}
+dialog#rechargedialog .credit_paypal_gash .Lconfirm {
+  text-align: center;
+  font-weight: 700;
+  color: #1c3d5c;
+}
+dialog#rechargedialog .credit_paypal_gash .Lconfirm .LCtitle {
+  font-size: 1.15rem;
+}
+dialog#rechargedialog .credit_paypal_gash .Lconfirm .LCbuy {
+  margin-top: 25px;
+  text-align: start;
+}
+dialog#rechargedialog .credit_paypal_gash .Lconfirm .LCbuy li {
+  list-style-type: none;
+  display: flex;
+}
+dialog#rechargedialog .credit_paypal_gash .Lconfirm .LCbuy li span {
+  font-size: 1.1rem;
+}
+dialog#rechargedialog .credit_paypal_gash .Lconfirm .LCbuy li .LCBthing {
+  margin-right: 120px;
+  margin-bottom: 15px;
+}
+dialog#rechargedialog .credit_paypal_gash .Lconfirm .LCbuy li span:nth-of-type(2) {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+dialog#rechargedialog .credit_paypal_gash .Lconfirm .LCbuy li span:nth-of-type(2) img {
+  width: 22.5px;
+  height: 22.5px;
+}
+dialog#rechargedialog .credit_paypal_gash #yourMethod {
+  font-weight: 600;
+}
+dialog#rechargedialog .credit_paypal_gash hr {
+  width: 80%;
+}
+dialog#rechargedialog .credit_paypal_gash form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+dialog#rechargedialog .credit_paypal_gash form .creditEnter,
+dialog#rechargedialog .credit_paypal_gash form .paypalEnter,
+dialog#rechargedialog .credit_paypal_gash form .gashEnter {
+  display: none;
+  width: 80%;
+}
+dialog#rechargedialog .credit_paypal_gash form .creditEnter div,
+dialog#rechargedialog .credit_paypal_gash form .paypalEnter div,
+dialog#rechargedialog .credit_paypal_gash form .gashEnter div {
+  margin-bottom: 10px;
+}
+dialog#rechargedialog .credit_paypal_gash form .creditEnter div label,
+dialog#rechargedialog .credit_paypal_gash form .paypalEnter div label,
+dialog#rechargedialog .credit_paypal_gash form .gashEnter div label {
+  font-size: 1.025rem;
+  font-weight: 500;
+}
+dialog#rechargedialog .credit_paypal_gash form .creditEnter div input,
+dialog#rechargedialog .credit_paypal_gash form .paypalEnter div input,
+dialog#rechargedialog .credit_paypal_gash form .gashEnter div input {
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 5px;
+  padding: 5px 5px;
+  font-size: 1.2rem;
+}
+dialog#rechargedialog .credit_paypal_gash form .creditEnter div.rechargeConfirmBtnDiv,
+dialog#rechargedialog .credit_paypal_gash form .paypalEnter div.rechargeConfirmBtnDiv,
+dialog#rechargedialog .credit_paypal_gash form .gashEnter div.rechargeConfirmBtnDiv {
+  text-align: center;
+}
+dialog#rechargedialog .credit_paypal_gash form .creditEnter div.rechargeConfirmBtnDiv button,
+dialog#rechargedialog .credit_paypal_gash form .paypalEnter div.rechargeConfirmBtnDiv button,
+dialog#rechargedialog .credit_paypal_gash form .gashEnter div.rechargeConfirmBtnDiv button {
+  background-color: #0071db;
+  color: white;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+dialog#rechargedialog button#closeRDialog {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+dialog#rechargedialog button#closeRDialog img {
+  width: 20px;
+  height: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+/* 轉點系統 */
+.section .s2right {
+  padding: 60px 0;
+  width: 75%;
+}
+.section .s2right div.s2rightPart1 .s2part1down .wallet_games {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.section .s2right div.s2rightPart1 .s2part1down .wallet_games .game_div {
+  width: 20%;
+  padding: 15px 0;
+  display: flex;
+  justify-content: center;
+}
+.section .s2right div.s2rightPart1 .s2part1down .wallet_games .game_div .wallet_game {
+  border: 2px solid #9a9a9a;
+  width: 85%;
+  height: 260px;
+  border-radius: 5px;
+  padding: 20px;
+  padding-bottom: 25px;
+  text-align: center;
+  background-color: #ffffff;
+  transition: 0.15s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+.section .s2right div.s2rightPart1 .s2part1down .wallet_games .game_div .wallet_game div {
+  width: 90%;
+  height: 220px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.section .s2right div.s2rightPart1 .s2part1down .wallet_games .game_div .wallet_game div img {
+  width: auto;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.section .s2right div.s2rightPart1 .s2part1down .wallet_games .game_div .wallet_game span,
+.section .s2right div.s2rightPart1 .s2part1down .wallet_games .game_div .wallet_game p {
+  display: inline-block;
+  font-size: 1.15rem;
+}
+.section .s2right div.s2rightPart1 .s2part1down .wallet_games .game_div .wallet_game:hover,
+.section .s2right div.s2rightPart1 .s2part1down .wallet_games .game_div .GSelected {
+  background-color: rgba(0, 113, 219, 0.2);
+  border: 2px solid rgba(69, 69, 69, 0.6);
+}
+.section .s2right div.s2rightPart1 .s3part1down {
+  padding: 50px 0;
+}
+.section .s2right div.s2rightPart1 .s3part1down ul {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.section .s2right div.s2rightPart1 .s3part1down ul li {
+  background-color: #0071db;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  padding: 12.5px 35px;
+  border-radius: 5px;
+}
+.section .s2right div.s2rightPart1 .s3part1down ul li span {
+  color: white;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-right: auto;
+}
+.section .s2right div.s2rightPart1 .s3part1down ul li button {
+  border: none;
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.section .s2right div.s2rightPart1 .s3part1down ul li button:hover {
+  background-color: #bbbbbb;
+}
+
+/* 轉點系統：轉點確認 */
+#exchangedialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 30%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background-color: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  border: none;
+}
+#exchangedialog form {
+  padding: 35px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+#exchangedialog form div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#exchangedialog form div p {
+  font-size: 1.15rem;
+  text-align: center;
+  color: #1c3d5c;
+  font-weight: bold;
+}
+#exchangedialog form div .exconfirm {
+  font-weight: 600;
+  color: #1c3d5c;
+  width: 80%;
+  margin: 0 auto;
+}
+#exchangedialog form div .exconfirm li {
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-start;
+}
+#exchangedialog form div .exconfirm li span {
+  font-size: 1.1rem;
+}
+#exchangedialog form div .exconfirm li span:nth-of-type(1) {
+  margin-right: auto;
+}
+#exchangedialog form div .exconfirm li span:nth-of-type(2) {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+#exchangedialog form div .exconfirm li span:nth-of-type(2) img {
+  width: 22.5px;
+  height: 22.5px;
+}
+#exchangedialog form button {
+  width: 120px;
+  background-color: #0071db;
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+#exchangedialog button#closeEXDialog {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+#exchangedialog button#closeEXDialog img {
+  width: 20px;
+  height: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+/* 個人資訊業面：修改個人資訊 */
+#PIdialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 30%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background-color: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  border: none;
+}
+#PIdialog form {
+  padding: 35px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+}
+#PIdialog form div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+#PIdialog form div p {
+  font-size: 1.15rem;
+  text-align: center;
+  color: #1c3d5c;
+  font-weight: bold;
+}
+#PIdialog form div .PIfirm {
+  font-weight: 600;
+  color: #1c3d5c;
+  width: 80%;
+  margin: 25px auto;
+}
+#PIdialog form div .PIfirm li {
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 5px 0;
+}
+#PIdialog form div .PIfirm li span {
+  font-size: 1.15rem;
+}
+#PIdialog form div .PIfirm li input {
+  border-radius: 5px;
+  padding: 3px 5px;
+  font-size: 1.15rem;
+}
+#PIdialog form div .PIfirm li span:nth-of-type(1) {
+  margin-right: auto;
+}
+#PIdialog form div .PIfirm li span:nth-of-type(2) {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+#PIdialog form div .PIfirm li span:nth-of-type(2) img {
+  width: 22.5px;
+  height: 22.5px;
+}
+#PIdialog form button {
+  width: 120px;
+  background-color: #0071db;
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+#PIdialog button#closePIDialog {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #ffffff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+#PIdialog button#closePIDialog img {
+  width: 20px;
+  height: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+#avatarDialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 30%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background-color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  border: none;
+  padding: 40px 20px;
+}
+#avatarDialog form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  gap: 15px;
+}
+#avatarDialog form div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+#avatarDialog form div .avatarSim {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 1px black dotted;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #d4d4d4;
+  margin: 15px 0;
+}
+#avatarDialog form div .avatarSim img {
+  width: auto;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+#avatarDialog form div p {
+  font-size: 1.15rem;
+  color: #1c3d5c;
+  text-align: center;
+  font-weight: 600;
+}
+#avatarDialog form div input {
+  width: 220px;
+  font-size: 1.1rem;
+}
+#avatarDialog form button {
+  width: 120px;
+  background-color: #0071db;
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.05rem;
+  cursor: pointer;
+}
+#avatarDialog button#closeAVADialog {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #ffffff;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+#avatarDialog button#closeAVADialog img {
+  width: 20px;
+  height: 20px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}/*# sourceMappingURL=wallet.css.map */

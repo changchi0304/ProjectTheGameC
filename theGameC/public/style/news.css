@@ -1,0 +1,486 @@
+@charset "UTF-8";
+/* section1 標題 */
+.section1 {
+  width: 62.5%;
+  height: 180px;
+  display: flex;
+  margin: 30px auto;
+  background-color: #242424;
+  border-radius: 8px;
+  transition: 0.6s;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.section1 .s1Info {
+  width: 47.5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #242424;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  transition: 0.6s;
+}
+.section1 .s1Info h1 {
+  color: #ffffff;
+  font-size: 1.75rem;
+  text-shadow: 1px 1px 8px rgba(85, 85, 85, 0.75);
+}
+.section1 .s1Info p {
+  padding: 20px 40px;
+  font-size: 0.85rem;
+  color: #f8f8f8;
+}
+.section1 .s1Img {
+  width: 52.5%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%);
+          clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%);
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.section1 .s1Img img {
+  width: 100%;
+  height: auto;
+  filter: brightness(80%);
+  transition: 0.6s;
+}
+
+.section1:hover {
+  background-color: #0057a8;
+}
+.section1:hover .s1Info {
+  background-color: #0057a8;
+}
+.section1:hover .s1Info h1 {
+  color: #ffffff;
+}
+.section1:hover .s1Info p {
+  color: #f8f8f8;
+}
+.section1:hover .s1Img img {
+  filter: brightness(110%);
+}
+
+/* section2 內文 */
+.section2 {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  position: relative;
+}
+.section2 .s2left {
+  width: 70%;
+}
+.section2 .s2left hr {
+  width: 85%;
+}
+.section2 .s2left .new {
+  display: flex;
+  cursor: pointer;
+  margin: 25px 0 25px 0;
+  padding: 18px;
+  border-radius: 5px;
+  transition: transform 0.2s ease-in-out, background-color 0.35s ease-in-out;
+}
+.section2 .s2left .new .newImg {
+  width: 410px;
+  height: 245px;
+  margin: 0 30px 0 0;
+  overflow: hidden;
+  border-radius: 5px;
+}
+.section2 .s2left .new .newImg img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+.section2 .s2left .new .newImg img:hover {
+  transform: scale(1.1);
+}
+.section2 .s2left .new .newContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 450px;
+  height: 220px;
+  padding: 2.5% 20px 2.5% 20px;
+  overflow: hidden;
+  gap: 10px;
+  border-radius: 5px;
+}
+.section2 .s2left .new .newContent h3 {
+  font-size: 1.25rem;
+}
+.section2 .s2left .new .newContent p.newDate {
+  color: #9b9b9b;
+  font-size: 1.15rem;
+}
+.section2 .s2left .new .newContent p.newInfo {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1.15rem;
+}
+.section2 .s2left .new .newContent a {
+  margin-left: auto;
+}
+.section2 .s2left .new:hover {
+  background-color: #cbcbcb;
+}
+.section2 .s2left .new:hover .newContent p.newDate {
+  color: #ffffff;
+}
+.section2 hr {
+  opacity: 0.6;
+  margin: 15px;
+}
+.section2 .s2right {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.section2 .s2right div.newClass {
+  margin-top: 40px;
+}
+.section2 .s2right div.newClass li {
+  list-style: none;
+  margin: 0 0 60px 0;
+  cursor: pointer;
+}
+.section2 .s2right div.newClass li div.oneNewClass {
+  width: 250px;
+  height: 100px;
+  position: relative;
+  transition: filter 0.4s ease-in-out;
+}
+.section2 .s2right div.newClass li div.oneNewClass img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+  -webkit-clip-path: polygon(88% 0, 100% 30%, 100% 100%, 0 100%, 0 0);
+          clip-path: polygon(88% 0, 100% 30%, 100% 100%, 0 100%, 0 0);
+}
+.section2 .s2right div.newClass li div.oneNewClass span {
+  position: absolute;
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 650;
+  letter-spacing: 0.15rem;
+  top: 15px;
+  left: 25px;
+  text-shadow: 2px 2px 0 #000000;
+  z-index: 1;
+}
+.section2 .s2right div.newClass li div.oneNewClass div.overlap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-clip-path: polygon(88% 0, 100% 30%, 100% 100%, 0 100%, 0 0);
+          clip-path: polygon(88% 0, 100% 30%, 100% 100%, 0 100%, 0 0);
+  background-color: #0057a8;
+  top: 12px;
+  left: 10px;
+  z-index: -1;
+}
+.section2 .s2right div.newClass li div.oneNewClass div.bright {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  -webkit-clip-path: polygon(88% 0, 100% 30%, 100% 100%, 0 100%, 0 0);
+          clip-path: polygon(88% 0, 100% 30%, 100% 100%, 0 100%, 0 0);
+  background: rgb(0, 0, 0);
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.8492647059) 20%, rgba(255, 255, 255, 0.3534663866) 65%);
+  opacity: 0.85;
+}
+.section2 .s2right div.newClass li div.oneNewClass:hover {
+  filter: brightness(135%);
+}
+
+/* section3 頁碼 */
+.section3 {
+  width: 80%;
+  margin: 50px auto 60px auto;
+  text-align: center;
+}
+.section3 a {
+  text-decoration: none;
+  color: #9b9b9b;
+  font-size: 1.3rem;
+  padding: 8px 12px;
+  margin: 0 3px;
+  border-radius: 7.5px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+.section3 #nowPage {
+  color: black;
+}
+.section3 a:hover {
+  background-color: #c9c9c9;
+  color: rgb(255, 255, 255);
+}
+.section3 .PageSelected {
+  background-color: #9b9b9b;
+  color: rgb(255, 255, 255);
+}/*# sourceMappingURL=news.css.map */
+
+
+/* -----------------------搜索欄----------------------- */
+.overlay {
+  position:absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height:600%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+  z-index: 9999;
+  justify-content: center;
+}
+
+.close-btn {
+  /* border: 1px solid blue; */
+  position: absolute;
+  top: 0;
+  right: 20px;
+  color: white;
+  font-size: 60px;
+  cursor: pointer;
+}
+
+.thefindcontent {
+  /* border: 1px solid yellow; */
+  text-align: center;
+  margin-top: 100px;
+  text-align: center;
+  /* background-color: darkgray; */
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.thefindcontent img {
+  width: 30px;
+  height: 30px;
+  /* margin-top: 20px; */
+}
+
+.thefindcontent input {
+  width: 300px;
+  margin-left: 10px;
+  border-bottom: 1px solid #fff;
+  background-color: yellow;
+}
+
+.thefindcontent input[type="text"] {
+  border: none;
+  border-bottom: 1px solid white;
+  outline: none;
+  background-color: transparent;
+  color: #fff;
+  font-size: 20px;
+}
+.thefindcontent button {
+  width: 90px;
+  background-color: #0057a8;
+  color: aliceblue;
+  font-weight: bolder;
+  padding: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 10px;
+  font-size: 20px;
+  margin-left: 10px;
+  box-shadow: none;
+  /* margin-bottom: 20px; */
+}
+
+.thecococ {
+  /* border: 1px solid pink; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* 設定如果收尋到相關遊戲的話出現的div樣式 */
+/* 舊樣式 */
+/* .result-item {
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #e7e7e7;
+  display: flex;
+  width: 850px;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+} */
+
+/* 新樣式 */
+.result-item {
+  /* border: 8px solid yellow; */
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #e7e7e7;
+  background: rgba(0, 140, 255, 0.6);
+  box-shadow: 0 0 10px 2px rgba(0, 217, 255, 0.8);
+  border: 4px solid hsla(200, 100%, 75%, 0.5);
+  display: flex;
+  width: 800px;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+
+
+
+
+
+.result-item a {
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+
+}
+
+.result-item a img {
+  width: 250px;
+  height: 150px;
+  margin-bottom: 5px;
+  /* border: 2px solid gray; */
+  object-fit: contain;
+}
+
+.result-item a p {
+  /* margin: 0; */
+  width: 250px;
+  color: black;
+  color: #fff;
+  font-weight: bolder;
+  /* border: 2px solid gray; */
+  /* text-align: center; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  font-size: 18px;
+  text-align: center;
+  margin-left: 8px;
+margin-right: 8px;
+text-align: justify;
+}
+.result-item a p span{
+  font-size: 16px;
+  font-weight: none;
+}
+.result-p {
+  /* border: 1px solid yellow; */
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  /* background-color: #e7e7e7; */
+  color: #e7e7e7;
+  font-size: 18px;
+  display: flex;
+  width: 200px;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+/* -------------搜尋欄按鈕----------------- */
+.thefindcontent button {
+  position: relative;
+  padding: 10px 20px;
+  border-radius: 7px;
+  border: 1px solid #0057a8;
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 4px;
+  background: transparent;
+  color: #fff;
+  overflow: hidden;
+  box-shadow: #0057a8;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  background-color: #0057a8;
+}
+
+.thefindcontent button:hover {
+  background: rgb(61, 106, 255);
+  box-shadow: 0 0 30px 5px rgba(0, 142, 236, 0.815);
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+.thefindcontent button:hover::before {
+  -webkit-animation: sh02 0.5s 0s linear;
+  -moz-animation: sh02 0.5s 0s linear;
+  animation: sh02 0.5s 0s linear;
+}
+
+.thefindcontent button::before {
+  content: '';
+  display: block;
+  width: 0px;
+  height: 86%;
+  position: absolute;
+  top: 7%;
+  left: 0%;
+  opacity: 0;
+  background: #fff;
+  box-shadow: 0 0 50px 30px #fff;
+  -webkit-transform: skewX(-20deg);
+  -moz-transform: skewX(-20deg);
+  -ms-transform: skewX(-20deg);
+  -o-transform: skewX(-20deg);
+  transform: skewX(-20deg);
+}
+
+@keyframes sh02 {
+  from {
+    opacity: 0;
+    left: 0%;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    left: 100%;
+  }
+}
+
+.thefindcontent button:active {
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: box-shadow 0.2s ease-in;
+  -moz-transition: box-shadow 0.2s ease-in;
+  transition: box-shadow 0.2s ease-in;
+}

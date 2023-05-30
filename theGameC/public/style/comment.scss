@@ -1,0 +1,188 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  // min-width: 1920px; /* 設置最大寬度為 1440 像素 */
+  // margin: 0 auto; /* 讓網頁置中顯示 */
+  font-family: "Microsoft YaHei", sans-serif;
+  letter-spacing: 2px;
+  p {
+    letter-spacing: 1px;
+  }
+}
+
+#commentDialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  width: 55%;
+  height: 90%;
+  margin: 0 auto;
+  border-radius: 10px;
+  border: 3px solid #e1e1e1;
+  background-color: #2c2c2c;
+  padding: 15px;
+  .closeCommentAreaDiv {
+    width: 100%;
+    // display: flex;
+    // justify-content: end;
+    position: relative;
+    padding-bottom: 15px;
+    #closeCommentArea {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 25px;
+      height: 25px;
+      padding: 5px;
+      box-sizing: content-box;
+      cursor: pointer;
+    }
+  }
+  h2 {
+    color: white;
+    padding: 15px 0;
+    margin-left: 100px;
+  }
+  .commentArea {
+    height: 90%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .comment {
+      margin: 20px auto;
+      padding: 15px;
+      width: 80%;
+      background-color: #666666;
+      border-radius: 5px;
+      border: 3.5px solid #858585;
+      display: flex;
+      .noComment {
+        color: white;
+        font-size: 1.2rem;
+        margin: 2px auto;
+      }
+      hr {
+        margin: 0 15px;
+        opacity: 0.4;
+      }
+      .cleft {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 30%;
+        .cleft_top {
+          display: flex;
+          flex: 5;
+          gap: 15px;
+          justify-content: center;
+          align-items: start;
+          overflow: hidden;
+          .avatarDiv {
+            width: 65px;
+            height: 65px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+            border: 5px solid rgba(103, 103, 103, 0.5);
+            img {
+              width: auto;
+              height: 100%;
+            }
+          }
+          .cl_t_text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 150px;
+            span {
+              color: white;
+            }
+            .nickname {
+              font-size: 1rem;
+            }
+            .postDate {
+              font-size: 0.75rem;
+            }
+          }
+        }
+        .cleft_bottom {
+          display: flex;
+          flex-direction: column;
+          flex: 5;
+          gap: 15px;
+          span {
+            // 評分
+            margin-left: 15px;
+            color: white;
+          }
+          div {
+            margin: 0 auto;
+            background-color: #333333;
+            width: 60px;
+            height: 60px;
+            border-radius: 5px;
+            border: 2.5px solid #b3b3b3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            span {
+              // 數字
+              margin: 0;
+              font-size: 2.25rem;
+            }
+          }
+        }
+      }
+      .cright {
+        flex: 5;
+        div {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          min-height: 150px;
+          border-radius: 2.5px;
+          p {
+            color: white;
+            margin-left: 5px;
+          }
+          div {
+            background-color: #373737;
+            padding: 10px;
+            p {
+              font-size: 1.05rem;
+              letter-spacing: 1.5px;
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+
+    button {
+      margin: 20px 0;
+      padding: 10px 20px;
+      font-size: 1.15rem;
+      border-radius: 10px;
+      border: 2px solid white;
+      background-color: black;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    button:hover {
+      background-color: rgb(255, 255, 255);
+      color: rgb(0, 0, 0);
+    }
+  }
+}

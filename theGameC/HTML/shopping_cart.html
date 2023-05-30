@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TheGameC - 首頁</title>
+    <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="/style/shopping_cart.css" />
+    <style></style>
+  </head>
+  <body>
+    <!-- header -->
+    <header>
+      <!-- logo -->
+      <div class="logo" onclick="goIndex()">
+        <img src="/img/header/head_logo.png" alt="" />
+      </div>
+      <!-- navbar -->
+      <nav>
+        <ul>
+          <li>
+            <a href="#"
+              >遊戲
+              <img id="headdropdown" src="/img/header/head_dropdown.png" alt=""
+            /></a>
+            <div class="dropdown">
+              <ul>
+                <li><a href="./game.html">遊戲頁</a></li>
+                <li><a href="#">休閒</a></li>
+                <li><a href="#">動作</a></li>
+                <li><a href="#">運動</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">
+              商店
+              <img id="headdropdown" src="/img/header/head_dropdown.png" alt=""
+            /></a>
+            <div class="dropdown">
+              <ul>
+                <li><a href="#">商品頁</a></li>
+                <li><a href="./shopping_cart.html">購物車</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="./news.html"
+              >新聞
+              <img id="headdropdown" src="/img/header/head_dropdown.png" alt=""
+            /></a>
+            <div class="dropdown">
+              <ul>
+                <li><a href="./news.html">最新消息</a></li>
+                <li><a href="./news.html">遊戲更新</a></li>
+                <li><a href="./news.html">優惠活動</a></li>
+                <li><a href="./news.html">新品上架</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">
+              關於
+              <img id="headdropdown" src="/img/header/head_dropdown.png" alt=""
+            /></a>
+            <div class="dropdown">
+              <ul>
+                <li><a href="#">公司介紹</a></li>
+                <li><a href="#">徵才</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">
+              客服
+              <img id="headdropdown" src="/img/header/head_dropdown.png" alt=""
+            /></a>
+            <div class="dropdown">
+              <ul>
+                <li><a href="./qa.html">常見問題</a></li>
+                <li><a href="./mail">客服信箱</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div class="navbar-icons">
+        <a href="#"><img src="/img/header/head_search.png" alt="" /></a>
+        <a id="GoWalletPage" href="./wallet_PI.html"
+          ><img src="/img/header/head_wallet.png" alt=""
+        /></a>
+        <a id="GoLoginPage" href="./newlogin.html">
+          <img src="/img/header/head_user.png" alt=""
+        /></a>
+      </div>
+    </header>
+
+    <!-- section1 最上方影片 + 封面 -->
+    <section class="section1">
+      <div class="s1container"><img src="/img/wallet/bg.jpg" /></div>
+      <div class="video">
+        <img src="/img/shop/image 23.png" alt="" />
+      </div>
+    </section>
+
+    <!-- section2 購物車 -->
+    <section class="section2">
+      <div class="title">
+        <img src="/img/shop/shopping-cart.png" /><span>購物車</span>
+      </div>
+      <div class="cart">
+        <ul>
+          <li>
+            <span></span>
+            <span>商品名稱</span>
+            <span>價格</span>
+            <span>小記</span>
+            <span></span>
+          </li>
+          <!-- 樣本 -->
+          <li>
+            <span><img src="/img/shop/game/far_cry.jpg" alt="" /></span>
+            <span>極地戰嚎3</span>
+            <span
+              ><div><span>單價 NT$</span><span>499</span></div>
+            </span>
+            <span
+              ><div><span>NT$</span><span id="cartCost">499</span></div>
+            </span>
+            <span><img src="/img/shop/Trash.png" /></span>
+          </li>
+          <li>
+            <span><img src="/img/shop/game/far_cry.jpg" alt="" /></span>
+            <span>極地戰嚎3</span>
+            <span
+              ><div><span>單價 NT$</span><span>499</span></div>
+            </span>
+            <span
+              ><div><span>NT$</span><span id="cartCost">499</span></div>
+            </span>
+            <span><img src="/img/shop/Trash.png" /></span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- section3 結帳 -->
+    <section class="section3">
+      <form action="">
+        <!-- 左邊部分 -->
+        <div class="left">
+          <div class="leftcontainer">
+            <p>VISA或信用卡資訊</p>
+            <div class="creditEnter">
+              <div>
+                <label for="">持卡人姓名</label> <br />
+                <input type="text" />
+              </div>
+              <div>
+                <label for="">信用卡卡號</label> <br />
+                <input type="text" />
+              </div>
+              <div>
+                <label for="">有效日期</label> <br />
+                <input type="number" placeholder="月 / 年" />
+              </div>
+              <div>
+                <label for="">安全碼</label> <br />
+                <input type="text" placeholder="背面三碼" />
+              </div>
+              <br /><br />
+              <div class="cartCreditConfirmBtnDiv">
+                <button>確認結帳</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 右邊部分 -->
+        <div class="right">
+          <div class="rightcontainer">
+            <ul>
+              <li>
+                <span>小計</span>
+                <span>NT$<span class="subtotal">0</span></span>
+              </li>
+              <hr />
+              <li>
+                <span>訂單總計</span>
+                <span class="total">NT$<span id="total">0</span></span>
+              </li>
+            </ul>
+          </div>
+          <a href="#">繼續選購</a>
+        </div>
+      </form>
+    </section>
+
+    <!-- footer -->
+    <footer>
+      <div class="footer-s1">
+        <div class="footer-logo">
+          <img src="/img/header/head_logo.png" alt="" />
+        </div>
+        <div class="footer-content">
+          <ul>
+            <li><a href="./rule.html">隱私權政策</a></li>
+            <li><a href="./rule_2.html">使用條款</a></li>
+            <li><a href="./rule_3.html">法律資訊</a></li>
+          </ul>
+          <ul>
+            <li><a href="#">公司資訊</a></li>
+            <li><a href="#">工作機會</a></li>
+            <li><a href="#">據點</a></li>
+          </ul>
+          <ul>
+            <li><a href="#">客服支援</a></li>
+            <li><a href="#">錢包</a></li>
+            <li><a href="#">我需要協助</a></li>
+          </ul>
+          <ul>
+            <li><a href="#">Cookie政策</a></li>
+            <li><a href="#">Cookie設定</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-s2">
+        <p>©TheGameC | XXX遊戲代理公司 客服專線：02-000-0000</p>
+      </div>
+    </footer>
+
+    <script src="/app/app.js"></script>
+  </body>
+</html>

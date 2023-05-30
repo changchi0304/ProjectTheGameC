@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>錢包 - 個人資訊</title>
+    <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="/style/wallet.css" />
+    <script type="text/javascript" src="jquery.js"></script>
+  </head>
+  <body>
+    <!-- header -->
+    <header>
+      <!-- logo -->
+      <div class="logo" onclick="goIndex()">
+        <img src="/img/header/head_logo.png" alt="" />
+      </div>
+      <!-- navbar -->
+      <nav>
+        <ul>
+          <li>
+            <a href="#"
+              >遊戲
+              <img id="headdropdown" src="/img/header/head_dropdown.png" alt=""
+            /></a>
+            <div class="dropdown">
+              <ul>
+                <li><a href="./game.html">遊戲頁</a></li>
+                <hr />
+                <li><a href="#">休閒</a></li>
+                <hr />
+                <li><a href="#">動作</a></li>
+                <hr />
+                <li><a href="#">運動</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">
+              商店
+              <img id="headdropdown" src="/img/header/head_dropdown.png" alt=""
+            /></a>
+            <div class="dropdown">
+              <ul>
+                <li><a href="#">商品頁</a></li>
+                <li><a href="./shopping_cart.html">購物車</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="./news.html"
+              >新聞
+              <img id="headdropdown" src="/img/header/head_dropdown.png" alt=""
+            /></a>
+            <div class="dropdown">
+              <ul>
+                <li><a href="./news.html">最新消息</a></li>
+                <li><a href="./news.html">遊戲更新</a></li>
+                <li><a href="./news.html">優惠活動</a></li>
+                <li><a href="./news.html">新品上架</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">
+              關於
+              <img id="headdropdown" src="/img/header/head_dropdown.png" alt=""
+            /></a>
+            <div class="dropdown">
+              <ul>
+                <li><a href="#">公司介紹</a></li>
+                <li><a href="#">徵才</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">
+              客服
+              <img id="headdropdown" src="/img/header/head_dropdown.png" alt=""
+            /></a>
+            <div class="dropdown">
+              <ul>
+                <li><a href="./qa.html">常見問題</a></li>
+                <li><a href="./mail">客服信箱</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div class="navbar-icons">
+        <a href="#"><img src="/img/header/head_search.png" alt="" /></a>
+        <a id="GoWalletPage" href="./wallet_PI.html"
+          ><img src="/img/header/head_wallet.png" alt=""
+        /></a>
+        <a id="GoLoginPage" href="./newlogin.html">
+          <img src="/img/header/head_user.png" alt=""
+        /></a>
+      </div>
+    </header>
+
+    <!-- section -->
+    <section class="section">
+      <!-- 左半部 -->
+      <div class="sleft">
+        <ul class="snav">
+          <li class="walletMyRouter">
+            <a href="#"
+              ><img
+                class="walletIcon"
+                src="/img/wallet/wallet_user.png"
+                alt=""
+              />
+              <img
+                class="walletIcon_hover"
+                src="/img/wallet/wallet_user(hover).png"
+                alt=""
+              /><span>個人資訊</span></a
+            >
+          </li>
+          <li>
+            <a href="recharge"
+              ><img
+                class="walletIcon"
+                src="/img/wallet/wallet_recharge.png"
+                alt=""
+              /><img
+                class="walletIcon_hover"
+                src="/img/wallet/wallet_recharge(hover).png"
+                alt=""
+              /><span>儲值頁面</span></a
+            >
+          </li>
+          <li>
+            <a href="exchange"
+              ><img
+                class="walletIcon"
+                src="/img/wallet/wallet_exchange.png"
+                alt=""
+              /><img
+                class="walletIcon_hover"
+                src="/img/wallet/wallet_exchange(hover).png"
+                alt=""
+              /><span>轉點系統</span></a
+            >
+          </li>
+        </ul>
+        <!-- 餘額 -->
+        <div class="sbalance">
+          <img src="/img/wallet/coinIcon.png" />
+          <span>C幣餘額：<span>105</span> </span>
+        </div>
+      </div>
+
+      <!-- 右半部 -->
+      <div class="s1right">
+        <div class="s1rightSec">
+          <div class="s1Rtop"><p>帳號資訊</p></div>
+          <div class="s1Rdown">
+            <div class="s1RDtitle">
+              <p>基本資訊</p>
+              <img onclick="editPI()" src="/img/wallet/edit.png" alt="" />
+            </div>
+            <div class="s1RDinfo">
+              <table>
+                <tr>
+                  <th>暱稱：</th>
+                  <td id="nickname">尚未填寫</td>
+                </tr>
+                <tr>
+                  <th>使用者名稱：</th>
+                  <td id="username">尚未填寫</td>
+                </tr>
+                <tr>
+                  <th>手機號碼：</th>
+                  <td id="phone">尚未填寫</td>
+                </tr>
+                <tr>
+                  <th>電子信箱：</th>
+                  <td id="email">尚未填寫</td>
+                </tr>
+                <tr>
+                  <th>出生日期：</th>
+                  <td id="birth">尚未填寫</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 修改個人資訊 -->
+    <dialog id="PIdialog">
+      <button id="closeDialog">
+        <img src="/img/wallet/close.png" alt="" />
+      </button>
+      <form action="">
+        <div>
+          <p>修改個人資訊</p>
+          <div class="PIfirm">
+            <li>
+              <span>暱稱：</span>
+              <input id="edit_nickname" />
+            </li>
+            <li>
+              <span>手機：</span>
+              <input id="edit_phone" />
+            </li>
+          </div>
+        </div>
+        <button>確認修改</button>
+      </form>
+    </dialog>
+
+    <script src="/app/app.js"></script>
+
+    <script>
+      function editPI() {
+        document.querySelector("#PIdialog").showModal();
+      }
+      closeDialog.addEventListener("click", () => {
+        document.querySelector("dialog").close();
+      });
+    </script>
+  </body>
+</html>

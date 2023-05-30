@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>登入、註冊</title>
+    <!-- icon -->
+    <link rel="icon" href="./img/header/logoicon.ico" />
+    <!-- css -->
+    <link rel="stylesheet" href="./style/style.css" />
+    <link rel="stylesheet" href="./style/login.css" />
+    <!-- jquery -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.4.js"
+      integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+      crossorigin="anonymous"
+    ></script>
+    <!-- bootstrap5 icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css"
+    />
+    <!-- css.gg -->
+    <link href="https://css.gg/css" rel="stylesheet" />
+    <!-- UNPKG -->
+    <link href="https://unpkg.com/css.gg/icons/all.css" rel="stylesheet" />
+    <!-- JSDelivr -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/css.gg/icons/all.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        padding: 0px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- header -->
+    <header>
+      <!-- logo -->
+      <div class="logo" onclick="goIndex()">
+        <img src="./img/header/head_logo.png" alt="" />
+      </div>
+      <!-- navbar -->
+      <nav>
+        <ul>
+          <li>
+            <a href="#"
+              >遊戲
+              <img
+                id="headdropdown"
+                src="./img/header/head_dropdown.png"
+                alt=""
+            /></a>
+            <div class="dropdown">
+              <ul>
+                <li><a href="./game.html">遊戲頁</a></li>
+                <li><a href="#">休閒</a></li>
+                <li><a href="#">動作</a></li>
+                <li><a href="#">運動</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">
+              商店
+              <img
+                id="headdropdown"
+                src="./img/header/head_dropdown.png"
+                alt=""
+            /></a>
+            <div class="dropdown">
+              <ul>
+                <li><a href="#">商品頁</a></li>
+                <li><a href="./shopping_cart.html">購物車</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="./news.html"
+              >新聞
+              <img
+                id="headdropdown"
+                src="./img/header/head_dropdown.png"
+                alt=""
+            /></a>
+            <div class="dropdown">
+              <ul>
+                <li><a href="./news.html">最新消息</a></li>
+                <li><a href="./news.html">遊戲更新</a></li>
+                <li><a href="./news.html">優惠活動</a></li>
+                <li><a href="./news.html">新品上架</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">
+              關於
+              <img
+                id="headdropdown"
+                src="./img/header/head_dropdown.png"
+                alt=""
+            /></a>
+            <div class="dropdown">
+              <ul>
+                <li><a href="#">公司介紹</a></li>
+                <li><a href="#">徵才</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">
+              客服
+              <img
+                id="headdropdown"
+                src="./img/header/head_dropdown.png"
+                alt=""
+            /></a>
+            <div class="dropdown">
+              <ul>
+                <li><a href="./qa.html">常見問題</a></li>
+                <li><a href="./mail">客服信箱</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <div class="navbar-icons">
+        <a href="#"><img src="./img/header/head_search.png" alt="" /></a>
+        <a id="GoWalletPage" href="./wallet_PI.html"
+          ><img src="./img/header/head_wallet.png" alt=""
+        /></a>
+        <a id="GoLoginPage" href="./newlogin.html">
+          <img src="./img/header/head_user.png" alt=""
+        /></a>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="loginleft">
+        <div class="btnbox">
+          <p class="btnlogin">登入</p>
+          <p class="btnsign">註冊</p>
+          <div class="btnbg"></div>
+        </div>
+      </div>
+
+      <div class="rightbox">
+        <div class="loginpage" id="loginpage">
+          <form class="loginbox">
+            <div class="loginPagelogo">
+              <img src="./img/login/login_logo.png" alt="" />
+            </div>
+            <div class="divinput">
+              <i class="gg-mail"></i>
+              <input
+                type="text"
+                class="loginu"
+                placeholder="UserName"
+                title="請檢察帳號大小寫有無出錯"
+                required
+              />
+            </div>
+
+            <div class="divinput">
+              <i class="gg-lock"></i>
+              <input
+                id="password1"
+                type="password"
+                class="loginu"
+                placeholder="Password"
+                title="請確認字母大小寫是否正確"
+                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
+                required
+              />
+              <i id="eyeclose" class="bi-eye-slash"></i>
+              <i id="eyeopen" class="bi-eye"></i>
+            </div>
+            <input type="submit" class="logins" value="會員登入" />
+
+            <div class="line-with-circle">
+              <div class="divhr"></div>
+              <div class="circle"></div>
+              <div class="divhr"></div>
+            </div>
+            <div class="logobtn">
+              <a href="#">Facebook</a>
+              <a href="#">Google+</a>
+            </div>
+          </form>
+        </div>
+
+        <div class="signbox" id="signbox">
+          <form class="loginbox">
+            <div class="loginPagelogo">
+              <img src="./img/login/login_logo.png" alt="" />
+            </div>
+            <!-- <div class="divinput">
+            <i class="bi bi-person"></i>
+            <input type="text" class="loginu" placeholder="User name" pattern="^[a-zA-Z0-9][a-zA-Z0-9_]{1,18}[a-zA-Z0-9]$" required/>
+          </div> -->
+            <div class="divinput">
+              <i class="bi bi-person"></i>
+              <input
+                type="text"
+                class="loginu"
+                placeholder="UserName"
+                required
+              />
+            </div>
+            <div class="divinput">
+              <i class="bi bi-unlock"></i>
+              <input
+                id="password2"
+                type="password"
+                class="loginu"
+                placeholder="Password"
+                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
+                title="要求密碼至少包含一個小寫字母、一個大寫字母和一個數字，並且長度至少為8個字符"
+                required
+              />
+              <i id="eyeclose2" class="bi-eye-slash"></i>
+              <i id="eyeopen2" class="bi-eye"></i>
+            </div>
+            <div class="divinput">
+              <i class="bi bi-envelope"></i>
+              <input
+                type="email"
+                class="loginu"
+                placeholder="Email"
+                title="請確認手機號碼格式正確"
+                required
+              />
+            </div>
+            <div class="divinput">
+              <i class="bi bi-telephone"></i>
+              <input
+                type="date"
+                class="loginu"
+                placeholder="Birthday"
+                required
+              />
+            </div>
+            <input type="submit" class="logins" value="確認註冊" />
+            <!-- <div class="line-with-circle">
+            <hr class="divhr" />
+            <div class="circle"></div>
+            <hr class="divhr" />
+          </div> -->
+            <div class="logobtn">
+              <a href="#">Facebook</a>
+              <a href="#">Google+</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="./app.js"></script>
+    <script>
+      $(document).ready(function () {
+        $(".btnsign").click(function () {
+          $("#loginpage").fadeOut(0);
+          $("#signbox").fadeIn(800);
+          $(".btnbg").css("top", "95px");
+          $(".btnsign").css("color", "#1C3D5C");
+          $(".btnlogin").css("color", "white");
+        });
+        $(".btnlogin").click(function () {
+          $("#loginpage").fadeIn(800);
+          $("#signbox").fadeOut(0);
+          $(".btnbg").css("top", "3px");
+          $(".btnlogin").css("color", "#1C3D5C");
+          $(".btnsign").css("color", "white");
+        });
+
+        $("#eyeclose").click(function () {
+          $("#eyeopen").css("display", "block");
+          $("#eyeclose").css("display", "none");
+          $("#password1").attr("type", "text");
+        });
+        $("#eyeopen").click(function () {
+          $("#eyeopen").css("display", "none");
+          $("#eyeclose").css("display", "block");
+          $("#password1").attr("type", "password");
+        });
+        $("#eyeclose2").click(function () {
+          $("#eyeopen2").css("display", "block");
+          $("#eyeclose2").css("display", "none");
+          $("#password2").attr("type", "text");
+        });
+        $("#eyeopen2").click(function () {
+          $("#eyeopen2").css("display", "none");
+          $("#eyeclose2").css("display", "block");
+          $("#password2").attr("type", "password");
+        });
+      });
+    </script>
+  </body>
+</html>

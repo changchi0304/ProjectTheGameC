@@ -1,0 +1,93 @@
+<header>
+  <!-- logo -->
+  <div class="logo" onclick="goIndex()">
+    <img src="/img/header/head_logo.png" alt="" />
+  </div>
+  <!-- navbar -->
+  <nav>
+    <ul>
+      <li>
+        <a href="/games"
+          >遊戲
+          <img id="headdropdown" src="/img/header/head_dropdown.png" alt=""
+        /></a>
+        <div class="dropdown">
+          <ul>
+            <li><a href="/games">遊戲頁</a></li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <a href="#">
+          商店
+          <img id="headdropdown" src="/img/header/head_dropdown.png" alt=""
+        /></a>
+        <div class="dropdown">
+          <ul>
+            <li><a href="/store">商品頁</a></li>
+            <hr />
+            <li><a href="/products/shopping_cart">購物車</a></li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <a href="/news/latest"
+          >新聞
+          <img id="headdropdown" src="/img/header/head_dropdown.png" alt=""
+        /></a>
+        <div class="dropdown">
+          <ul>
+            <li><a href="/news/latest">最新消息</a></li>
+            <hr />
+            <li><a href="/news/games_updates">遊戲更新</a></li>
+            <hr />
+            <li><a href="/news/products_promotions">優惠活動</a></li>
+            <hr />
+            <li><a href="/news/new_products">新品上架</a></li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <a href="/about">
+          關於
+          <img id="headdropdown" src="/img/header/head_dropdown.png" alt=""
+        /></a>
+        <div class="dropdown">
+          <ul>
+            <li><a href="/about">關於我們</a></li>
+            <hr />
+            <li><a id="about2" href="/about?about=join">加入我們</a></li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <a href="#">
+          客服
+          <img id="headdropdown" src="/img/header/head_dropdown.png" alt=""
+        /></a>
+        <div class="dropdown">
+          <ul>
+            <li><a href="/qa">常見問題</a></li>
+            <hr />
+            <li><a href="/mail">客服信箱</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </nav>
+  <div class="navbar-icons">
+    <a href="#" title="搜索欄" id="thefindBtn"
+      ><img src="/img/header/head_search.png" alt=""
+    /></a>
+    <a
+      id="GoWalletPage"
+      href="<%= LoginUserID ? `/wallet/PI/${LoginUserID}`: `/login?alert=needLogin`  %>"
+      title="錢包"
+      ><img src="/img/header/head_wallet.png" alt=""
+    /></a>
+    <a id="GoLoginPage" href="/login" title="登入">
+      <img src="/img/header/head_user.png" alt=""
+    /></a>
+  </div>
+</header>
+<script src="/app/app.js"></script>
